@@ -1,0 +1,48 @@
+library   libraryListe
+%%
+%% le fichier doit s’appeler libraryListe.c
+%%****************************************************
+%%        TYPE ABSTRAIT DES LISTES GENERIQUES
+%%   Objet: Specification Algébrique en CASL
+%%   Prouvée par: HETS(Isabelle)
+%%   Application: manipulation des listes 
+%%   Date création le 21/11/2005
+%%   			 
+%%****************************************************
+%% liste des importations (downloading)
+from Basic/SimpleDatatypes    get     Boolean
+%%***************************************************
+%% spécification minimale 
+spec   LISTE0[sort Elem] =
+         Boolean
+then
+sort   Liste[Elem] 
+ ops
+%% créer une liste vide
+          listeVide: Liste[Elem];
+%% Construire une liste quelconque 
+cons:     Elem *  Liste[Elem]  ->  Liste[Elem]   
+end
+
+%% spécification enrichie
+spec  LISTE [sort Elem] =
+             	LISTE0[sort Elem] 
+then
+ops
+%% obtenir une liste en privant la liste actuelle  de son premier élément
+      fin:  Liste[Elem] -> ? Liste[Elem];  
+%% chercher le premier élément de la liste
+      tete: Liste[Elem] ->? Elem; 
+%% tester si la la liste est vide  
+      estVide: Liste[Elem] -> Boolean;
+
+forall L1:Liste[Elem]; e1:Elem
+    . def tete(L1)   <=>    estVide(L1)  = False 
+    . def fin (L1)   <=>    estVide(L1)  = False
+    . estVide(listeVide)   = True
+    . estVide(cons(e1,L1)) = False
+    . tete(cons(e1,L1)) = e1
+%% l’opération fin définie à partir des opérations listeVide et cons 
+    . fin(cons(e1,L1))= listeVide when estVide(L1)= True  else cons(tete(L1),fin(L1))
+
+end

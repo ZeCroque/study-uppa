@@ -1,0 +1,68 @@
+
+/* À modifier avec Javascript pour afficher la bonne sous-image */
+
+/* utilise la technique des sprites :
+ * https://openclassrooms.com/courses/bien-utiliser-les-sprites-css
+ */
+.img {
+	background-image: url('images/fruits_legumes_1.jpg');
+	background-position-x: -375px;
+	background-position-y: -25px;
+	width: 130px;
+	height: 116px;
+  }
+
+/* Mise en page */
+
+section.commande {
+	display: flex;
+}
+
+aside.filtres {
+	margin-right: 20px;
+}
+
+.articles {
+	display: flex;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+	width: 100%;
+  /* debug */
+	border: 1px solid red;
+}
+
+.article {
+	width: 300px;
+	margin: 10px;
+	border: 1px solid black;
+}
+
+.cadre{
+	background-color: white;
+	width: 230px;
+	height: 150px;
+	display:flex; /* Pour le alignement vertical des images */
+	flex-direction: column;  /* direction d'affichage verticale */
+  justify-content: center; /* alignement vertical */
+	align-items: center;     /* alignement horizontal */
+}
+
+
+.quantite input {
+	width: 30px;
+}
+
+input[type="checkbox"] {
+    vertical-align: middle;
+}
+
+div.panier table {
+	width: 50%;
+}
+
+td+td {
+	text-align: right;
+}
+tfoot {
+	text-align: right;
+}

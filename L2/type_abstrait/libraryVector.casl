@@ -1,0 +1,82 @@
+
+
+
+library  libraryVector
+%%%% le fichier doit s’appeler libraryVector.casl
+%%
+%%****************************************************
+%%        TYPE ABSTRAIT DES VECTEURS GENERIQUES
+%%   Objet: Specification Algébrique en CASL
+%%   Prouvée par: HETS(Isabelle)
+%%   Application: manipulation des listes classiques
+%%   			Date création le 16/04/2005
+%%   			Auteur: K. OURIACHI, Professeur des universités
+%%   			UNIVERSITE de PAU/PAYS de l'ADOUR
+%%     
+%%****************************************************
+%% liste des importations (downloading)
+from Basic/Numbers get Int
+from Basic/SimpleDatatypes    get     Boolean
+
+%% spécification minimale
+spec Vecteur0 [sort Elem]    =
+%% liste des réutilisations
+                    Int  and   Boolean
+then
+sort  Vecteur[Elem] 
+	 
+ops
+%% créer un vecteur vide
+                vecteurVide:      Vecteur[Elem];  
+%%insérer un élement dans un vecteur
+                inserer:     	  Vecteur[Elem] *   Int  *  Elem  ->? Vecteur[Elem];
+%% calculer la taille (variable) d'un vecteur
+                taille: 	  Vecteur[Elem]  -> Int
+%%tester si un vecteur est vide 
+                estVide: 	  Vecteur[Elem]  -> Boolean
+ 
+
+
+forall  e1:Elem; i1,k1: Int;v1 :Vecteur[Elem] 
+%%domaine de définition de "inserer" 
+	 . def inserer(v1,i1,e1) <=> 0< i1 /\ i1 <= taille(v1)+1
+%% axiomes concernant le prédicat "estVid"e
+	 . estVide(vecteurVide) = True
+	 . estVide(inserer(v1,i1,e1)) = False
+%% axiomes concernant "taille"
+	 . taille(vecteurVide)= 0    
+	 . taille(inserer(v1,k1,e1)) = taille(v1)+1 
+end
+
+
+%%la spécification minimale Vecteur0 peut enrichie comme suit:
+spec Vecteur1 [sort Elem] = 
+	    		Vecteur0 [sort Elem]
+then
+ops 
+%% constructeurs
+        modifier:  Vecteur[Elem]   *  Int * Elem -> ?Vecteur[Elem] ;
+	supprimer: Vecteur[Elem]   *  Int        -> ?Vecteur[Elem] ; 
+ 
+%% l’accesseur le plus important: extraire le contenu d'une position i
+	ieme: Vecteur[Elem] * Int ->? Elem
+
+forall e1: Elem; i1,k1:Int; v1:Vecteur[Elem]
+%% domaine de modifier
+ . def modifier(v1,i1,e1) <=>  0<i1 /\ i1<=taille(v1) 
+%% domaine  de supprimer
+ . def supprimer(v1,i1) <=>  0<i1 /\ i1<=taille(v1)
+ %% domaine  de ieme
+ . def ieme (v1,i1)   <=> 0<i1 /\ i1<= taille(v1)
+
+%% calculer l’élement de rang i
+ . 0<i1 /\ i1<=taille(v1)+1 =>  ieme(inserer(v1,i1,e1),i1) = e1 
+ . i1 < k1/\ k1<=taille(v1)+1 => ieme(inserer(v1,k1,e1), i1) = ieme(v1,i1) 
+ . k1 <i1 /\ i1<=taille(v1)+1 =>  ieme(inserer(v1,k1,e1),i1) = ieme(v1,i1-1) 
+
+%% le constructeur supprimer est défini par induction
+ . i1 = k1 => supprimer(inserer(v1,k1,e1),i1) = v1   
+ . i1 > k1 => supprimer(inserer(v1,k1,e1),i1) = inserer(supprimer(v1,i1-1),k1, e1)    
+ . i1 < k1 => supprimer(inserer(v1,k1,e1),i1)  = inserer(supprimer(v1,i1),k1-1,e1)   
+
+end

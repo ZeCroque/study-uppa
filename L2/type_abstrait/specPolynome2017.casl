@@ -1,0 +1,51 @@
+library  polynome
+%% attention: le fichier contenant la spécification doit s’appeler:  polynome.casl
+%% liste des importations (downloading) à partir des librairies standards
+
+from Basic/Numbers 			get     Int, Rat
+from Basic/SimpleDatatypes              get     Boolean
+
+
+%% Spécification du type abstrait des polynômes
+spec POLYNOME =
+     
+          Int and  Rat and Boolean
+%%  Commencer par indiquer quels sont les types abstraits réutilisés:
+%%  ici, les types abstraits Int,  Rat et Boolean
+	then  
+%% donner un nom pour désigner le type abstrait défini par la spécification 
+    	sort Polynome
+%% donner la signature des opérations du type
+	ops        
+    	Nul: Polynome; %(opération qui crée un polynome nul  )%
+  	Construire: Polynome  * Rat ->  Polynome;   %(opération qui construit un polynome )%	 	 
+	estNul: Polynome    	-> Boolean;                %(teste si un polynome est nul )%
+	Degre:  Polynome 		-> Int;            %(calcule le degre d'un polynome )%
+	Coefficient	: Polynome    * Int  ->  Rat       %(calcule un coefficient d'un polynome )%
+
+ 
+forall p1:Polynome; a0:Rat ; i:Int
+%% axiomes définissant les opérations par leurs propriétés 
+
+%%définir accesseur estNul
+	 . estNul(Nul) = True
+   	 . estNul(Construire(p1,a0))= True <=>  estNul(p1)=True /\ a0 = 0
+
+
+%%définir accesseur Degre
+         . Degre(Nul) = 0
+	 . Degre (Construire(p1,a0)) = 0  <=>  estNul(p1)= True   
+       	 . Degre (Construire(p1,a0)) = Degre(p1)+1  <=> estNul(p1)= False 
+
+
+%%définir accesseur Coefficient
+	 . Coefficient(Nul,i) = 0
+	 . Coefficient (Construire(p1,a0), 0) = a0
+ 	 . estNul(p1) = True => ( i>0 => Coefficient (Construire(p1,a0), i) = 0 )
+	 . estNul(p1) = False  =>
+      	        ( i>= 1 /\ i <=  Degre(p1) +1 =>  Coefficient (Construire(p1,a0), i) = Coefficient(p1,i-1)  )
+	
+ 	 . estNul(p1) = False  => ( i> Degre(p1) +1 => Coefficient (Construire(p1,a0),i) = 0 )
+
+	
+end
