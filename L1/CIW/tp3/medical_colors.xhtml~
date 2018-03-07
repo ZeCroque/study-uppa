@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Cabinet du Docteur Duchemol</title>
+  <link rel="stylesheet" href="./medical_colors.css" />
+</head>
+
+<body>
+  <h1>Cabinet médical du D<sup>r</sup> Duchemol</h1>
+  <p>Bienvenue, je suis le <b>Docteur Duchemol</b>. </p>
+  <p>Sur cette page vous trouverez des renseignements sur mon cabinet médical. </p>
+  <h2>Horaires d'ouverture</h2>
+  <p>Le cabinet est ouvert tous les jours<br />
+    du <u>lundi</u> au <u>samedi matin</u><br />
+    de <time>9h</time> à <time>12h</time> et
+    de <time>14h</time> à <time>17h</time>. </p>
+  <h2>En cas d'urgence</h2>
+  <p>Pendant les <b>heures d'ouverture</b> :
+    <ul>
+      <li>appelez le numéro du cabinet (05.59.01.
+        <del>23.45</del>
+        <ins>34.56</ins>) ;</li>
+      <li>
+        <i>Si vous ne pouvez pas me joindre</i>, appelez le 15 (SAMU).</li>
+    </ul>
+  </p>
+  <p>En dehors des heures d'ouverture :
+    <ul>
+      <li>Le répondeur du cabinet vous donnera les coordonnées du médecin de garde.</li>
+    </ul>
+  </p>
+  <h2>Me joindre par internet</h2>
+  <p>Si vous désirez me joindre, vous pouvez utiliser
+    <a href="http://www.page-web.com/outils/contact.htm">ce formulaire de contact</a>. </p>
+  <p>Je suis par ailleurs membre des
+    <abbr title="Médecins Maîtres-Toile">MMT</abbr> dont voici le
+    <a href="http://www.medecins-maitres-toile.org/presentation">site</a>. </p>
+</body>
+
+</html>

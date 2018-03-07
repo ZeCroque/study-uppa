@@ -1,0 +1,49 @@
+article
+{
+	padding:30px;
+	text-align: center;
+
+}
+form
+{  
+	 display:inline-block;
+}
+
+fieldset
+{
+	width:450px;
+	text-align: left;
+}
+
+label
+{
+	display:inline-block;
+	text-align: right;
+	width:160px;
+	padding:5px;
+}
+
+input, select
+{
+  display: inline-block;
+
+}
+
+#f_date
+{
+	width:80px;
+}
+
+#f_email
+{
+	width:170px;
+}
+
+#f_factCP, #f_livrCP
+{
+	width:50px;
+}
+
+
+
+

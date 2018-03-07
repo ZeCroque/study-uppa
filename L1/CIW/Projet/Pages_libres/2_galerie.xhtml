@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Galerie</title>
+	<script type="text/javascript" src="./Scripts/galerie.js"></script>
+	<link rel="stylesheet" href="./Styles/style.css" charset="utf-8" />
+</head>
+
+<body oncontextmenu="changeBackgroundColor()">
+
+	<script type="text/javascript">
+        document.oncontextmenu = new Function("return false");
+    </script>
+
+	<header>
+		<h1>Galerie</h1>
+		<nav>
+			<a href="../accueil.xhtml">Accueil</a>
+			<div>
+				<a href="./1_presentation.xhtml">Présentation</a>
+				<ul>
+					<a href="./1_presentation.xhtml#cauteret"><li>Cauteret</li></a>
+					<a href="./1_presentation.xhtml#gourette"><li>Gourette</li></a>
+					<a href="./1_presentation.xhtml#candanchu"><li>Candanchu</li></a>
+				</ul>
+			</div>
+			<a>Galerie</a>
+			<a href="./3_inscription.xhtml">Inscription</a>
+			<a href="../Page_imposée/Livre_Petit/livre_v2.xhtml">Partie imposée</a>
+		</nav>		
+	</header>
+	
+	<section>
+		<aside>
+			<ul>
+				<li>
+					<label>Gourette : </label>
+					<ul>
+						<li><input type="button" value="Photo 1" onclick="changeImageM1('Images/gourette1.jpg', 'Le village en altitude de Gourette')"/></li>
+						<li><input type="button" value="Photo 2" onclick="changeImageM1('Images/gourette2.jpg', 'Gourette, secteur de la Penne Blanque')"/></li>
+					</ul>
+				</li>
+				<li>
+					<label>Cauterets : </label>
+					<ul>
+						<li><input type="button" value="Photo 1" onclick="changeImageM2('id_image', 'texte', 'Images/cauterets1.jpg', 'Cauterets, vue sur le restaurant en altitude')"/></li>
+						<li><input type="button" value="Photo 2" onclick="changeImageM2('id_image', 'texte', 'Images/cauterets2.jpg', 'Cauterets, la station vue du restaurant en altitude')"/></li>
+					</ul>
+				</li>
+				<li>
+					<label>Candanchu : </label>
+					<ul>
+						<li><input type="button" value="Photo 1" onclick=" changeImageM3('Images/candanchu1.jpg', 'Candanchu, vue sur le Tobazo')"/></li>
+						<li><input type="button" value="Photo 2" onclick=" changeImageM3('Images/candanchu2.jpg', 'Candanchu, vue sur la Tuca Blanca')"/></li>
+					</ul>
+				</li>
+			</ul>
+			<div><input type="button" value="Remise à l'état initial" onclick=" changeImageM3('Images/default.jpg', 'Lorem ipsum toussah toussah...')"/></div>
+		</aside>
+
+		<article>
+			<div id='galleryDisplay'>
+				<p><img id="id_image" src="Images/default.jpg" height="350px"/></p>
+				<fieldset id="description" border="1px solid black">
+					<legend>Description :</legend>
+					<p id="texte">Lorem ipsum toussah toussah...</p>
+				</fieldset>
+			</div>
+			<div id="carousel">
+				<img src="Images/default.jpg" height="30px" width="50px" onmouseover=" changeImageM3('Images/default.jpg', 'Lorem ipsum toussah toussah...')"/>
+				<img src="Images/gourette1.jpg" height="30px" width="50px" onmouseover="changeImageM1('Images/gourette1.jpg', 'Le village en altitude de Gourette')"/>
+				<img src="Images/gourette2.jpg" height="30px" width="50px" onmouseover="changeImageM1('Images/gourette2.jpg', 'Gourette, secteur de la Penne Blanque')"/>
+				<img src="Images/cauterets1.jpg" height="30px" width="50px" onmouseover="changeImageM2('id_image', 'texte', 'Images/cauterets1.jpg', 'Cauterets, vue sur le restaurant en altitude')"/>
+				<img src="Images/cauterets2.jpg" height="30px" width="50px" onmouseover="changeImageM2('id_image', 'texte', 'Images/cauterets2.jpg', 'Cauterets, la station vue du restaurant en altitude')"/>
+				<img src="Images/candanchu1.jpg" height="30px" width="50px" onmouseover="changeImageM3('Images/candanchu1.jpg', 'Candanchu, vue sur le Tobazo')"/>
+				<img src="Images/candanchu2.jpg" height="30px" width="50px" onmouseover="changeImageM3('Images/candanchu2.jpg', 'Candanchu, vue sur la Tuca Blanca')"/>
+			</div>
+		</article>
+	</section>
+
+	<footer>
+		<a href="./1_presentation.xhtml">Page précédente</a>
+		<p>3</p>
+		<a href="./3_inscription.xhtml">Page suivante</a>
+	</footer>
+
+ </body>
+
+</html>

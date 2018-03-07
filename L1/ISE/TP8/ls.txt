@@ -1,0 +1,12 @@
+total 180
+drwx--x--x 3 gcroquefer 198   4096 oct.  11 09:40 Bureau
+drwxr-xr-x 3 gcroquefer 198   4096 nov.   8 13:00 Documents
+-rw-r--r-- 1 gcroquefer 198   8980 sept. 20 09:50 examples.desktop
+-rw-r--r-- 1 gcroquefer 198 135180 nov.   8 11:56 hs_err_pid9831.log
+drwxr-xr-x 3 gcroquefer 198   4096 sept. 20 09:59 Images
+drwxr-xr-x 2 gcroquefer 198   4096 sept. 20 09:50 Modèles
+drwxr-xr-x 2 gcroquefer 198   4096 sept. 20 09:50 Musique
+drwxr-xr-x 2 gcroquefer 198   4096 oct.  18 09:58 Public
+drwxr-xr-x 2 gcroquefer 198   4096 nov.   8 14:21 Téléchargements
+drwxr-xr-x 2 gcroquefer 198   4096 sept. 20 09:50 Vidéos
+-rw-r--r-- 1 gcroquefer 198      0 nov.   8 11:09 which

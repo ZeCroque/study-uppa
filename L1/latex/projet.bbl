@@ -1,0 +1,146 @@
+\begin{thebibliography}{10}
+
+\bibitem{maurizio}
+Maurizio~Gabbrielli et~Simone~Martini.
+\newblock {\em Programming Languages: Principles and Paradigms}.
+\newblock Springer, 2010.
+
+\bibitem{kenneth}
+Kenneth C.~Louden et~Kenneth A.~Lambert.
+\newblock {\em Programming Languages: Principles and Practices}.
+\newblock Cengage Learning, 2011.
+
+\bibitem{william}
+William~Sims Bainbridge.
+\newblock {\em Berkshire Encyclopedia of Human-computer Interaction, vol. 2}.
+\newblock Berkshire Publishing Group LLC, 1994.
+
+\bibitem{watt}
+David Anthony et William~Findlay Watt.
+\newblock {\em Programming Language Design Concepts}.
+\newblock John Wiley \& Sons, 2004.
+
+\bibitem{lando}
+{\em Premiers pas vers une ontologie générale des programmes informatiques},
+  2007.
+
+\bibitem{seema}
+Seema Kedar.
+\newblock {\em Programming Paradigms And Methodology}.
+\newblock Technical Publications, 2002.
+
+\bibitem{itl}
+I.~T. L. Education~Solutions Limited.
+\newblock {\em Introduction To Information Technology}.
+\newblock Pearson Education India, 2005.
+
+\bibitem{barlow}
+J.~Barlow et~A.~R.~Barnett.
+\newblock {\em Computing for Scientists: Principles of Programming with Fortran
+  90 and C++}.
+\newblock John Wiley and Sons, 1998.
+
+\bibitem{thakare}
+Seema~Kedar et~Sanjay~Thakare.
+\newblock {\em Principles of Programming Languages}.
+\newblock Technical Publications, 2009.
+
+\bibitem{ada}
+Ada programming.
+\newblock Technical report.
+
+\bibitem{krishnamurthy}
+Krishnamurthy.
+\newblock {\em Data Structures Using C}.
+\newblock Tata McGraw-Hill Education, 2008.
+
+\bibitem{kumar}
+Arvind~Kumar Bansal.
+\newblock {\em Introduction to Programming Languages}.
+\newblock CRC Press, 2013.
+
+\bibitem{jana}
+Jana.
+\newblock {\em Java And Object-Oriented Programming Paradigm}.
+\newblock PHI Learning Pvt. Ltd., 2008.
+
+\bibitem{godse}
+D.A.~Godse et~A.P.~Godse.
+\newblock {\em Computer Architecture \& Organisation}.
+\newblock Technical Publications, 2007.
+
+\bibitem{dhamdhere}
+Dhamdhere.
+\newblock {\em Systems Programming and Operating Systems}.
+\newblock Tata McGraw-Hill Education, 2011.
+
+\bibitem{tmh}
+Tmh.
+\newblock {\em Computer Science Vii (Tn)}.
+\newblock Tata McGraw-Hill Education, 2007.
+
+\bibitem{scott}
+Michael~L. Scott.
+\newblock {\em Programming Language Pragmatics}.
+\newblock Morgan Kaufmann, 2009.
+
+\bibitem{griffiths}
+Matthew~Adams Ian~Griffiths.
+\newblock {\em Net Windows Forms in a Nutshell}.
+\newblock O'Reilly Media, Inc., 2003.
+
+\bibitem{raghavan}
+Raghavan.
+\newblock {\em Prin Of Compiler Design}.
+\newblock Tata McGraw-Hill Education, 2010.
+
+\bibitem{diomidis}
+Diomidis~Spinellis et~Georgios~Gousios.
+\newblock {\em Beautiful Architecture: Leading Thinkers Reveal the Hidden
+  Beauty in Software Design}.
+\newblock O'Reilly Media Inc., 2009.
+
+\bibitem{chris}
+Chris Smith.
+\newblock {\em Programming F\#}.
+\newblock O'Reilly Media, Inc., 2009.
+
+\bibitem{friesen}
+Jeff~Friesen et~Geoff~Friesen.
+\newblock {\em Java 2 by Example}.
+\newblock Que Publishing, 2002.
+
+\bibitem{harold}
+Harold Davis.
+\newblock {\em Visual Basic 6 Secrets}.
+\newblock Que Publishing, 1998.
+
+\bibitem{brent}
+Ken Jones et Jeffrey~Hobbs Brent B.~Welch.
+\newblock {\em Practical Programming in Tcl and Tk}.
+\newblock Prentice Hall Professional, 2003.
+
+\bibitem{sibsankar}
+Sibsankar~Haldar et~Alex A.~Aravind.
+\newblock Operating systems,pearson education india.
+\newblock 2010.
+
+\bibitem{amit}
+Amit Singh.
+\newblock {\em Mac OS X Internals: A Systems Approach}.
+\newblock Addison-Wesley Professional, 2007.
+
+\bibitem{kishori}
+Kishori Sharan.
+\newblock Harnessing java 7: A comprehensive approach to learning java 7.
+\newblock 2011.
+
+\bibitem{para}
+Une taxonomie des principaux paradigmes de programmation.
+\newblock \url{https://www.info.ucl.ac.be/~pvr/paradigmes.html}.
+
+\bibitem{rank}
+Tiobe index.
+\newblock \url{https://www.tiobe.com/tiobe-index/}.
+
+\end{thebibliography}

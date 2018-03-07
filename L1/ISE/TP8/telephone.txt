@@ -1,0 +1,14 @@
+Durand;Emilie;0381818585
+Terieur;Alex;0478858069
+Terieur;Alain;0563868985
+Dupond;Albert;04961868957
+Dupont;Emilie;02971457895
+Dupond;Albertine;0131986258
+Bistrukla;César;0381698759
+Zeblues;Agathe;0685987456
+Dupond;Agnes;0687598614
+Assin;Marc;04661645987
+Dupond;Elisabeth;0654896325
+Houtand;Laurent;0658769458
+Dalor;Omer;0694258746
+Deuf;John;0699999999 

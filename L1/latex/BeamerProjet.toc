@@ -1,0 +1,15 @@
+\beamer@endinputifotherversion {3.24pt}
+\select@language {french}
+\beamer@sectionintoc {1}{G\IeC {\'e}n\IeC {\'e}ral}{2}{0}{1}
+\beamer@subsectionintoc {1}{1}{Le niveau d'un langage de programmation}{6}{0}{1}
+\beamer@subsectionintoc {1}{2}{Le paradigme d'un langage de programmation}{10}{0}{1}
+\beamer@subsectionintoc {1}{3}{Diff\IeC {\'e}rences Compilateur/Interpr\IeC {\'e}teur}{14}{0}{1}
+\beamer@sectionintoc {2}{C}{16}{0}{2}
+\beamer@sectionintoc {3}{C++}{17}{0}{3}
+\beamer@sectionintoc {4}{Java}{18}{0}{4}
+\beamer@sectionintoc {5}{C\#}{19}{0}{5}
+\beamer@sectionintoc {6}{Python}{20}{0}{6}
+\beamer@sectionintoc {7}{PHP}{21}{0}{7}
+\beamer@sectionintoc {8}{Visual Basic .NET}{22}{0}{8}
+\beamer@sectionintoc {9}{JavaScript}{23}{0}{9}
+\beamer@sectionintoc {10}{Assembleur}{24}{0}{10}

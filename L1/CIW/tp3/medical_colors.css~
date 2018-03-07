@@ -1,0 +1,52 @@
+
+/* Remplacez tous les ?? par les bons selecteurs
+   de maniere a ce que le rendu corresponde
+   avec celui de l'enonce du TP. */
+
+/* Vous utiliserez des selecteurs d'elements, composes
+   et des pseudo-classes */
+
+body {background-color: snow;}
+
+/*------------------------------------------------------- Titres --*/
+h1 {color: blue;}
+
+h2 {color: darkBlue;}
+
+/* indication : frere adjacent indirect d'un titre... */
+h2 ~ h2 {color: darkRed;}
+
+/* indication : frere adjacent indirect d'un frere adjacent indirect... */
+h2 ~ h2 ~ h2 {color: darkGreen;}
+
+/*---------------------------------------------- Les paragraphes --*/
+
+h1 + p {color : darkCyan;}
+h1 + p + p {color : royalBlue;}
+h1 + p > b {color:mediumBlue;}
+
+/* indication : utilisez la pseudo-classe ":first-of-type" */
+h2:first-of-type + p {color:darkSlateBlue;}
+
+u:first-of-type {color:orange;}
+u ~ u {color:orangeRed;}
+
+time{color:goldenRod;}
+time ~ time ~ time {color:darkGoldenRod;}
+
+/* indication : utilisez la pseudo-classe ":nth-of-type" */
+h2:nth-of-type(2) ~ p {color:fireBrick;}
+
+/* indication : utilisez la pseudo-classe ":first-child" */
+li:first-child {color:mediumVioletRed;}
+
+li > del {color:tomato;}
+
+/* indication : utilisez la pseudo-classe ":only-child" */
+li:only-child {color:hotPink;}
+
+/* indication : utilisez la pseudo-classe ":last-of-type" */
+h2:last-of-type ~ p{color:green;}
+
+h2:last-of-type + p > a {color:DarkOliveGreen;}
+a ~ a {color:lightSeaGreen;}

@@ -1,0 +1,6 @@
+total 8
+drwxr-xr-x 2 gcroquefer 198 4096 nov.   8  2016 .
+drwxr-xr-x 9 gcroquefer 198 4096 nov.   8 15:04 ..
+-rw-r--r-- 1 gcroquefer 198    0 nov.   8  2016 liste.txt
+liste.txt
+liste.txt

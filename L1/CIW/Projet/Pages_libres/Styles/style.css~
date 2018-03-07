@@ -1,0 +1,56 @@
+h1
+{
+	color:blue;
+	width:100%; 
+	text-align:center;
+}
+
+nav
+{
+	text-align: :center;
+	display:flex;
+	width:100%;
+}
+
+nav div
+{
+	flex:1;
+	text-align:center;
+	border: 1px solid black;
+}
+
+ul
+{
+	width:20%;
+	position:absolute;
+	padding : 0;
+    margin : 0;
+	display:none;
+	list-style:none;
+	background-color:red;
+	height:90px;
+	text-align:center;	
+}
+
+nav div:hover ul
+{
+	display:block;
+}
+
+nav>a
+{
+	border: 1px solid black;
+	text-align: center;
+	flex:1;
+}
+
+footer 
+{
+	text-align: center;
+	display: flex;
+}
+
+footer a,footer p
+{
+	flex:1
+}

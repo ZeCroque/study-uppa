@@ -1,0 +1,52 @@
+
+header img {
+  height: 100px;
+  vertical-align: bottom;
+}
+
+/* Pour colorer les blocs, activez les règles en 
+   supprimant les caractères '_'.
+*/
+ 
+
+section { background-color: lightgrey;}
+section aside { background-color: tomato;}
+section article { background-color: orange;}
+footer { background-color: grey;}
+footer div { background-color: lightgreen;}
+
+/* Positionnement des blocs */
+
+
+/* Header */
+
+header 
+{   
+  color: white;
+  background-color:  #393939;
+}
+
+header h1 {
+  font-family: "Crimson Text", "freeserif", serif;
+  font-size: 21.8px;
+  font-weight: normal;
+  margin: 40px 0 0 30px;
+  line-height: 0;
+}
+
+header img 
+{
+  display: block;
+}
+
+header td 
+{
+  padding: 0;
+  vertical-align: top;
+}
+
+/* Section */
+
+
+/* Footer */
+

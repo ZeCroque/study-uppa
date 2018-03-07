@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Commande de fruits et légumes</title>
+  <link href="commande.css" rel="stylesheet"> </head>
+
+<body>
+  <h1> Commandes de fruits et légumes</h1>
+  <section class="commande">
+      <aside class="filtres">
+        <h2>filtres</h2>
+        <div class="categories">
+          <h2>Catégories</h2>
+          <div>
+            <input type="checkbox" name="cat_toutes" checked="true" disabled="true" />
+            <label>Toutes</label>
+          </div>
+        </div>
+        <div class="origines">
+          <h2>Origines</h2>
+          <div>
+            <input type="checkbox" name="ori_toutes" checked="true" disabled="true" />
+            <label>Toutes</label>
+          </div>
+        </div>
+    </aside>
+    <!-- Tous les articles -->
+    <section>
+      <h2>Articles</h2>
+      <div class="articles">
+        <!-- Article -->
+        <div class="article">
+          <div class="cadre">
+            <div class="img"></div>
+          </div>
+          <div class="description">
+            <label class="nom">Default</label>
+            <div class="origine">Origine :
+              <span>Default</span>
+            </div>
+            <div class="prix">Prix :
+              <span>0</span> € /
+              <span>Default</span>
+            </div>
+            <div class="quantite">
+              <label>Quantité : </label>
+              <input type="number" value="0" min="0"/>
+              <label class="unité">Default</label>
+            </div>
+            <button type="button">Ajouter au panier</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+  <!-- Récapitulatif de la commande -->
+  <section>
+    <h2>Panier</h2>
+    <div class="panier">
+      <table border="1">
+        <thead>
+          <th>Articles</th>
+          <th>Qté</th>
+          <th>P.U.</th>
+          <th>Prix</th>
+          <th>Modifier</th>
+        </thead>
+        <tr>
+          <td>Aucun article</td>
+          <td class="quantite">
+            <input type="number" value="0" min="0" disabled="true"/> </td>
+          <td>0</td>
+          <td>0</td>
+          <td>
+            <input type="checkbox" disabled="true"/> </td>
+        </tr>
+        <tfoot>
+          <th colspan="3">Total :</th>
+          <th>0</th>
+          <th>
+            <button type="button">Enlever</button>
+          </th>
+        </tfoot>
+      </table>
+    </div>
+    <button onclick="envoyerCommande(); return false">Envoyer la commande</button>
+  </section>
+  <!-- Les scripts -->
+  <script type="text/javascript" src="./donnees/articles.js"></script>
+  <script type="text/javascript" src="./donnees/tarifs.js"></script>
+  <script type="text/javascript" src="commande.js"></script>
+</body>
+
+</html>

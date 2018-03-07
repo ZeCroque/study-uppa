@@ -30,6 +30,8 @@ void ajouter(Set* s, Elt element)
 		(*s)=temp;
 	}
 
+
+
 }
 
 int appartient(Set s, Elt element)
@@ -60,16 +62,20 @@ void enlever(Set* s, Elt element)
 {
 	Set aux=*s;
 	Set tmp=NULL;
+
+
+	printf("%p", aux->suiv);
+
 	if(aux->elem==element)
 	{
 		tmp=aux;
-
-		if ((*s)->suiv!=NULL)
+		if (aux->suiv!=NULL)
 		{
-			*s=aux->suiv;
+			aux=aux->suiv;
 		}
 		else
 		{
+			printf("pute\n");
 			*s=NULL;
 		}
 
@@ -77,7 +83,6 @@ void enlever(Set* s, Elt element)
 	}
 	else
 	{
-			printf("chatte");
 		while(((*aux).suiv!=NULL) && ((*aux).suiv)->elem!=element)
 		{
 			aux=(*aux).suiv;

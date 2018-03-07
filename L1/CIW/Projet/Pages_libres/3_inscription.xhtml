@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Formulaire</title>
+  <script type="text/javascript" src="./Scripts/formulaire.js"></script>
+  <link href="./Styles/style.css" rel="stylesheet" />
+  <link href="./Styles/formulaire.css" rel="stylesheet" />
+</head>
+
+<body>
+	<header>
+		<h1 id="t">Formulaire d'inscription</h1>
+		<nav>
+			<a href="../accueil.xhtml">Accueil</a>
+			<div>
+				<a href="./1_presentation.xhtml">Présentation</a>
+				<ul>
+					<a href="./1_presentation.xhtml#cauteret"><li>Cauteret</li></a>
+					<a href="./1_presentation.xhtml#gourette"><li>Gourette</li></a>
+					<a href="./1_presentation.xhtml#candanchu"><li>Candanchu</li></a>
+				</ul>
+			</div>
+			<a href="./2_galerie.xhtml">Galerie</a>
+			<a>Inscription</a>
+			<a href="../Page_imposée/Livre_Petit/livre_v2.xhtml">Partie imposée</a>
+		</nav>		
+	</header>
+	
+	<article>
+	
+		<form method="get" action="https://httpbin.org/get">
+			<fieldset style="border: 1px black solid">
+				<legend>Identité</legend>
+				<label for="f_civilite">Civilité :</label>
+				<select name="iden_civilite" id="f_civilite">
+	  				<option value="mr">M.</option>
+	  				<option value="mme">Mme</option>
+				</select> 
+				<br />
+				<label for="f_prenom">Prénom :</label>
+				<input type="text" name="iden_prenom" id="f_prenom" />
+				<br />
+				<label for="f_nom">Nom :</label>
+				<input type="text" name="iden_nom" id="f_nom" />
+				<br />
+				<label for="f_date">Date de naissance :</label>
+				<input type="date" name="iden_date" id="f_date" placeholder="jj/mm/aaaa"/>
+				<br />
+				<label for="f_email">Email :</label>
+				<input type="email" name="iden_email" id="f_email" required="true"/>
+			</fieldset>
+			<br />
+			<fieldset style="border: 1px black solid">
+				<legend>Adresse de facturation</legend>
+				<label for="factAdresse">Adresse :</label>
+				<input type="text" name="fact_adresse" id="f_factAdresse" />
+				<br />
+				<label for="f_factCP">Code Postal :</label>
+				<input type="text" name="fact_code_postal" id="f_factCP" maxlength="5"/>
+				<br />
+				<label for="f_factVille">Ville :</label>
+				<input type="text" name="fact_ville" id="f_factVille" />
+				<br />
+			</fieldset>
+			<br />
+			<fieldset style="border: 1px black solid">
+				<legend>Adresse de livraison</legend>
+				<label>Idem que facturation :</label>
+				<input type="checkbox" id="box" onchange="recopyFields()"/>
+				<br />
+				<label for="f_livrAdresse">Adresse :</label>
+				<input type="text" name="livr_adresse" id="f_livrAdresse" />
+				<br />
+				<label for="f_livrCP">Code Postal :</label>
+				<input type="text" name="livr_code_postal" id="f_livrCP" maxlength="5"/>
+				<br />
+				<label for="f_livrVille">Ville :</label>
+				<input type="text" name="livr_ville" id="f_livrVille" />
+				<br />
+			</fieldset>
+			<br />
+			<input type="submit" value="Envoyer" />
+
+		</form>
+	</article>
+
+	<footer>
+		<a href="./2_galerie.xhtml">Page précédente</a>
+		<p>4</p>
+		<a href="../accueil.xhtml">Page suivante</a>
+	</footer>
+
+</body>
+
+</html>

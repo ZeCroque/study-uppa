@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Une page web en HTML5</title>
+    <link rel="stylesheet" href="livres.css" />
+  </head>
+  <body>
+	<header>
+		<table>
+			<tr>
+				<td rowspan="2"><img src="livre_orwell_1984.jpeg" /></td>
+				<td><h1>1984</h1></td>
+			</tr>
+			<tr><td><a class="actif" href="">INFOS</a><a href="">CRITIQUES</a><a href="">CRITIQUES PRESSE</a><a href="">CITATIONS</a></td></tr>
+		</table>		
+
+	</header>
+	<article>
+		<table>
+			<tr>
+				<td rowspan="2"><img src="livre_orwell_1984.jpeg" /><br /><a href=""><img src="livre_img_ajouteràmeslivres.png" /></a></td>
+				<td>
+					<h2>George <b>Orwell</b><br /><b>Orwell</b></h2>
+					<h3>ISBN : 207036822X<br />Éditeur : <a href="">Gallimard</a> (16/11/1972) </h3>
+					<h4>Note moyenne : 4.3/5 (sur 8307 notes)<br /><br /><br /><br />Résumé :</h4>
+				</td>
+			</tr>
+			<tr><td><p>Quatrième de couverture - « De tous les carrefours importants, le visage à la moustache noire vous fixait du regard. BIG BROTHER VOUS REGARDE, répétait la légende, tandis que le regard des yeux noirs pénétrait les yeux de Winston... Au loin, un hélicoptère glissa entre les toits, plana un moment, telle une mouche bleue, puis repartit comme une flèche, dans un vol courbe. C'était une patrouille qui venait mettre le nez aux fenêtres des gens. Mais les patrouilles n'avaient pas d'importance. Seule comptait la Police de la Pensée. »</p></td></tr>	
+		</table>		
+
+	</article>
+	
+  </body>
+</html>
