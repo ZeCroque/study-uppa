@@ -28,6 +28,5 @@ int main()
 
   delete[] tab2;
 
-
   return 0;
 }
