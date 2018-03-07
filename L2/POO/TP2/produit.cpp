@@ -49,5 +49,3 @@ std::ostream& operator << (std::ostream& os, const Produit& p)
   os<<"Nom : "<<p.getNom()<<"\nCode : "<<p.getCode()<<std::endl;
   return os;
 }
-
-//lol
