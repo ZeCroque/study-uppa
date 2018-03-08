@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- META -->
+	<title>TP 1 : Introduction à javascript</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="" />
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="http://bjobard.perso.univ-pau.fr/Assets/Styles/HTMLkickstart/css/kickstart.css"
+			media="all" />
+	<link href="http://bjobard.perso.univ-pau.fr/Assets/Styles/HTMLkickstart_postBJ.css"
+			rel="stylesheet">
+		<link rel="stylesheet" href="//cdn.getkickstart.com/css/kickstart.min.css" />
+		<link href="http://bjobard.perso.univ-pau.fr/Assets/Styles/Prism/themes/prism.css"
+				rel="stylesheet">
+			<link href="http://bjobard.perso.univ-pau.fr/Assets/Styles/prism_postBJ.css" rel="stylesheet">
+			<link href="http://bjobard.perso.univ-pau.fr/Assets/Styles/bjstyle.css" rel="stylesheet"> </head>
+<link href="http://bjobard.perso.univ-pau.fr/Assets/Styles/bjstyle_print.css"
+		rel="stylesheet" media="print">
+	</head>
+
+	<body class="language-javascript">
+		<nav class="navbar inc:navbar.html"> </nav>
+		<article>
+			<div class="grid flex">
+				<div class="col_12">
+
+					<h1>TP1 – Création et validation d'un formulaire en JavaScript</h1>
+
+					<h2>Introduction</h2>
+					<p>L'objectif de ce TP est de construire et de valider dynamiquement
+                        un formulaire en JavaSscript.</p>
+					<p>Dans ce TP vous verrez comment :
+						<ul>
+							<li>détecter une action sur un champ d'un formulaire ;</li>
+							<li>utiliser les expressions régulières ;</li>
+							<li>agir dynamiquement sur le <i>DOM</i> ou le <i>CSS</i>.</li>
+						</ul>
+					</p>
+
+					<h2>Environnement de développement</h2>
+					<p>Vous aurez besoin :
+						<ul>
+							<li>d'un éditeur de code pour HTML, CSS et Javascript :
+                                <code class="language-none">gedit</code>,
+                                <code class="language-none">sublime-text</code>,
+                                <code class="language-none">atom</code>.
+							</li>
+							<li>de la
+								<b>console Javascript</b> du navigateur
+								<ul>
+									<li>pour afficher les messages d'erreur et la sortie des appels à la fonction
+										<code>console.log()</code>
+									</li>
+									<li>raccourcis pour accéder à la console :
+										<ul class="language-none">
+											<li>Sous Firefox :
+												<code>Ctrl-Maj-K</code>
+											</li>
+											<li>Sous Chrome :
+												<code>Ctrl-Maj-J</code>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li>Notez qu'il est possible d'éditer le code Javascript directement dans Chrome
+								:
+								<code class="language-none">Ctrl-Maj-I</code>
+							</li>
+						</ul>
+					</p>
+
+					<h2>Bonnes pratiques</h2>
+					<p>Voici quelques règles pour écrire
+						<i>proprement</i> du code Javascript :
+						<ul>
+							<li>Externaliser le plus possible le code Javascript dans des fichiers
+								<code>.js</code> liés au document HTML :
+								<div><pre><code class='language-markup'>&lt;script type="text/javascript" src="./code.js">&lt;/script></code></pre></div>
+							</li>
+							<li>Écrire le code Javascript de manière modulaire en le structurant en autant
+								de fonctions nécessaires pour les maintenir courtes (pas plus de 20-30 lignes
+								idéalement) ;</li>
+							<li>Ces fonctions sont appelées dans un "script principal" dans la page HTML :
+								<div><pre><code class='language-markup'>&lt;script>
+  var entier = 2;
+  var resultat = carre(entier); // appel de ma fonction "carre";
+  var message = "le carre de " + entier + " est " + resultat;
+  console.log(message); // affichage dans la console
+&lt;/script></code></pre></div>
+							</li>
+						</ul>
+					</p>
+
+                    <h2>Pour commencer ...</h2>
+                        <p>
+                            Dans ce TP, le formulaire que nous utiliserons est donné dans le fichier :
+                            <i>form.html</i>
+                        </p>
+
+                        <p>
+                            La feuille de style associée est la suivante dans le fichier : <i>form1.css</i>
+                        </p>
+
+                        <br/>
+                        <p>
+                            Commencez par lancer le formulaire dans votre navigateur pour visualiser son contenu.
+                            Assurez-vous que la feuille de style soit bien prise en compte.
+                        </p>
+
+                    <h2>Entrainement</h2>
+                        <h3>A - Evénement sur le bouton</h3>
+                        <ol>
+                            <li>
+                                Affichez un message à la console lorsque l'utilisateur clique
+                                sur le bouton de soumission du formulaire.
+                                <br/>
+                                Vous pourrez vous inspirer de <a href="https://www.w3schools.com/jsref/event_onclick.asp">ceci</a>
+                            </li>
+
+                            <li>
+                                Lancez une alerte qui affiche le message précédent lorsque le bouton est cliqué.
+                                <br/>
+                                Vous pourrez vous inspirer de <a href="https://www.w3schools.com/jsref/met_win_alert.asp">ceci</a>
+                            </li>
+
+                            <li>
+                                Recupérez le contenu du bouton et affichez le à la console.
+                                <br/>
+                                Vous pourrez vous inspirer de <a href="https://developer.mozilla.org/fr/docs/Web/API/Document/getElementById">ceci</a>
+                            </li>
+
+                            <li>
+                                Grisez le bouton de soumission du formulaire
+                            </li>
+                        </ol>
+
+                        <br/>
+                        <br/>
+
+                        <h3>B - Verification </h3>
+                        <p>
+                            Ecrivez des fonctions qui permettent de vérifier si :
+                            <ol>
+                                <li>
+                                    L'âge rentré est supérieur ou égal à 18.
+                                    <br/>
+                                    <strong>NB : </strong>La fonction <a href="https://www.w3schools.com/jsref/event_onblur.asp">onblur</a>
+                                    permet de détecter des changements dans un élément du DOM.
+                                </li>
+
+                                <li>
+                                    L'identifiant a au moins 12 caractères constitués juste de lettres.
+                                    <br/>
+                                    <strong>NB : </strong>La fonction <a href="https://www.w3schools.com/jsref/jsref_regexp_test.asp">test</a>
+                                    permet de tester si une chaîne de caractères vérifie une <a href="https://msdn.microsoft.com/fr-fr/library/ae5bf541(v=vs.100).aspx">expression régulière</a> ;
+                                </li>
+
+                                <li>
+                                    Rajouter dans le DOM un élément HTML de type <a href="https://www.w3schools.com/howto/howto_js_progressbar.asp">Barre de progression</a>.
+                                    Son objectif est de jauger la force du mot de passe.
+                                    Chacun des critères ci-dessous contribue à 20% dans la forme du mot de passe :
+                                    <ul>
+                                        <li>contenir au moins 8 caractères</li>
+                                        <li>contenir au moins une lettre minuscule</li>
+                                        <li>contenir au moins une lettre majuscule</li>
+                                        <li>contenir au moins un chiffre</li>
+                                        <li>contenir au moins un caractère qui n'est pas une lettre ou un chiffre</li>
+                                    </ul>
+                                    <br/>
+                                    Les couleurs de la barre dépendent de la forme du mot de passe :
+                                    <ul>
+                                        <li>En dessous de 40%, la barre est rouge</li>
+                                        <li>En dessous de 70% et au dessus de 40%, la barre est orange</li>
+                                        <li>En dessus de 70%, la barre est verte</li>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    Rajouter une fonction qui permet de tester l'identité des deux mots de passe
+                                    rentrés par l'utilisateur.
+                                </li>
+
+                                <li>
+                                    Ecrivez une fonction qui vérifie si l'utilisateur a accepté les conditions générales d'utilisation.
+                                </li>
+                            </ol>
+                        </p>
+                    <br/>
+                    <h3>C- Aide utilisateur</h3>
+                    <p>
+                        Dans la cas où l'utilisateur n'a pas rempli correctement le formulaire :
+                        <ul>
+                            <li>ajouter en dessous du champ un texte qui spécifie l'erreur ;</li>
+                            <li>ce texte doit apparaitre en rouge avec une petite police ;</li>
+                            <li>une fois que l'erreur est corrigée, le texte disparaît ;</li>
+                            <li>si aucune erreur détectée, le bouton se dégrise.</li>
+                        </ul>
+                        <strong>NB : </strong> pour faire disparaître un élément d'id <i>myID</i>
+                        du DOM d'une page, il suffit de faire :
+                        <div><pre><code class='language-markup'>&lt;script>
+   document.getElementById('myID').style.display = 'none'
+&lt;/script></code></pre></div>
+                        Pour le faire apparaître, remplacer <i>'none'</i> par <i>'inline'</i>
+                    </p>
+
+			</div>
+			<!-- End Grid -->
+		</article>
+		<!-- Javascript -->
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<!-- <script src="http://bjobard.perso.univ-pau.fr/Assets/Scripts/jquery-2.1.4.min.js"></script> -->
+		<script src="http://bjobard.perso.univ-pau.fr/Assets/Scripts/jquery.inc-7.js"></script>
+		<script type="text/javascript" src="http://bjobard.perso.univ-pau.fr/Assets/Styles/Prism/prism.js"></script>
+		<script type="text/javascript" src="http://bjobard.perso.univ-pau.fr/Assets/Styles/HTMLkickstart/js/kickstart.js"></script>
+	</body>
+
+</html>

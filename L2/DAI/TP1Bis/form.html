@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Formulaire</title>
+  <script type="text/javascript" src="./form.js"></script>
+  <link href="./form.css" rel="stylesheet" /> </head>
+
+<body>
+  <div id="login-box">
+    <div class="left">
+      <h1>Inscription</h1>
+      <input type="text" name="prenom" id="prenom" placeholder="Prénom"
+      />
+      <input type="text" name="nom" id="nom" placeholder="Nom" />
+      <input type="text" name="identifiant" id="identifiant" placeholder="Identifiant"
+      />
+      <label id="identifiantError" class="error">Identifiant de 12 lettres au moins</label>
+      <input type="text" name="email" id="email" placeholder="E-mail" />
+      <input type="text" name="age" id="age" placeholder="Age" />
+      <label id="ageError" class="error">Age supérieur ou egal à 18</label>
+      <input type="password" name="password" id="password" placeholder="Mot de passe" />
+      <label id="passError" class="error">Mot de passe pas assez fort</label>
+      <input type="password" name="password_confirm" id="password_confirm"
+      placeholder="Retapez le mot de passe" />
+      <label id="passConfirmError" class="error">Les 2 mots de passe doivent être identiques</label>
+      <label>Force du mot de passe</label>
+      <div id="myProgress">
+        <div id="myBar"></div>
+      </div>
+      <div class="checkbox">
+        <input type="checkbox" name="subscribe" id="subscribe">
+        <label>J'accepte les
+          <abbr title="Conditions Générales d'Utilisation">CGU</abbr>.</label>
+        <br/>
+        <label id="CGUError" class="error">Acceptation des conditions nécessaires</label>
+      </div>
+      <button type="submit" name="signup_submit" id="submit">S'inscrire</button>
+    </div>
+    <div class="right">
+      <span class="loginwith">Inscription via les
+        <br />réseaux sociaux</span>
+      <button class="social-signin facebook">Inscription via facebook</button>
+      <button class="social-signin twitter">Inscription via Twitter</button>
+      <button class="social-signin google">Inscription via Google+</button>
+    </div>
+    <div class="or">OU</div>
+  </div>
+</body>
+
+</html>
