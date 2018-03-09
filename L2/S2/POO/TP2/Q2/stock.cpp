@@ -17,11 +17,12 @@ Stock::~Stock()
 
 Stock& Stock::operator = (const Stock& s)
 {
+  this->_iMax=s._iMax;
+
   for(int i=0;i<this->_iMax; i++)
   {
     this->_tab[i]=s._tab[i];
   }
-  this->_iMax=s._iMax;
 
   return *this;
 }
