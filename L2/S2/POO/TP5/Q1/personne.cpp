@@ -26,7 +26,7 @@ Personne::~Personne()
 
 }
 
-Personne& Personne::operator = (const Personne a )
+Personne& Personne::operator = (const Personne& a )
 {
   this->nom=a.nom;
   this->prenom=a.prenom;

@@ -12,9 +12,9 @@ class Personne
     Personne();
     Personne(std::string nom, std::string  prenom);
     Personne(const Personne& p);
+    virtual ~Personne();
+    virtual Personne& operator = (const Personne& a );
     virtual void afficher();
-    ~Personne();
-    Personne& operator = (const Personne a );
     std::string getNom();
     std::string getPrenom();
     void setNom(std::string s);
