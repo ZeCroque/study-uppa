@@ -1,0 +1,232 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr-FR" lang="fr">
+<head>
+  <title>TP1 - Programmation fonctionnelle</title>
+
+
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<!-- CSS Pour l'affichage à l'éctran -->
+  <link href="../Assets/Styles/style1.css" rel="stylesheet" type="text/css" media="screen" />
+
+  <link href="../Assets/Styles/equation.css" rel="stylesheet" type="text/css" media="screen" />
+
+  <link href="../Assets/Styles/code_css.css" rel="stylesheet" type="text/css" media="screen" />
+
+<!-- CSS Pour l'impression -->
+  <link href="../Assets/Styles/print.css" rel="stylesheet" type="text/css" media="print" />
+
+</head>
+
+
+<body>
+
+<br />
+
+<div class="haut">Programmation fonctionnelle</div>
+
+<br />
+
+&nbsp;
+<h1>TP1 : Utilisation des fonctions d'entree/sortie</h1>
+
+<h2>Exercice 1</h2>
+
+<p>D&eacute;finir en Scheme une fonction permettant de
+calculer le prix net TTC &agrave; partir d&rsquo;un prix hors
+taxe HT et d&rsquo;un taux de TVA. On demande
+d&rsquo;&eacute;crire plusieurs versions de cette fonction.</p>
+
+<ol>
+
+  <li>Fonction binaire <strong>prixttc1</strong>. Le
+taux de TVA et le prix HT sont des param&egrave;tres de la
+fonction. La fonction retourne le prix TTC.<br />
+
+&nbsp;</li>
+
+  <li>Fonction binaire <strong>prixttc2</strong>.&nbsp;Le
+taux de TVA et le prix HT sont des param&egrave;tres de la
+fonction, utiliser les
+fonctions <em>display</em> et <em>newline</em>
+pour formater l&rsquo;affichage selon le mod&egrave;le
+d&eacute;crit ci-dessous. La fonction ne retourne pas de
+r&eacute;sultat.<br />
+
+&nbsp;
+    <div class="code-terminal"> Prix HT&nbsp; : xxxx<br />
+
+TVA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : xxxx<br />
+
+--------------------<br />
+
+Prix TTC : xxxx </div>
+
+    <br />
+
+  </li>
+
+  <li>Fonction unaire <strong>prixttc3</strong>. Le
+prix HT est transmis en param&egrave;tre de la fonction. Le taux de
+TVA est une variable globale d&eacute;finie avant la fonction.
+M&ecirc;me affichage que pour <em>prixttc2</em>. La
+fonction ne retourne pas de r&eacute;sultat.<br />
+
+&nbsp; </li>
+
+  <li>Fonction sans param&egrave;tre <strong>prixttc4</strong>.
+Le prix HT doit &ecirc;tre demand&eacute; &agrave;
+l&rsquo;utilisateur et lu au clavier (fonction <span style="font-style: italic;">read</span>). Le taux de
+TVA est une variable globale d&eacute;finie avant la fonction.
+L&rsquo;affichage est le m&ecirc;me que pour <em>prixttc2</em>.
+La fonction ne retourne pas de r&eacute;sultat.</li>
+
+</ol>
+
+<p>&nbsp; </p>
+
+<h2>Exercice 2</h2>
+
+<p>Un fabriquant de disquettes doit emballer ses disquettes pour
+les exp&eacute;dier. Pour cela, il poss&egrave;de des boites de
+cent, cinquante et dix disquettes. Il doit utiliser en
+priorit&eacute; les plus grandes boites. La quantit&eacute; de
+disquettes est toujours un multiple de 10.</p>
+
+<ol>
+
+  <li>D&eacute;finir la fonction <strong>emballer-100</strong>
+qui &eacute;tant donn&eacute; un nombre de disquettes retourne
+le nombre de boites de cent qu&rsquo;il peut remplir
+compl&egrave;tement.<br />
+
+&nbsp; </li>
+
+  <li>D&eacute;finir la fonction <strong>emballer-50</strong>
+qui &eacute;tant donn&eacute; un nombre de disquettes retourne
+le nombre de boites de cinquante qu&rsquo;il peut remplir
+compl&egrave;tement.<br />
+
+&nbsp; </li>
+
+  <li>D&eacute;finir la fonction <strong>emballer-10</strong>
+qui &eacute;tant donn&eacute; un nombre de disquettes retourne
+le nombre de boites de 10 qu&rsquo;il peut remplir
+compl&egrave;tement.<br />
+
+&nbsp; </li>
+
+  <li>D&eacute;finir une nouvelle version des trois fonctions
+pr&eacute;c&eacute;dentes afin qu&rsquo;elles affichent le
+nombre de boites remplies et qu&rsquo;elles retournent le nombre de
+disquettes qui reste &agrave; emballer. L&rsquo;affichage sera
+de la forme : <em>nombre</em> boite(s) de <em>contenance</em>
+remplie(s).<br />
+
+&nbsp;
+    <div class="code-terminal">&gt; (emballer_50 70) <br />
+
+&nbsp;
+    <div class="code-terminal"> 1 boite(s) de 50
+remplie(s) </div>
+
+20 </div>
+
+    <br />
+
+  </li>
+
+  <li>D&eacute;finir la fonction <strong>emballer-tout</strong>
+qui &eacute;tant donn&eacute; un nombre de disquettes, affiche
+le nombre de boites de chaque type n&eacute;cessaire &agrave;
+l&rsquo;emballage de toutes les disquettes. Un message indique ensuite la fin du traitement (voir ci-dessous). Cette fonction ne
+retourne pas de r&eacute;sultat.<br />
+
+&nbsp;
+    <div class="code-terminal">&gt; (emballer_tout
+280) <br />
+
+&nbsp;
+    <div class="code-terminal"> 2 boite(s) de 100
+remplie(s)<br />
+
+1 boite(s) de 50 remplie(s)<br />
+
+3 boite(s) de 10 remplie(s)<br />
+    <br />
+
+Emballage termin&eacute; !<br />
+
+    </div>
+
+    </div>
+
+  </li>
+
+</ol>
+
+<h2>Exercice 3</h2>
+
+<p>D&eacute;finir une fonction <strong>menu</strong>
+qui
+affiche un menu &agrave; trois options et retourne le
+num&eacute;ro de l&rsquo;option choisie selon le
+mod&egrave;le ci-dessous. Les textes des trois options sont les
+param&egrave;tres de la fonction.</p>
+
+<div class="code-terminal" style="margin-left: 0%; margin-right: 10%;">MENU<br />
+
+----<br />
+
+<br />
+
+1 : <em>Option1</em><br />
+
+2 : <em>Option2</em><br />
+
+3 : <em>Option3</em><em></em><br />
+
+<br />
+
+Votre choix :<br />
+
+</div>
+
+<br />
+
+Exemple :<br />
+
+&nbsp;
+<div class="code-terminal" style="margin-left: 0%; margin-right: 10%;" lire="" ecrire="" ="" quitter="" )=""><br />
+
+&nbsp;
+<div class="code-terminal">MENU<br />
+
+----<br />
+
+<br />
+
+1 : <em>Lire</em><br />
+
+2 : Ecrire<em></em><br />
+
+3 : <em>Quitter</em><em></em><br />
+
+<br />
+
+Votre choix : <span style="font-weight: bold;">3</span>
+</div>
+
+3 </div>
+
+<p> <strong>En fin de session, n'oublier pas de vous
+d&eacute;connecter! </strong> </p>
+
+<div class="bas"> <a href="mailto:eric.gouarderes@univ-pau.fr">Eric
+Gouard&egrave;res</a>&nbsp;<a href="mailto:samson.pierre@univ-pau.fr">Samson Pierre</a>
+</div>
+
+<br />
+
+</body>
+</html>

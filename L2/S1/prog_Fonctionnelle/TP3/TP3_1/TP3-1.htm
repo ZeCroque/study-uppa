@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="fr-FR" xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+  <title>TP3 - Programmation fonctionnelle</title>
+
+
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+
+<!-- CSS Pour l'affichage à l'éctran -->
+  <link href="../Assets/Styles/style1.css" rel="stylesheet" type="text/css" media="screen" />
+
+  <link href="../Assets/Styles/equation.css" rel="stylesheet" type="text/css" media="screen" />
+
+  <link href="../Assets/Styles/code_css.css" rel="stylesheet" type="text/css" media="screen" />
+
+<!-- CSS Pour l'impression -->
+  <link href="../Assets/Styles/print.css" rel="stylesheet" type="text/css" media="print" />
+
+</head>
+
+
+<body>
+
+<br />
+
+<div class="haut">Programmation fonctionnelle</div>
+
+<br />
+
+&nbsp;
+<h1>TP3 : Listes</h1>
+
+<h2>Exercice 1 - Moyenne et r&eacute;ussite</h2>
+
+<p>Soit une liste de
+nombre
+r&eacute;els positifs qui repr&eacute;sentent les notes
+d&rsquo;un examen.</p>
+
+<p>1) D&eacute;finir la fonction <b style="">moyenne</b>
+qui
+calcule la moyenne&nbsp;de l'examen.</p>
+
+<p>2) D&eacute;finir la fonction <b>taux-reussite</b>
+qui calcule le pourcentage de
+notes au dessus de la moyenne de l'examen. </p>
+
+<h2>Exercice 2 - L'histoire de Jules et Julie</h2>
+
+<p style="text-align: justify;">Vendredi matin, Jules et
+Julie quittent leur
+domicile pour aller travailler. Arriv&eacute; &agrave; son
+bureau, Jules se souvient qu&rsquo;il a
+invit&eacute; des amis &agrave; manger le soir m&ecirc;me.
+Seulement il a oubli&eacute; de faire les
+courses. Donc il d&eacute;cide qu&rsquo;il ira faire les
+courses vendredi soir avant de
+rentrer. De son c&ocirc;t&eacute;, Julie se souvient
+&eacute;galement que Jules a invit&eacute; des amis
+et qu&rsquo;ils n&rsquo;ont rien &agrave; manger.
+Persuad&eacute;e que Jules oubliera de faire les
+courses, car il est distrait, elle d&eacute;cide d&rsquo;y
+aller entre midi et deux. Le soir
+arrive, Jules et Julie rentrent chez eux et constatent qu&rsquo;ils
+ont achet&eacute; des
+produits en double.<span style="">&nbsp; </span></p>
+
+<p style="text-align: justify;">On appellera <span style="font-style: italic;">produits-Jules</span> la
+liste des produits
+achet&eacute;s par Jules, et <span style="font-style: italic;">produits-Julie</span>,
+la liste de produits achet&eacute;s par Julie. </p>
+
+<p style="text-align: justify;">1) D&eacute;finir le
+pr&eacute;dicat <b>produit-Julie?</b> qui
+&eacute;tant donn&eacute; un<span style="font-style: italic;">
+produit</span> et la liste<span style="font-style: italic;">
+produits-Julie</span>
+d&eacute;termine si le produit fait
+partie de la liste. </p>
+
+<p style="text-align: justify;">2) D&eacute;finir la
+fonction <b>produits-double</b> qui
+&eacute;tant donn&eacute; les listes <span style="font-style: italic;">produits-Jules</span> et
+<span style="font-style: italic;">produits-Julie</span>
+retourne la liste des
+produits achet&eacute;s en double. Pour cela, on regarde pour
+chaque produit achet&eacute;
+par Jules s&rsquo;il a aussi &eacute;t&eacute;
+achet&eacute; par Julie. </p>
+
+<p>3) D&eacute;finir la fonction <b>produits</b>
+qui
+&eacute;tant
+donn&eacute; les listes <span style="font-style: italic;">produits-Jules</span>
+et
+<span style="font-style: italic;">produits-Julie</span>
+retourne la liste des produits achet&eacute;s par le
+couple. Chaque
+produit n&rsquo;appara&icirc;t qu&rsquo;une seule fois dans
+la liste r&eacute;sultat.</p>
+
+<h2>Exercice 3 - Le compte est bon !</h2>
+
+On d&eacute;sire &eacute;crire<span style="font-weight: bold;"></span> une fonction qui
+est
+une forme simplifi&eacute;e du jeu &laquo; le compte est bon
+&raquo;. On se donne un entier <span style="font-style: italic;">N</span>
+et une liste <span style="font-style: italic;">L</span>
+d&rsquo;entiers &gt; 0. <br />
+
+Il s&rsquo;agit de trouver un
+ensemble d&rsquo;&eacute;l&eacute;ments de <span style="font-style: italic;">L</span> dont la somme est
+&eacute;gale &agrave; <span style="font-style: italic;">N</span>.
+<br />
+
+Si la liste est vide, on convient que la somme est 0. Si il
+n&rsquo;y a pas de solution, la fonction retourne <span style="font-style: italic;">#f</span>.<br />
+
+<br />
+
+1) D&eacute;finir la fonction Scheme&nbsp;<span style="font-weight: bold;">comptebon</span><span style="font-weight: bold;"></span> en
+consid&eacute;rant que <span style="font-style: italic;">L</span>
+est ordonn&eacute;e
+croissante.&nbsp;&nbsp;&nbsp;
+<p class="code-terminal">&gt; (comptebon 21 '(1 1 3 5
+7 10 12 15))<br />
+
+(1 1 7 12)</p>
+
+<p class="code-terminal">&gt; (comptebon 7 '(2
+8))&nbsp;<br />
+
+#f</p>
+
+2) D&eacute;finir la fonction Scheme&nbsp;<span style="font-weight: bold;">comptebon</span><span style="font-weight: bold;"></span> en
+consid&eacute;rant que <span style="font-style: italic;">L</span>
+est quelconque (non
+n&eacute;cessairement ordonn&eacute;e).<br />
+
+<p class="code-terminal">&gt;&nbsp;(comptebon 21
+'(15 1 7 5 10 1 12 3))<br />
+
+(15 1 5)</p>
+
+<p class="code-terminal">&gt; (comptebon 21 '(15 3 4
+5))&nbsp;<br />
+
+#f</p>
+
+<p> <strong>En fin de session, n'oubliez pas de vous
+d&eacute;connecter! </strong> </p>
+
+<div class="bas"> <a href="mailto:eric.gouarderes@univ-pau.fr">Eric
+Gouard&egrave;res</a>&nbsp;<a href="mailto:samson.pierre@univ-pau.fr">Samson Pierre</a>
+</div>
+
+<br />
+
+</body>
+</html>

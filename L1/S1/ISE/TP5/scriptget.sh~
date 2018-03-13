@@ -1,4 +1,0 @@
-echo  - Affichage des droits de l\'arborescence Arbo\n-  Auteurs : Nom1 et Nom2\n\n
-
-tree -p
-getfacl -R Binome

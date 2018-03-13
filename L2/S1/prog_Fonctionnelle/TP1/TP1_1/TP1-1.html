@@ -1,0 +1,316 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="fr-FR" xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+  <title>TP1 - Programmation Fonctionnelle</title>
+
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<!-- CSS Pour l'affichage � l'�ctran -->
+  <link href="../Assets/Styles/style1.css" rel="stylesheet" type="text/css" media="screen" />
+
+  <link href="../Assets/Styles/equation.css" rel="stylesheet" type="text/css" media="screen" />
+
+  <link href="../Assets/Styles/code_css.css" rel="stylesheet" type="text/css" media="screen" />
+
+<!-- CSS Pour l'impression -->
+  <link href="../Assets/Styles/print.css" rel="stylesheet" type="text/css" media="print" />
+
+</head>
+
+
+<body>
+
+<br />
+
+<div class="haut">Programmation Fonctionnelle</div>
+
+<br />
+
+&nbsp;
+<h1>TP1 : Le logiciel DrRacket (http://racket-lang.org/)</h1>
+
+<p><span style="font-style: italic;"> DrRacket</span>
+est un environnement de programmation
+bas&eacute; sur le langage <span style="font-style: italic;">Racket
+</span>(anciennement PLT Scheme). Nous utilisons pour les
+travaux pratiques la version 5.3.6 de l'environnement
+(<a href="http://download.racket-lang.org/racket-v5.3.6.html">http://download.racket-lang.org/racket-v5.3.6.html</a>).</p>
+
+<h2>1. La fen&ecirc;tre de DrRacket </h2>
+
+<p>La <em>fen&ecirc;tre de contenu</em> de
+DrRacket est divis&eacute;e en deux parties
+: </p>
+
+<ul>
+
+  <li><strong>fen&ecirc;tre de d&eacute;finitions</strong>
+(en haut): qui permet d'&eacute;crire des programmes Scheme ; </li>
+
+  <li><strong>fen&ecirc;tre d'interactions </strong>(en
+bas): qui permet d'&eacute;valuer des expressions Scheme
+interactivement. </li>
+
+</ul>
+
+<div class="figure"> <img style="width: 984px; height: 675px;" alt="Capture &eacute;cran DrRacket" src="../Assets/Images/DrRacket536.jpg" /><br />
+
+</div>
+
+<h2>2. La barre de menus</h2>
+
+<h3>Fichier</h3>
+
+<strong></strong><span style="font-weight: bold;"></span>
+<ul>
+
+  <li><span style="font-weight: bold;">Gestion des
+fichiers </span>:&nbsp;<strong></strong>cr&eacute;er
+un nouveau fichier ;<span style="font-weight: bold;"> </span><strong></strong>ouvrir
+un fichier&nbsp;; sauvegarder le contenu des
+fen&ecirc;tres&nbsp; </li>
+
+  <li><strong>Fermer</strong> : fermer un
+fichier&nbsp;</li>
+
+  <li><strong>Quitter </strong>: quitter DrRacket.</li>
+
+</ul>
+
+<h3>&Eacute;diter</h3>
+
+<p>On y trouve les options d'&eacute;dition de texte comme : <strong>couper/copier/coller</strong>,
+<strong>rechercher/remplacer</strong> </p>
+
+<h3>Montrer</h3>
+
+<p>Permet d'avoir soit les deux fen&ecirc;tres (de <em>d&eacute;finitions</em>
+et d'<em>interations</em>) soit une seule. </p>
+
+<h3>Langage</h3>
+
+<p>Permet de choisir le niveau de langage souhait&eacute;.
+S&eacute;lectionner le langage d'enseignement <span style="font-weight: bold;">R5RS</span> puis appuyez
+sur le bouton <strong>Executer</strong>.
+</p>
+
+<h3>Racket</h3>
+
+<ul>
+
+  <li>Commandes d'ex&eacute;cution : <strong>executer</strong>,
+    <strong>stopper</strong></li>
+
+  <li>Indenter du texte</li>
+
+  <li>Commenter ou d&eacute;commenter un texte
+selectionn&eacute;</li>
+
+</ul>
+
+<h2>3. La fen&ecirc;tre de d&eacute;finitions</h2>
+
+<h3>L'&eacute;diteur de DrRacket</h3>
+
+<ul>
+
+  <li>g&egrave;re les parenth&egrave;ses ; </li>
+
+  <li>fait l'indentation, automatiquement, &agrave; chaque
+changement de ligne (avec la touche&nbsp;<b><i>
+Entr&eacute;e</i></b>).</li>
+
+</ul>
+
+<h3>La barre d'outils</h3>
+
+<ul>
+
+  <li>le bouton <strong>Sauvegarder</strong>(qui
+n'appara&icirc;t que lorsque le contenu de la fen&ecirc;tre de
+d&eacute;finitions a &eacute;t&eacute; chang&eacute;)
+permet de sauvegarder ces d&eacute;finitions dans le fichier dont
+le nom appara&icirc;t &agrave; gauche du bouton; une
+fen&ecirc;tre de dialogue appara&icirc;t lors de la
+premi&egrave;re sauvegarde (pour que le nom du fichier soit
+donn&eacute;). Apr&egrave;s que le fichier est
+sauvegard&eacute;, ce bouton dispara&icirc;t;</li>
+
+  <li>le bouton <strong>V&eacute;rifier</strong>
+permet de v&eacute;rifier la syntaxe du programme contenu dans la
+fen&ecirc;tre;</li>
+
+  <li>le bouton <strong>D&eacute;boguer </strong>permet
+de
+contr&ocirc;ler l'ex&eacute;cution du programme. Il affiche
+&eacute;galement le contenu de la pile d'ex&eacute;cution et
+les variables d&eacute;finies. Il est utile pour chercher les
+erreurs. Il permet de mettre l'ex&eacute;cution en pause (<span style="font-weight: bold;">Pause</span>),&nbsp; de
+relancer l'ex&eacute;cution (<span style="font-weight: bold;">Go</span>)
+de&nbsp;visualiser, pas &agrave; pas, les &eacute;tapes
+d'&eacute;valuation des expressions (<span style="font-weight: bold;">Step</span>), de
+g&eacute;rer des points d'arr&ecirc;t (<span style="font-weight: bold;">Over</span>, <span style="font-weight: bold;">Out</span>) ;</li>
+
+  <li>le bouton <strong>Executer</strong> permet
+d'&eacute;valuer les expressions contenues dans la
+fen&ecirc;tre de
+d&eacute;finitions, ou de r&eacute;initialiser la
+fen&ecirc;tre
+d'interactions ;</li>
+
+  <li>le bouton <strong>Stopper</strong> permet
+d'interrompre l'ex&eacute;cution d'un programme.</li>
+
+</ul>
+
+<h2>4. La fen&ecirc;tre d'interactions</h2>
+
+<p>La <em>fen&ecirc;tre d'interactions</em>
+permet d'&eacute;crire une expression apr&egrave;s le prompt <strong>(&gt;)</strong>
+; cette expression sera imm&eacute;diatement
+&eacute;valu&eacute;e; le r&eacute;sultat est
+&eacute;crit dans une nouvelle ligne; ensuite un nouveau prompt
+appara&icirc;t, pour permettre d'&eacute;crire une nouvelle
+expression (remarque: l'expression peut &ecirc;tre
+&eacute;crite sur plusieurs lignes)</p>
+
+<p class="attention">On ne peut pas modifier une
+expression d&eacute;j&agrave; &eacute;valu&eacute;e.</p>
+
+<h2>5. Utilisation de DrRacket</h2>
+
+<h3>&Eacute;valuation d'expressions</h3>
+
+<p>Dans la fen&ecirc;tre d'interactions, &eacute;valuez
+l'une apr&egrave;s l'autre chacune des&nbsp;9 expressions
+suivantes&nbsp; </p>
+
+<ol class="code-terminal">
+
+  <li>(+ 4 5) --&gt;</li>
+
+  <li>(sqrt 25) --&gt;</li>
+
+  <li>365 --&gt; </li>
+
+  <li>'test --&gt;</li>
+
+  <li>test --&gt;</li>
+
+  <li>(define test 4.25) --&gt; </li>
+
+  <li>test --&gt;</li>
+
+  <li>(and (&gt; 12 45) (= 3 (/ 12 4) ) ) --&gt;</li>
+
+  <li>(expt 2 3) --&gt;</li>
+
+</ol>
+
+<h3>D&eacute;finition de fonctions</h3>
+
+<p>Dans la fen&ecirc;tre d'interactions, tapez la
+d&eacute;finition de fonction suivante :</p>
+
+<p class="code-terminal">(define (double x) (* 2 x)) </p>
+
+<p>Evaluer quelques exemples d'application de la fonction <em>double</em></p>
+
+<h3>Charger un fichier de d&eacute;finitions (programme)</h3>
+
+<ol>
+
+  <li>Enregistrer le fichier <a href="../Assets/TP1/exemple1.ss">exemple1.ss</a>&nbsp;dans
+un r&eacute;pertoire</li>
+
+  <li>Ouvrir le fichier sous DrRacket et l'&eacute;valuer</li>
+
+  <li>utiliser le bouton <strong>Step</strong> du
+d&eacute;bogueur pour
+&eacute;valuer pas &agrave; pas le programme</li>
+
+  <li>Evaluer quelques exemples d'application de la fonction
+hypot&eacute;nuse. Notez qu'une fonction peut &ecirc;tre
+d&eacute;finie soit en &eacute;crivant sa d&eacute;finition
+dans la fen&ecirc;tre d'interaction soit en cr&eacute;ant un
+fichier qui contient sa d&eacute;finition et en &eacute;valuant
+ce fichier</li>
+
+  <li>Enregistrer le fichier <a href="../Assets/TP1/exemple2.ss">exemple2.ss</a>&nbsp;dans
+un r&eacute;pertoire</li>
+
+  <li>Ouvrir et ex&eacute;cuter ce fichier.</li>
+
+</ol>
+
+<h3>Programmation de fonctions</h3>
+
+<ol>
+
+  <li>D&eacute;finir une fonction <span style="font-weight: bold;">f</span> permettant de
+calculer :<br />
+
+    <p class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <i> f(x,y) =&nbsp;<u>&nbsp; x -
+3&nbsp;&nbsp;</u>&nbsp;
++&nbsp;&nbsp;&nbsp;<u>&nbsp;&nbsp; 1&nbsp;</u></i>
+    <br />
+
+    <i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;y<sup>2</sup> +
+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x<sup>3</sup>
++ 3</i></p>
+
+  </li>
+
+  <li> D&eacute;finir une fonction <span style="font-weight: bold;">cel-&gt;far</span>
+effectuant la conversion
+en
+degr&eacute;s Fahrenheit d'une temp&eacute;rature
+donn&eacute;e en degr&eacute;s Celsius selon la formule <span class="code">F= 9/5 C + 32</span></li>
+
+  <li> D&eacute;finir une fonction <span style="font-weight: bold;">distance</span> qui calcule
+la distance
+entre deux
+points A et B de coordonn&eacute;es respectives (xA, yA), (xB, yB)</li>
+
+  <li> Conversion horaire
+    <ol>
+
+      <li> D&eacute;finir une fonction <span style="font-weight: bold;">m-&gt;s</span>
+permettant de
+convertir des minutes en secondes</li>
+
+      <li> D&eacute;finir une fonction <span style="font-weight: bold;">h-&gt;m</span>
+permettant de
+convertir des heures en minutes</li>
+
+      <li> Utiliser les deux fonctions
+pr&eacute;c&eacute;dentes pour d&eacute;finir une fonction <span style="font-weight: bold;">h-&gt;s</span>
+permettant de convertir en secondes un horaire exprim&eacute; en
+heures, minutes et secondes</li>
+
+    </ol>
+
+  </li>
+
+  <li>D&eacute;finir&nbsp;une fonction <span style="font-weight: bold;">moy-pond</span> calculant
+la
+moyenne pond&eacute;r&eacute;e de 2 notes <span style="font-style: italic;">n1</span> et <span style="font-style: italic;">n2</span>
+affect&eacute;es respectivement des coefficients <span style="font-style: italic;">c1</span> et <span style="font-style: italic;">c2</span>. </li>
+
+</ol>
+
+<br />
+
+&nbsp;
+<p> <strong>En fin de session, n'oublier pas de vous
+d&eacute;connecter! </strong> </p>
+
+<div class="bas"> <a href="mailto:eric.gouarderes@univ-pau.fr">Eric
+Gouard&egrave;res</a>&nbsp;<a href="mailto:samson.pierre@univ-pau.fr">Samson Pierre</a>
+</div>
+
+</body>
+</html>

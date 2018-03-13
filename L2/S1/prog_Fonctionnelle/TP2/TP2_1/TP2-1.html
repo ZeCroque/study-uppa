@@ -1,0 +1,486 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+
+
+
+
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  <title>TP2 - Programmation fonctionnelle</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<!-- CSS Pour l'affichage à l'éctran -->
+
+
+
+
+
+  
+  
+  
+  
+  <link href="../Assets/Styles/style1.css" rel="stylesheet" type="text/css" media="screen">
+
+
+
+
+
+  
+  
+  
+  
+  <link href="../Assets/Styles/equation.css" rel="stylesheet" type="text/css" media="screen">
+
+
+
+
+
+  
+  
+  
+  
+  <link href="../Assets/Styles/code_css.css" rel="stylesheet" type="text/css" media="screen">
+<!-- CSS Pour l'impression -->
+
+
+
+
+
+  
+  
+  
+  
+  <link href="../Assets/Styles/print.css" rel="stylesheet" type="text/css" media="print">
+</head>
+
+
+<body style="left: auto;">
+
+
+
+
+
+&nbsp;<br>
+
+
+
+
+
+<div class="haut">Programmation fonctionnelle</div>
+
+
+
+
+
+<br>
+
+
+
+
+
+&nbsp;
+<h1>TP2 : Fonctions r&eacute;cursives - calculette<br>
+
+
+
+
+
+</h1>
+
+
+
+
+
+<h2>Programmation d'une calculette<br>
+
+
+
+
+
+</h2>
+
+
+
+
+
+<p>Il s'agit d&eacute;crire un programme qui simule des
+op&eacute;rations d'une calculette
+programmable. Cette
+calculette pr&eacute;sente les caract&eacute;ristiques
+suivantes :
+</p>
+
+
+
+
+
+<ul>
+
+
+
+
+
+  <li>Notation pr&eacute;fix&eacute;e .</li>
+
+
+
+
+
+  <li>Fonctions &eacute;l&eacute;mentaires :
+    
+    
+    
+    
+    <ul>
+
+
+
+
+
+      <li> <b>incrementer</b> :
+ajouter 1
+&agrave;
+la valeur d&rsquo;une expression num&eacute;rique,</li>
+
+
+
+
+
+      <li> <b>decrementer</b> : retirer 1
+&agrave;
+la valeur d&rsquo;une expression num&eacute;rique,</li>
+
+
+
+
+
+      <li> <b>non_zero ?</b> :
+pr&eacute;dicat,
+vrai si la valeur d&rsquo;une expression
+num&eacute;rique est diff&eacute;rente de 0,</li>
+
+
+
+
+
+      <li> <b>sup_egal ?</b> :
+pr&eacute;dicat,
+compare la valeur de deux expressions num&eacute;riques, retourne
+vrai si la premi&egrave;re est sup&eacute;rieure ou
+&eacute;gale &agrave; la seconde,</li>
+
+
+
+
+
+      <li> <strong>if</strong> : fonction
+conditionnelle.</li>
+
+
+
+
+
+    
+    
+    
+    
+    </ul>
+
+
+
+
+
+  </li>
+
+
+
+
+
+</ul>
+
+
+
+
+
+<h2>Instructions pour l'exercice&nbsp;</h2>
+
+
+
+
+
+<ol>
+
+
+
+
+
+  <li>Cr&eacute;er un dossier <b>TP2/Calc </b>et
+copier dans ce dossier les deux fichiers <a href="../Assets/TP2/libcalc.ss"><em>libcalc.ss</em></a>
+et <a href="../Assets/TP2/grafcalc.ss"><em>grafcalc.ss</em></a>
+.</li>
+
+
+
+
+
+  <li>Le programme source que vous &eacute;crirez doit <b>imp&eacute;rativement</b>
+&ecirc;tre sauvegard&eacute; dans ce dossier <b>TP2/Calc
+    </b>.&nbsp;</li>
+
+
+
+
+
+  <li>Avant d&rsquo;ex&eacute;cuter votre programme
+assurez vous
+qu&rsquo;il a bien &eacute;t&eacute; sauvegard&eacute;
+au bon endroit. <br>
+
+
+
+
+
+  </li>
+
+
+
+
+
+</ol>
+
+
+
+
+
+<h2>Questions :</h2>
+
+
+
+
+
+<h3>1. D&eacute;finir en scheme les quatre fonctions suivantes :</h3>
+
+
+
+
+
+<ul>
+
+
+
+
+
+  <li> <b>add</b> (addition),</li>
+
+
+
+
+
+  <li> <b>sou</b> (soustraction),</li>
+
+
+
+
+
+  <li> <b>mul</b> (multiplication), <b>en
+utilisant add</b>,</li>
+
+
+
+
+
+  <li> <b>div</b> (division enti&egrave;re), <b>en
+utilisant sou</b>.</li>
+
+
+
+
+
+</ul>
+
+
+
+
+
+Sachant que :
+<ul>
+
+
+
+
+
+  <li>on ne consid&egrave;re que des nombres entiers positifs
+ou nuls,</li>
+
+
+
+
+
+  <li>ces fonctions sont binaires, la valeur du premier argument
+doit &ecirc;tre sup&eacute;rieure ou &eacute;gale &agrave; la valeur du
+second,</li>
+
+
+
+  <li>pour &eacute;crire le corps de ces fonctions, <span style="font-weight: bold;">vous ne devez utiliser que les quatre fonctions ci-dessus et les fonctions &eacute;l&eacute;mentaires de la calculette</span>,</li>
+
+
+
+
+
+  <li>Pour pouvoir &eacute;valuer les fonctions vous
+devez&nbsp;charger au pr&eacute;alable le fichier <strong>libcalc.ss</strong>.
+Pour cela la premi&egrave;re
+expression de votre programme doit &ecirc;tre : <b>(load
+"libcalc.ss")</b></li>
+
+
+
+
+
+</ul>
+
+
+
+
+
+<center><b>Conseil : tester chaque fonction avant de passer
+&agrave; la
+suivante</b></center>
+
+
+
+
+
+<h3>2. Utilisation de la machine &agrave; calculer&nbsp;</h3>
+
+
+
+
+
+<p>Pour lancer la machine, &eacute;valuez
+l&rsquo;expression <b>(calculet)</b>
+</p>
+
+
+
+
+
+<ul>
+
+
+
+
+
+  <li>la machine vous demande l&rsquo;op&eacute;rateur :
+il faut taper un op&eacute;rateur
+(<b>add, sou, mul, div</b>) ou <b>fin</b> pour
+arr&ecirc;ter l&rsquo;ex&eacute;cution,</li>
+
+
+
+
+
+  <li>la machine demande ensuite le 1<sup>er</sup>
+op&eacute;rande puis le 2<sup>&egrave;me</sup>
+op&eacute;rande et affiche le r&eacute;sultat.</li>
+
+
+
+
+
+</ul>
+
+
+
+
+
+<p class="attention">La machine fonctionne en
+boucle, lorsqu&rsquo;elle a termin&eacute;e
+une op&eacute;ration , elle vous en demande une autre. Pour
+terminer, taper <strong>fin</strong>.</p>
+
+
+
+
+
+<p>
+Exemple :<br>
+
+
+
+
+
+Calcul de l&rsquo;expression : <b>add 5 4</b>
+</p>
+
+
+
+
+
+<p align="center"><img style="width: 527px; height: 424px;" alt="copie ecran" src="../Assets/Images/calculet.jpg"></p>
+
+
+
+
+
+<h3>3. Utilisation de la machine &agrave; calculer version
+graphique&nbsp; </h3>
+
+
+
+
+
+<p>Charger au pr&eacute;alable le fichier <strong>grafcalc.ss</strong>.
+Pour cela il faut rajouter en d&eacute;but de programme : <b>(load
+"grafcalc.ss")</b></p>
+
+
+
+
+
+<p>Evaluer votre programme (bouton <em>ex&eacute;cuter</em>),
+la calculette graphique appara&icirc;t. Attention, cette calculette
+utilise <strong>une notation infix&eacute;e</strong>.</p>
+
+
+
+
+
+<br>
+
+
+
+
+
+&nbsp;
+<p> <strong>En fin de session, n'oubliez pas de vous
+d&eacute;connecter! </strong> </p>
+
+
+
+
+
+<div class="bas"> <a href="mailto:eric.gouarderes@univ-pau.fr">Eric
+Gouard&egrave;res</a> <a href="mailto:samson.pierre@univ-pau.fr">Samson Pierre</a> </div>
+
+
+
+
+
+<br>
+
+
+
+
+
+</body>
+</html>

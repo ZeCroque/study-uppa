@@ -1,0 +1,532 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+
+
+
+  
+
+
+  
+  
+  
+  
+  
+  <title>TP2 - Programmation fonctionnelle</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<!-- CSS Pour l'affichage à l'éctran -->
+
+
+
+
+  
+  
+  
+  <link href="../Assets/Styles/style1.css" rel="stylesheet" type="text/css" media="screen">
+
+
+
+
+  
+  
+  
+  <link href="../Assets/Styles/equation.css" rel="stylesheet" type="text/css" media="screen">
+
+
+
+
+  
+  
+  
+  <link href="../Assets/Styles/code_css.css" rel="stylesheet" type="text/css" media="screen">
+<!-- CSS Pour l'impression -->
+
+
+
+
+  
+  
+  
+  <link href="../Assets/Styles/print.css" rel="stylesheet" type="text/css" media="print">
+</head>
+
+
+<body style="left: auto;">
+
+
+
+
+&nbsp;<br>
+
+
+
+
+<div class="haut">Programmation fonctionnelle</div>
+
+
+
+
+<br>
+
+
+
+
+&nbsp;
+<h1>TP2 : Fonctions r&eacute;cursives - Calculette post fix&eacute;e<br>
+
+
+
+
+</h1>
+
+
+
+
+<h2>Programmation d'une calculette postfix&eacute;e<br>
+
+
+
+
+</h2>
+
+
+
+
+<p>On
+s'int&eacute;resse maintenant &agrave; une
+calculette diff&eacute;rente de celle vue pr&eacute;c&eacute;demment. Cette
+calculette pr&eacute;sente les caract&eacute;ristiques
+suivantes :
+</p>
+
+
+
+
+<ul>
+
+
+
+
+</ul>
+
+
+
+
+<ol>
+
+
+
+
+  <li>Notation postfix&eacute;e.</li>
+
+
+
+
+  <li>Une m&eacute;moire unique organis&eacute;e comme
+une pile de valeurs : on peut stocker plusieurs valeurs
+simultan&eacute;ment en les empilant les unes sur les autres
+&agrave; la mani&egrave;re d'une pile d'assiettes ou d'une pile
+de linge. Toute op&eacute;ration d'ajout (empiler) ou de retrait
+(d&eacute;piler) de valeurs se fait toujours au sommet de la pile.</li>
+
+
+
+
+  <li>Op&eacute;rations &eacute;l&eacute;mentaires : <br>
+
+
+
+
+    
+    
+    
+    <ul>
+
+
+
+
+      <li>Op&eacute;rateurs arithm&eacute;tiques : <strong>+,
+-, *, /</strong> (binaires) et <strong>abs, sqrt, cos, sin
+        </strong>(unaires).</li>
+
+
+
+
+    
+    
+    
+    </ul>
+
+
+
+
+    
+    
+    
+    <ul>
+
+
+
+
+      <li>Op&eacute;rations de gestion de la
+m&eacute;moire : <br>
+
+
+
+
+        
+        
+        
+        <ul>
+
+
+
+
+          <li><strong>vide?</strong> :
+pr&eacute;dicat. Retourne #t si la m&eacute;moire est vide, #f
+sinon.</li>
+
+
+
+
+          <li><strong>vider</strong> : vide la
+m&eacute;moire, r&eacute;sultat ind&eacute;fini.</li>
+
+
+
+
+          <li><strong>empiler (x)</strong> : ajoute
+l'&eacute;l&eacute;ment x en m&eacute;moire,
+r&eacute;sultat ind&eacute;fini .</li>
+
+
+
+
+          <li><strong>depiler</strong> : retrait du
+premier &eacute;l&eacute;ment de la m&eacute;moire,
+r&eacute;sultat ind&eacute;fini.</li>
+
+
+
+
+          <li><strong>sommet</strong> : retourne le
+premier &eacute;l&eacute;ment de la m&eacute;moire (sans le
+retirer).</li>
+
+
+
+
+        
+        
+        
+        </ul>
+
+
+
+
+        
+        
+        
+        <ul>
+
+
+
+
+        
+        
+        
+        </ul>
+
+
+
+
+      </li>
+
+
+
+
+    
+    
+    
+    </ul>
+
+
+
+
+  </li>
+
+
+
+
+</ol>
+
+
+
+
+<h2>Instructions pour l'exercice&nbsp;</h2>
+
+
+
+
+<ol>
+
+
+
+
+  <li>Cr&eacute;er un dossier <b>TP2/Calcpost </b>et
+copier dans ce dossier le fichier <a href="../Assets/TP2/libpile.ss"><em>libpile.ss</em></a><a href="../Assets/TP4/grafcalc.ss"><em></em></a>.</li>
+
+
+
+
+  <li>Le programme source que vous &eacute;crirez doit <b>imp&eacute;rativement</b>
+&ecirc;tre sauvegard&eacute; dans ce dossier&nbsp;<b>TP2/Calcpost</b><b>
+    </b>.&nbsp;</li>
+
+
+
+
+  <li>Avant d&rsquo;ex&eacute;cuter votre programme
+assurez vous
+qu&rsquo;il a bien &eacute;t&eacute; sauvegard&eacute;
+au bon endroit. </li>
+
+
+
+
+</ol>
+
+
+
+
+<h2>Question :</h2>
+
+
+
+
+<p>D&eacute;finir la fonction <span style="font-weight: bold;">calcpost</span>
+qui permet de simuler cette
+calculette, l'expression &agrave; calculer est saisie au
+clavier.&nbsp;<strong></strong>Vous pouvez vous
+inspirer du fonctionnement de la fonction <em>calculet</em> pr&eacute;c&eacute;dente.<br>
+
+
+
+
+</p>
+
+
+
+
+<p>Calcpost fonctionne en boucle, lorsque l'utilisateur veut
+terminer le programme, il doit taper le symbole <strong>fin</strong>
+(comme dans calculet). </p>
+
+
+
+
+<p><span style="text-decoration: underline;">M&eacute;thode
+pour saisir et &eacute;valuer un expression : </span><br>
+
+
+
+
+L'expression est saisie &eacute;l&eacute;ment par
+&eacute;l&eacute;ment. Il faut ensuite analyser
+l'&eacute;l&eacute;ment de la fa&ccedil;on suivante : </p>
+
+
+
+
+<ul>
+
+
+
+
+  <li>si l'&eacute;l&eacute;ment saisi est un nombre
+alors il est empil&eacute;,</li>
+
+
+
+
+  <li>si c'est un op&eacute;rateur arithm&eacute;tique
+alors il faut faire le calcul en r&eacute;cup&eacute;rant
+l'op&eacute;rande au sommet de pile puis d&eacute;pliler
+(op&eacute;rateur unaire) ou les
+op&eacute;randes (op&eacute;rateur binaire) puis empiler le
+r&eacute;sultat</li>
+
+
+
+
+  <li>si l'&eacute;l&eacute;ment saisi est le symbole <span style="font-weight: bold;">=</span>,
+il faut afficher le r&eacute;sultat.</li>
+
+
+
+
+</ul>
+
+
+
+
+<p>Exemple : Evaluation de l'expression <strong>7 3 + 16
+sqrt * =</strong> </p>
+
+
+
+
+<ol>
+
+
+
+
+  <li>empiler 7</li>
+
+
+
+
+  <li>empiler 3</li>
+
+
+
+
+  <li>sommet --&gt; 3</li>
+
+
+
+
+  <li>depiler&nbsp;</li>
+
+
+
+
+  <li>sommet --&gt; 7</li>
+
+
+
+
+  <li>depiler</li>
+
+
+
+
+  <li>empiler 10 <em>(r&eacute;sultat de l'expression
+: 7 3 +)</em></li>
+
+
+
+
+  <li>empiler 16</li>
+
+
+
+
+  <li>sommet --&gt; 16</li>
+
+
+
+
+  <li>depiler</li>
+
+
+
+
+  <li>empiler 4 <em>(r&eacute;sultat de l'expression :
+16 sqrt)</em></li>
+
+
+
+
+  <li>sommet --&gt; 4</li>
+
+
+
+
+  <li>depiler</li>
+
+
+
+
+  <li>sommet --&gt; 10</li>
+
+
+
+
+  <li>depiler&nbsp;</li>
+
+
+
+
+  <li>empiler 40 <em>(r&eacute;sultat de l'expression
+10 4 * )</em></li>
+
+
+
+
+  <li>sommet --&gt; 40</li>
+
+
+
+
+  <li>depiler</li>
+
+
+
+
+  <li>afficher 40.</li>
+
+
+
+
+</ol>
+
+
+
+
+<p>Exemple de fonctionnement de la fonction calcpost pour cette
+expression :</p>
+
+
+
+
+<p style="text-align: center;"><img style="width: 357px; height: 286px;" alt="exemple calcpost" src="../Assets/Images/calcpost.jpg"><br>
+
+
+
+
+</p>
+
+
+
+
+<h2>Exercice suppl&eacute;mentaire</h2>
+
+
+
+
+Exemple d'utilisation d'un&nbsp;menu : <a href="../Assets/TP2/orni.pdf">l'ornithologue</a><br>
+
+
+
+
+&nbsp;
+<p> <strong>En fin de session, n'oubliez pas de vous
+d&eacute;connecter! </strong> </p>
+
+
+
+
+<div class="bas"> <a href="mailto:eric.gouarderes@univ-pau.fr">Eric
+Gouard&egrave;res</a> <a href="mailto:samson.pierre@univ-pau.fr">Samson Pierre</a> </div>
+
+
+
+
+<br>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,660 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="fr-FR" xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+
+
+
+
+
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <title>TP3 - Programmation fonctionnelle</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<!-- CSS Pour l'affichage à l'éctran -->
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  <link href="../Assets/Styles/style1.css" rel="stylesheet" type="text/css" media="screen" />
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  <link href="../Assets/Styles/equation.css" rel="stylesheet" type="text/css" media="screen" />
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  <link href="../Assets/Styles/code_css.css" rel="stylesheet" type="text/css" media="screen" />
+<!-- CSS Pour l'impression -->
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  <link href="../Assets/Styles/print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+
+
+<body>
+
+
+
+
+
+
+<br />
+
+
+
+
+
+
+<div class="haut">Programmation fonctionnelle</div>
+
+
+
+
+
+
+<br />
+
+
+
+
+
+
+&nbsp;
+<h1>TP3 : Listes et sous-listes</h1>
+
+
+
+
+
+
+<h2>Exercice 1 - Le bridge</h2>
+
+
+
+
+
+
+<p style="text-align: justify;">Une carte &agrave;
+jouer est caract&eacute;ris&eacute;e par&nbsp;sa <span style="font-weight: bold;">valeur</span> (2, 3, 4,
+5, 6, 7, 8, 9, 10, valet, dame, roi, as) et sa <span style="font-weight: bold;">couleur</span> (pique,
+coeur, carreau, treffle). Une <span style="font-weight: bold;">main</span>
+est l'ensemble des cartes qu'un joueur a dans son jeu. On
+repr&eacute;sente une carte par une <span style="font-weight: bold;">paire</span> de 2
+&eacute;l&eacute;ments <span style="font-style: italic;">(valeur
+. couleur)</span>,
+par exemple : (dame . coeur) ou (10 . pique). On repr&eacute;sente
+une
+main par une <span style="font-weight: bold;">liste</span>
+de cartes, c'est &agrave; dire une
+liste de paires <span style="font-style: italic;">(valeur
+. couleur)</span>, par exemple : ((roi . pique) (dame . pique)
+(10
+. pique).....(valet
+. carreau) (6 . carreau)).</p>
+
+
+
+
+
+
+<p style="text-align: justify;">Au jeu de bridge,
+apr&egrave;s la distribution des
+cartes, chaque joueur &eacute;value sa main en comptant 4 points
+pour un as, 3 points
+pour un roi, 2 points pour une dame et 1 point pour un valet (0 pour
+les autres
+cartes).&nbsp;</p>
+
+
+
+
+
+
+<br />
+
+
+
+
+
+
+1) D&eacute;finir une fonction Scheme <span style="font-weight: bold;">valeur</span> qui a pour
+param&egrave;tre une carte et pour r&eacute;sultat la valeur de
+la carte.<br />
+
+
+
+
+
+
+<p class="code-terminal">&gt; (valeur '(roi . carreau))<br />
+
+
+
+
+
+
+roi
+</p>
+
+
+
+
+
+
+2)&nbsp;D&eacute;finir une fonction Scheme <span style="font-weight: bold;">couleur</span> qui a pour
+param&egrave;tre une carte et pour r&eacute;sultat la couleur
+de
+la carte. &nbsp;<br />
+
+
+
+
+
+
+<p class="code-terminal">&gt; (couleur '(roi .
+carreau))<br />
+
+
+
+
+
+
+carreau
+</p>
+
+
+
+
+
+
+3) D&eacute;finir une fonction pr&eacute;dicat Scheme <span style="font-weight: bold;">carte?</span> qui a pour
+param&egrave;tre une carte et pour r&eacute;sultat&nbsp;<em>#t</em>
+si c'est bien une carte et <em>#f</em>
+dans le cas contraire. <br />
+
+
+
+
+
+
+Une carte est une paire point&eacute;e dont le premier
+&eacute;l&eacute;ment est une valeur (voir liste ci-dessus) et
+le second &eacute;l&eacute;ment une couleur (voir liste
+ci-dessus).
+<p class="code-terminal">&gt; (carte? '(roi . carreau))<br />
+
+
+
+
+
+
+#t</p>
+
+
+
+
+
+
+4) D&eacute;finir une fonction Scheme <span style="font-weight: bold;">points</span> qui a pour
+param&egrave;tre une carte et pour r&eacute;sultat le nombre de
+points de
+la carte. <br />
+
+
+
+
+
+
+<p class="code-terminal">&gt; (points '(roi . carreau))<br />
+
+
+
+
+
+
+3
+</p>
+
+
+
+
+
+
+<p>5) D&eacute;finir une fonction Scheme&nbsp; <span style="font-weight: bold;">evalue</span> qui utilise
+la fonction pr&eacute;c&eacute;dente <span style="font-style: italic;">points</span> et qui a
+pour param&egrave;tre une main, et pour r&eacute;sultat la
+somme des points des cartes de la main. </p>
+
+
+
+
+
+
+<p class="code-terminal">&gt; (evalue '((roi
+. pique)(dame . pique)(10 . pique)(6 . pique)(4 . pique)(dame .
+coeur)(10 . coeur)(8
+. coeur)(valet . treffle)(6 . treffle)(as . carreau)(valet . carreau)))<br />
+
+
+
+
+
+
+13</p>
+
+
+
+
+
+
+<h2>Exercice 2 - Une population&nbsp;</h2>
+
+
+
+
+
+
+<p>Pour r&eacute;soudre les questions de cet exercice, on
+consid&egrave;re qu&rsquo;un couple est
+repr&eacute;sent&eacute; par
+une liste &agrave; deux &eacute;l&eacute;ments.<br />
+
+
+
+
+
+
+<br />
+
+
+
+
+
+
+On d&eacute;sire calculer l&rsquo;&acirc;ge moyen des
+hommes et des
+femmes d&rsquo;une population. Une population est
+repr&eacute;sent&eacute;e par une liste de couples. Chaque
+couple
+contient un symbole (homme ou femme) et un nombre
+repr&eacute;sentant
+l&rsquo;&acirc;ge de la personne. <br />
+
+
+
+
+
+
+<br />
+
+
+
+
+
+
+<strong></strong>
+</p>
+
+
+
+
+
+
+<p class="code-terminal">Ex. de population : ((homme 20)
+(femme 35) (homme 40) (femme 15) (homme 50))</p>
+
+
+
+
+
+
+<p><br />
+
+
+
+
+
+
+1) D&eacute;finir une fonction <span style="font-weight: bold;">compte</span>
+qui prend en param&egrave;tre un symbole (<span style="font-style: italic;">homme</span> ou <span style="font-style: italic;">femme</span>) et une
+population et retourne le nombre d&rsquo;hommes ou de femmes dans
+la population.<br />
+
+
+
+
+
+
+<br />
+
+
+
+
+
+
+2) D&eacute;finie une fonction <span style="font-weight: bold;">somme-age</span>
+qui prend en param&egrave;tre une population et retourne un couple <span style="font-style: italic;">(sh&nbsp; sf)</span>
+o&ugrave; <span style="font-style: italic;">sh</span>
+et <span style="font-style: italic;">sf</span>
+repr&eacute;sentent respectivement&nbsp; la somme des
+&acirc;ges des hommes et la somme des &acirc;ges des femmes. <br />
+
+
+
+
+
+
+<br />
+
+
+
+
+
+
+3) D&eacute;finir une fonction <span style="font-weight: bold;">age-moyen</span>
+qui prend en param&egrave;tre une population et retourne une liste
+constitu&eacute;e de deux couples. Le premier couple contient le
+symbole <span style="font-style: italic;">homme</span>
+et l&rsquo;&acirc;ge moyen des hommes de cette population. Le
+second couple contient le symbole <span style="font-style: italic;">femme</span>
+et l&rsquo;&acirc;ge moyen des femmes de cette population. Dans
+le cas
+o&ugrave; la population ne contient pas de donn&eacute;es pour
+un sexe,
+le couple correspondant aura le symbole <span style="font-style: italic;">indefini</span> comme
+second &eacute;l&eacute;ment &agrave; la place de
+l&rsquo;&acirc;ge moyen.<br />
+
+
+
+
+
+
+<br />
+
+
+
+
+
+
+</p>
+
+
+
+
+
+
+<p class="code-terminal">Ex. :<br />
+
+
+
+
+
+
+(age-moyen '((homme 20) (femme 35) (homme 40))) --&gt; ((homme 30)
+(femme 35))<br />
+
+
+
+
+
+
+(age-moyen '((homme 20) (homme 40))) --&gt; ((homme 30) (femme
+indefini))</p>
+
+
+
+
+
+
+<h2>Exercice 3 - Gestion d'un parc de voitures<br />
+
+
+
+
+
+
+</h2>
+
+
+
+
+
+
+<p style="text-align: justify;">On repr&eacute;sente
+le parc de
+v&eacute;hicules d&rsquo;une entreprise par une liste de
+v&eacute;hicules. Chaque v&eacute;hicule est lui
+m&ecirc;me
+repr&eacute;sent&eacute; par une liste de cinq caract&eacute;ristiques :
+le num&eacute;ro min&eacute;ralogique (cha&icirc;ne), la
+marque
+(symbole), le type (symbole), le kilom&eacute;trage parcouru
+(nombre
+entier), l&rsquo;ann&eacute;e de mise en service (nombre
+entier).</p>
+
+
+
+
+
+
+<p class="code-terminal">Exemple de parc :<br />
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; (("CP-778-KL" Renault Clio 50000 2014)<br />
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; &nbsp;("AA-001-AA" Peugeot 308
+110000 2014)<br />
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp;&nbsp; ("DB-022-XE" Renault Twingo
+15000 2015)<br />
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp;&nbsp; ("1750 XV 64" Citroen Picasso
+80000 2006))
+</p>
+
+
+
+
+
+
+<p style="text-align: justify;"><br />
+
+
+
+
+
+
+1) D&eacute;finir une fonction<span style="font-weight: bold;">
+infos-vehicule</span>&nbsp;qui&nbsp;&eacute;tant donn&eacute; le num&eacute;ro
+min&eacute;ralogique
+d&rsquo;un v&eacute;hicule et le parc de v&eacute;hicules,
+retourne les
+caract&eacute;ristiques du v&eacute;hicule correspondant
+s&rsquo;il
+existe dans le parc ou la liste vide sinon.<br />
+
+
+
+
+
+
+<br />
+
+
+
+
+
+
+2) D&eacute;finir une fonction <span style="font-weight: bold;">numeros</span>
+qui &eacute;tant donn&eacute; une marque, un type et le parc de
+v&eacute;hicules, retourne le(s) num&eacute;ro(s)
+min&eacute;ralogique(s) du(des)&nbsp; v&eacute;hicule(s)
+correspondant(s). Si le type est &eacute;gal au symbole * alors la
+fonction donne tous les num&eacute;ros des v&eacute;hicules de
+la
+marque indiqu&eacute;e.<br />
+
+
+
+
+
+
+</p>
+
+
+
+
+
+
+<p style="text-align: justify;">3) D&eacute;finir la fonction <span style="font-weight: bold;">reforme</span>
+qui &eacute;tant donn&eacute; un v&eacute;hicule, retourne
+une paire
+point&eacute;e dont le premier &eacute;l&eacute;ment est le
+num&eacute;ro min&eacute;ralogique du v&eacute;hicule et
+dont le second
+&eacute;l&eacute;ment est la valeur <span style="font-style: italic;">#t</span> si le
+v&eacute;hicule doit &ecirc;tre r&eacute;form&eacute;
+ou&nbsp; la valeur <span style="font-style: italic;">#f</span>
+sinon. Un v&eacute;hicule doit &ecirc;tre
+r&eacute;form&eacute;
+s&rsquo;il a au moins 4 ans de service ou s&rsquo;il a
+effectu&eacute;
+au moins 100000 km.</p>
+
+
+
+
+
+
+<p style="text-align: justify;">4) On souhaite
+conna&icirc;tre le
+statut (&agrave; r&eacute;former ou non) de chacun des
+v&eacute;hicules
+du parc.&nbsp; Pour cela, d&eacute;finir la fonction <span style="font-weight: bold;">statut-parc</span> qui
+s&rsquo;applique &agrave; un parc de v&eacute;hicules. <br />
+
+
+
+
+
+
+</p>
+
+
+
+
+
+
+<p class="code-terminal">Exemple de r&eacute;sultat de
+la fonction statut-parc pour le parc de v&eacute;hicules
+donn&eacute; en exemple :&nbsp;<br />
+
+
+
+
+
+
+(("CP-778-KL" . #f) ("AA-001-AA" . #t) ("DB-022-XE" . #f) ("1750 XV 64"
+. #t))
+</p>
+
+
+
+
+
+
+<p></p>
+
+
+
+
+
+
+<p> <strong>En fin de session, n'oubliez pas de vous
+d&eacute;connecter! </strong> </p>
+
+
+
+
+
+
+<div class="bas"> <a href="mailto:eric.gouarderes@univ-pau.fr">Eric
+Gouard&egrave;res</a>&nbsp;<a href="mailto:sophie.gouarderes@univ-pau.fr">Samson Pierre</a> </div>
+
+
+
+
+
+
+<br />
+
+
+
+
+
+
+</body>
+</html>

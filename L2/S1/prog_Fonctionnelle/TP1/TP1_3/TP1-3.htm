@@ -1,0 +1,628 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr-FR" lang="fr">
+<head>
+
+
+
+  
+
+
+  
+  
+  
+  
+  
+  <title>TP1 - Programmation fonctionnelle</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<!-- CSS Pour l'affichage à l'éctran -->
+
+
+
+
+  
+  
+  
+  <link href="../Assets/Styles/style1.css" rel="stylesheet" type="text/css" media="screen" />
+
+
+
+
+  
+  
+  
+  <link href="../Assets/Styles/equation.css" rel="stylesheet" type="text/css" media="screen" />
+
+
+
+
+  
+  
+  
+  <link href="../Assets/Styles/code_css.css" rel="stylesheet" type="text/css" media="screen" />
+<!-- CSS Pour l'impression -->
+
+
+
+
+  
+  
+  
+  <link href="../Assets/Styles/print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+
+
+<body>
+
+
+
+
+<br />
+
+
+
+
+<div class="haut">Programmation fonctionnelle</div>
+
+
+
+
+<br />
+
+
+
+
+&nbsp;
+<h1>TP1 : Fonctions conditionnelles</h1>
+
+
+
+
+<h2>Exercice 1</h2>
+
+
+
+
+<p>D&eacute;finir une nouvelle version de&nbsp; la
+fonction <em>emballer-tout</em>
+du TP2. La quantit&eacute; de disquettes &agrave;
+emballer est demand&eacute;e &agrave; l&rsquo;utilisateur
+et lue au
+clavier. La fonction devra v&eacute;rifier que la
+quantit&eacute; de disquettes est bien un multiple de 10. Si ce
+n&rsquo;est pas le cas, elle affichera un message
+d&rsquo;erreur.</p>
+
+
+
+
+<h2>Exercice 2</h2>
+
+
+
+
+<p>D&eacute;finir la fonction <strong>change</strong>
+qui, &eacute;tant donn&eacute;s une somme d'argent en Euros et
+un symbole (repr&eacute;sentant une monnaie), convertit la somme
+dans la monnaie correspondante.<br />
+
+
+
+
+Liste des monnaies, symboles et taux de change (au 11/02/17) :</p>
+
+
+
+
+<table>
+
+
+
+
+  <tbody>
+
+
+
+
+    <tr>
+
+
+
+
+      <td>Monnaie</td>
+
+
+
+
+      <td>Pays</td>
+
+
+
+
+      <td>Symbole</td>
+
+
+
+
+      <td>Taux</td>
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td>Dollar</td>
+
+
+
+
+      <td>Etats-Unis</td>
+
+
+
+
+      <td>USD</td>
+
+
+
+
+      <td>1,064</td>
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td>Livre</td>
+
+
+
+
+      <td>Royaume-Uni</td>
+
+
+
+
+      <td>GBP</td>
+
+
+
+
+      <td>0,852</td>
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td>Yen</td>
+
+
+
+
+      <td>Japon</td>
+
+
+
+
+      <td>JPY</td>
+
+
+
+
+      <td>120,494</td>
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td>Rouble</td>
+
+
+
+
+      <td>Russie</td>
+
+
+
+
+      <td>RUB</td>
+
+
+
+
+      <td>61,974</td>
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td>Yuan</td>
+
+
+
+
+      <td>Chine</td>
+
+
+
+
+      <td>CNY</td>
+
+
+
+
+      <td>7,319</td>
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td>Roupie</td>
+
+
+
+
+      <td>Inde</td>
+
+
+
+
+      <td>INR</td>
+
+
+
+
+      <td>71,098</td>
+
+
+
+
+    </tr>
+
+
+
+
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+<h2>Exercice 3</h2>
+
+
+
+
+<p>D&eacute;finir la fonction <strong>impots</strong>
+calculant l'imp&ocirc;t brut sur le revenu, connaissant le revenu
+net imposable <span style="font-style: italic;">R</span>
+et le nombre de parts <span style="font-style: italic;">N</span>,
+en utilisant la
+m&eacute;thode
+suivante (bar&egrave;me 2017 de la d&eacute;claration des
+revenus
+2016) :</p>
+
+
+
+
+<p>Soit <span class="code">QF = R / N</span>
+le quotient familial. Il y a cinq fractions
+d'imposition pour une part de quotient familial.&nbsp;</p>
+
+
+
+
+<p class="code"><br />
+
+
+
+QF &lt;= 9710 &euro; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; : le taux d'imposition est de 0 %<br />
+
+
+
+
+9710 &euro; &lt; QF &lt;= 26818 &euro; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;: le taux d'imposition est
+de 14 %<br />
+
+
+
+
+26818 &euro; &lt; QF &lt;= 71898 &euro; &nbsp;&nbsp;&nbsp; &nbsp;: le taux
+d'imposition est
+de 30 %<br />
+
+
+
+
+71898 &euro; &lt; QF &lt;= 152260 &euro; &nbsp;&nbsp;&nbsp; : le taux
+d'imposition est de 41 %<br />
+
+
+
+152260 &euro; &lt; QF &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;: le taux d'imposition est de 45 %</p>
+
+
+
+
+<p>Pour calculer l'imp&ocirc;t, il faut
+calculer les montants par fraction, les additionner,&nbsp; puis multiplier le
+r&eacute;sultat par N.</p>
+
+
+
+
+<p class="code">Exemple : R = 54000, N = 2, QF = 27000</p>
+
+
+
+<p class="code">
+Fraction jusqu'&agrave; 9710
+&euro; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; : 0 &euro;<br />
+
+
+
+
+Fraction de 9710 &euro; &agrave;
+26818 &euro; &nbsp;&nbsp;&nbsp;: (26818 - 9710) * 0,14 = 2395,12 &euro;<br />
+
+
+
+
+Fraction de 26818 &agrave; 27000
+&euro; &nbsp;&nbsp;&nbsp; : (27000 - 26818) * 0,30 = 54,6 &euro;</p>
+
+
+
+
+<p class="code">Montant de l'imp&ocirc;t brut : (0 +
+2395,12 + 54,6) * 2 = 4899,44 &euro; </p>
+
+
+
+
+<h2>Exercice 4</h2>
+
+
+
+
+<p>Pour calculer la date&nbsp;de P&acirc;ques d&rsquo;une
+ann&eacute;e donn&eacute;e, on calcule le nombre de jours entre le 1er mars et P&acirc;ques, et on en d&eacute;duit le mois
+(mars ou avril) et le jour de P&acirc;ques.</p>
+
+
+
+
+<p> 1) D&eacute;finir la fonction <strong>nbj-mars</strong>
+calculant le nombre de jours &agrave; compter du 1er mars en
+fonction d&rsquo;une ann&eacute;e donn&eacute;e.</p>
+
+
+
+
+<p class="code-terminal"> <br />
+
+
+
+
+&gt; (nbj-mars 1998)<br />
+
+
+
+
+43 </p>
+
+
+
+
+<p>Le nombre de jours &agrave; compter du 1er mars est obtenu
+par la suite de calculs : </p>
+
+
+
+
+<ul class="code">
+
+
+
+
+  <li>a = Ann&eacute;e modulo 19</li>
+
+
+
+
+  <li>b = Ann&eacute;e modulo 4</li>
+
+
+
+
+  <li>c = Ann&eacute;e modulo 7</li>
+
+
+
+
+  <li>d = ( 19 a + 24 ) modulo 30</li>
+
+
+
+
+  <li>e = ( 2 b + 4 c + 6 d + 5 ) modulo 7</li>
+
+
+
+
+</ul>
+
+
+
+
+<p>Le nombre de jours &agrave; compter du 1er mars
+s&rsquo;obtient alors par la formule : <span class="code">22
++ d + e</span></p>
+
+
+
+
+<p> 2) D&eacute;finir la fonction <strong>mois</strong>
+donnant le mois de P&acirc;ques (mars ou avril) en fonction du
+nombre de jours &agrave; compter du 1er mars. </p>
+
+
+
+
+<p class="code-terminal"><br />
+
+
+
+
+&gt; (mois 43)<br />
+
+
+
+
+"avril"</p>
+
+
+
+
+<p> 3) D&eacute;finir la fonction <strong>jour</strong>
+donnant le jour (du mois) de P&acirc;ques en fonction du nombre de
+jours &agrave; compter du 1er mars.</p>
+
+
+
+
+<p class="code-terminal"><br />
+
+
+
+
+&gt; (jour 43)<br />
+
+
+
+
+12</p>
+
+
+
+
+<p>4) D&eacute;finir la fonction <strong>affiche-paques</strong>
+qui utilise les fonctions pr&eacute;c&eacute;dentes pour
+afficher la date compl&egrave;te du jour de P&acirc;ques en
+fonction d&rsquo;une ann&eacute;e donn&eacute;e.</p>
+
+
+
+
+<p class="code-terminal"><br />
+
+
+
+
+&gt; (affiche-paques 1998)<br />
+
+
+
+
+12 avril 1998</p>
+
+
+
+
+<h2>Exercice suppl&eacute;mentaire</h2>
+
+
+
+
+<p>Reprendre l'exercice 1&nbsp;et modifier la fonction <em>emballer-tout</em>
+de mani&egrave;re &agrave; g&eacute;rer les pluriels (<em>1
+boite de 10 remplie, 2 boites de 10 remplies</em>). De plus si un
+type de boite n'est pas utilis&eacute;, il ne doit pas
+appara&icirc;tre (pas d'affichage du type <em>0 boite de 10
+remplie.</em>)</p>
+
+
+
+
+<br />
+
+
+
+
+&nbsp;
+<p> <strong>En fin de session, n'oubliez pas de vous
+d&eacute;connecter! </strong> </p>
+
+
+
+
+<div class="bas"> <a href="mailto:eric.gouarderes@univ-pau.fr">Eric
+Gouard&egrave;res</a>&nbsp;<a href="mailto:samson.pierre@univ-pau.fr">Samson Pierre</a> </div>
+
+
+
+
+<br />
+
+
+
+
+</body>
+</html>
