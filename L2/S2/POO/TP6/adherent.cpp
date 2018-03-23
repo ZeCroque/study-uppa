@@ -10,6 +10,7 @@ Adherent::Adherent()
   this->_age=0;
   this->_adresse=Adresse();
   this->_nbExemplairesEmprunte=0;
+  this->_exemplaireTab=new Exemplaire*[3];
   for(int i=0; i<3; i++)
   {
     this->_exemplaireTab[i]=NULL;

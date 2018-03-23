@@ -3,7 +3,8 @@
 
 using namespace std;
 
-Adherents::Adherents() {}
+Adherents::Adherents()
+{}
 
 Adherents::Adherents(Adherents& a)
 {
@@ -19,13 +20,31 @@ Adherents& Adherents::operator = (const Adherents& a)
   return (*this);
 }
 
-void Adherents::addAdherent(Adherent* a)
+void Adherents::addAdherent(Adherent& a)
 {
-  this->_adherentTab.push_back();
-  //TODO
+  this->_adherentTab.push_back(a);
 }
 
-void Adherents::removeAdherent(Adherent* a)
+void Adherents::removeAdherent(int index)
 {
+  vector<Adherent>::iterator it;
+  int i=0;
+
+  for(it = this->_adherentTab.begin(), i=0; it!=this->_adherentTab.end() && i<=index; ++it, i++)
+  {
+    this->_adherentTab.erase(it);
+  }
+}
+
+void Adherents::afficheAdherent(int index)
+{
+  if (index<(int)this->_adherentTab.size())
+  {
+    cout<<this->_adherentTab[index]<<endl;
+  }
+  else
+  {
+    cout<<"Hors tableau"<<endl;
+  }
 
 }

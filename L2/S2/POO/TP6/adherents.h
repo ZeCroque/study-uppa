@@ -14,8 +14,9 @@ class Adherents
     Adherents(Adherents& a);
     ~Adherents();
     Adherents& operator = (const Adherents& a);
-    void addAdherent(Adherent* a);
-    void removeAdherent(Adherent* a);
+    void addAdherent(Adherent& a);
+    void removeAdherent(int index);
+    void afficheAdherent(int index);
 };
 
 #endif

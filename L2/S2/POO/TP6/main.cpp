@@ -1,7 +1,6 @@
 #include <iostream>
 #include "ensemble.h"
-#include "adherent.h"
-#include "exemplaire.h"
+#include "adherents.h"
 
 using namespace std;
 
@@ -34,6 +33,12 @@ int main()
   {
     moi.afficheExemplaire(i);
   }
+
+  Adherents add;
+  add.addAdherent(moi);
+  add.removeAdherent(1);
+  add.afficheAdherent(0);
+
 
 
 
