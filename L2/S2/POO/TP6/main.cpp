@@ -28,14 +28,13 @@ int main()
   Oeuvre o1("Titanic", "Il meurt à la fin");
   cout<<o1;
   OeuvreInterprete o2("Kermesse de Trifouillis-Les-Oies", "Un spectacle assez navrant", "CM2 B option ZEP");
-  //cout<<o2;
-  cout<<o2.getTitre();
-  /*OeuvreNonInterprete o3("Skyrim", "Le jeu qui te rend asocial");
+  cout<<o2;
+  OeuvreNonInterprete o3("Skyrim", "Le jeu qui te rend asocial");
   cout<<o3;
   CD c("Minutes to Midnight", "Album d'anthologie", "Linkin Park", 45);
   cout<<c;
   Livre l("Harry Potter", "Un chateux cheaté", 1458);
-  cout<<l;*/
+  cout<<l;
 
   return 0;
 }

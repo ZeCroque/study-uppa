@@ -46,15 +46,13 @@ ostream& operator << (ostream& os, const Oeuvre& o)
   return os<<o.getTitre()<<"\n"<<o.getResume()<<endl;
 }
 
-OeuvreInterprete::OeuvreInterprete()
+OeuvreInterprete::OeuvreInterprete() : Oeuvre()
 {
-  Oeuvre();
   this->_interprete="Aucun";
 }
 
 OeuvreInterprete::OeuvreInterprete(string titre, string resume, string interprete) : Oeuvre(titre, resume)
 {
-  Oeuvre(titre, resume);
   this->_interprete=interprete;
 }
 
@@ -82,12 +80,11 @@ string OeuvreInterprete::getInterprete() const
 
 ostream& operator << (ostream& os, const OeuvreInterprete& o)
 {
-  return os<<(Oeuvre) o<<"\n"<<o.getInterprete()<<endl;
+  return os<<(Oeuvre) o<<o.getInterprete()<<endl;
 }
 
-CD::CD()
+CD::CD() : OeuvreInterprete()
 {
-  OeuvreInterprete();
   this->_duree=0;
 }
 
@@ -120,12 +117,12 @@ int CD::getDuree() const
 
 ostream& operator << (ostream& os, const CD& c)
 {
-  return os<<(OeuvreInterprete) c<<"\n"<<c.getDuree()<<endl;
+  return os<<(Oeuvre) c<<c.getDuree()<<endl;
 }
 
-OeuvreNonInterprete::OeuvreNonInterprete()
+OeuvreNonInterprete::OeuvreNonInterprete() : Oeuvre()
 {
-  Oeuvre();
+
 }
 
 OeuvreNonInterprete::OeuvreNonInterprete(string titre, string resume) :  Oeuvre(titre, resume)
@@ -154,15 +151,13 @@ ostream& operator << (ostream& os, const OeuvreNonInterprete& o)
   return os<<(Oeuvre) o;
 }
 
-Livre::Livre()
+Livre::Livre() : OeuvreNonInterprete()
 {
-  OeuvreNonInterprete();
   this->_isbn=0;
 }
 
-Livre::Livre(std::string titre, std::string resume, int isbn)
+Livre::Livre(std::string titre, std::string resume, int isbn) :   OeuvreNonInterprete(titre, resume)
 {
-  OeuvreNonInterprete(titre, resume);
   this->_isbn=isbn;
 }
 
@@ -190,5 +185,5 @@ int Livre::getIsbn() const
 
 ostream& operator << (ostream& os, const Livre& l)
 {
-    return os<<(OeuvreNonInterprete) l<<"\n"<<l.getIsbn()<<endl;
+    return os<<(Oeuvre) l<<l.getIsbn()<<endl;
 }
