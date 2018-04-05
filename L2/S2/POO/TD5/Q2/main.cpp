@@ -9,6 +9,5 @@ int main()
   T1* pt=new T2();
   delete pt;
 
-
   return 0;
 }
