@@ -16,7 +16,8 @@ template<class Type> class Pile
     Pile& operator = (const Pile& p);
     void operator << (const Type& t);
     void operator >> (Type& t);
-     //template <class Type> friend std::ostream& operator << (std::ostream& os, const Pile<Type>& p);
+    Type top();
+    template <class T> friend std::ostream& operator << (std::ostream& os, const Pile<T>& p);
 
 };
 
@@ -36,6 +37,11 @@ template <class Type> Pile<Type>::~Pile()
 
 }
 
+template<class Type> Type Pile<Type>::top()
+{
+  return this->elem[this->elem.size()-1];
+}
+
 template <class Type> Pile<Type>& Pile<Type>::operator = (const Pile& p)
 {
   this->elem=p.elem;
@@ -51,13 +57,16 @@ template <class Type> void Pile<Type>::operator >> (Type& t)
 {
   t=this->elem[this->elem.size()-1];
   this->elem.pop_back();
-  return *this;
 }
 
 
 template <class Type> std::ostream& operator << (std::ostream& os, const Pile<Type>& p)
 {
-  return os<<p.elem[p.elem.size()-1];
+  for(int i = 0; i<p.elem.size(); i++)
+  {
+    os<<p.elem[i]<<std::endl;
+  }
+  return os;
 }
 
 
