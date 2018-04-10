@@ -16,8 +16,8 @@ class GestionFichier
     GestionFichier(GestionFichier& g);
     ~GestionFichier();
     GestionFichier& operator = (const GestionFichier& g);
-    void lireFichier(std::string** tab, int& nbElt);
-    void enregistrerFichier(const std::string* tab, const int& nbElt);
+    void lireFichier(std::string** tab, int nbElt);
+    void enregistrerFichier(const std::string* tab, const int nbElt);
 };
 
 #endif

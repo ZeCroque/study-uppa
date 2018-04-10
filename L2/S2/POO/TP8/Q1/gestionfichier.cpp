@@ -28,7 +28,7 @@ GestionFichier& GestionFichier::operator = (const GestionFichier& g)
   return *this;
 }
 
-void GestionFichier::lireFichier(std::string** tab, int& nbElt)
+void GestionFichier::lireFichier(std::string** tab, int nbElt)
 {
   ifstream fichier(this->_nom.c_str());
   char c;
@@ -44,7 +44,7 @@ void GestionFichier::lireFichier(std::string** tab, int& nbElt)
   fichier.close();
 }
 
-void GestionFichier::enregistrerFichier(const std::string* tab, const int& nbElt)
+void GestionFichier::enregistrerFichier(const std::string* tab, const int nbElt)
 {
   ofstream fichier(this->_nom.c_str());
   for (int i=0; i<nbElt; i++)
