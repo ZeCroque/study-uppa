@@ -73,6 +73,7 @@ int main()
     afficherTable(table);
     afficherJoueurs(joueurs);
 
+    //Choix de rejouer
     do
     {
       cout<<"Jouer un autre tour ?"<<endl;
