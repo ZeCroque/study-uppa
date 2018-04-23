@@ -1,7 +1,7 @@
 #ifndef ensemble__h
 #define ensemble__h
 
-
+#include <iostream>
 #include <vector>
 
 template<class Type> class Ensemble
