@@ -43,25 +43,25 @@ void Deck::shuffle()
   Carte cTmp;
   int iRandom;
 
-  for(unsigned int i=0; i<this->_deck.size(); i++)
+  for(int i=0; i<this->_deck.size(); i++)
   {
     iRandom=rand() % (this->_deck.size()-1);
     cTmp=this->_deck[i];
     this->_deck[i]=this->_deck[iRandom];
     this->_deck[iRandom]=cTmp;
+
   }
 }
 
 Carte Deck::draw()
 {
-  Carte cTmp=this->_deck[this->_deck.size()-1];
-  this->_deck.pop_back();
+  Carte cTmp=this->_deck.pop_back();
   return cTmp;
 }
 
-std::ostream& operator << (std::ostream& os, const Deck& c)
+ostream& operator << (ostream& os, const Deck& c)
 {
-  for(unsigned int i=0; i<c._deck.size(); i++)
+  for(int i=0; i<c._deck.size(); i++)
   {
     os<<c._deck[i];
   }

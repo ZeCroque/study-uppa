@@ -2,12 +2,12 @@
 #define deck_h
 
 #include "carte.h"
-#include <vector>
+#include "vecteur.h"
 
 class Deck
 {
   private:
-     std::vector<Carte> _deck;
+     Vecteur<Carte> _deck;
   public:
     Deck();
     Deck(const Deck& j);

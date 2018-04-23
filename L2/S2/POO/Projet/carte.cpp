@@ -35,25 +35,28 @@ ostream& operator << (ostream& os, const Carte& c)
 {
   switch(c._valeur)
   {
+    case 0 :
+      break;
     case 1 :
-      os<<"As";
+      os<<"As de ";
       break;
     case 11 :
-      os<<"Valet";
+      os<<"Valet de ";
       break;
     case 12 :
-      os<<"Dame";
+      os<<"Dame de ";
       break;
     case 13 :
-      os<<"Roi";
+      os<<"Roi de ";
       break;
     default :
-      os<<c._valeur;
+      os<<c._valeur<<" de ";
       break;
   }
-  os<<" de ";
   switch (c._famille)
   {
+    case 0 :
+      break;
     case 1 :
       os<<"Trèfle";
       break;
@@ -70,5 +73,5 @@ ostream& operator << (ostream& os, const Carte& c)
       os<<"Erreur";
       break;
   }
-  return os<<endl;
+  return os;
 }
