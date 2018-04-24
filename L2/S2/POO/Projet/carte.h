@@ -13,6 +13,8 @@ class Carte
     Carte(const Carte& c);
     Carte(int valeur, int famille);
     ~Carte();
+    int getValeur() const;
+    int getFamille() const;
     Carte& operator = (const Carte& c);
     friend std::ostream& operator << (std::ostream& os, const Carte& c);
 };

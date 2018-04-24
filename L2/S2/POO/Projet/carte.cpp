@@ -24,6 +24,16 @@ Carte::~Carte()
 
 }
 
+int Carte::getValeur() const
+{
+  return this->_valeur;
+}
+
+int Carte::getFamille() const
+{
+  return this->_famille;
+}
+
 Carte& Carte::operator = (const Carte& c)
 {
   this->_famille=c._famille;

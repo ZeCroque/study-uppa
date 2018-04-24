@@ -44,7 +44,7 @@ int main()
   //Début du jeu
   while(newTurn)
   {
-    Deck deck;
+    /*Deck deck;
     drawStep(joueurs, deck);
 
     cout<<"=========Nouveau tour========="<<endl;
@@ -71,7 +71,17 @@ int main()
     table.resize(5);
     table[4]=deck.draw();
     verifierCombinaison(joueurs, table);
+    //afficherTable(table);*/
+
+    //DEBUG//
+    table.push_back(Carte(11,1));
+    table.push_back(Carte(13,1));
+    table.push_back(Carte(12,1));
+    table.push_back(Carte(1,1));
+    table.push_back(Carte(10,1));
+    verifierCombinaison(joueurs, table);
     //afficherTable(table);
+
 
     //Choix de rejouer
     do
@@ -86,19 +96,21 @@ int main()
 
 void verifierCombinaison(const Vecteur<Joueur>& joueurs, const Vecteur<Carte>& table)
 {
-  for (int i=0; i<joueurs.size(); i++)
+  //Compteurs
+  int i, j, k, l, m;
+
+  for (i=0; i<joueurs.size(); i++)
   {
     //Initialisation d'un vecteur à la taille de la main du joueur+celle du board
     Vecteur<Carte> cartes;
     cartes.resize(joueurs[i].getMain().size()+table.size());
 
     //Remplissage du tableau nouvellement créé
-    int j;
     for (j=0; j<joueurs[i].getMain().size(); j++)
     {
       cartes[j]=joueurs[i].getMain()[j];
     }
-    for(int k=0; k<table.size(); k++, j++)
+    for(k=0; k<table.size(); k++, j++)
     {
       cartes[j]=table[k];
     }
@@ -113,8 +125,85 @@ void verifierCombinaison(const Vecteur<Joueur>& joueurs, const Vecteur<Carte>& t
       cout<<cartes[j]<<endl;
     }
 
-    /*TODO
-    Affichage des meilleures cartes*/
+
+    //Affichage des meilleures cartes
+
+    //Test quinte
+    bool quinteTrouvee=false;
+    k=0;
+    do
+    {
+      j=0;
+      m=0;
+      Carte tmp=cartes[k];
+      for(l=0; l<cartes.size(); l++)
+      {
+        if((tmp.getValeur()==13 && cartes[l].getValeur()==1) || tmp.getValeur()+1==cartes[l].getValeur())
+        {
+          if(tmp.getFamille()==cartes[l].getFamille())
+          {
+            m++;
+          }
+          j++;
+          tmp=cartes[l];
+        }
+      }
+      for(l=cartes.size()-1; l>0; l--)
+      {
+        if((tmp.getValeur()==13 && cartes[l].getValeur()==1) || tmp.getValeur()+1==cartes[l].getValeur())
+        {
+          if(tmp.getFamille()==cartes[l].getFamille())
+          {
+            m++;
+          }
+          j++;
+          tmp=cartes[l];
+        }
+      }
+      Carte hauteur=tmp;
+      if(j<4)
+      {
+        Carte tmp=cartes[k];
+        for(l=0; l<cartes.size(); l++)
+        {
+          if(tmp.getValeur()!=1 && tmp.getValeur()-1==cartes[l].getValeur())
+          {
+            if(tmp.getFamille()==cartes[l].getFamille())
+            {
+              m++;
+            }
+            j++;
+            tmp=cartes[l];
+          }
+        }
+        for(l=cartes.size()-1; l>0; l--)
+        {
+          if(tmp.getValeur()!=1 && tmp.getValeur()-1==cartes[l].getValeur())
+          {
+            if(tmp.getFamille()==cartes[l].getFamille())
+            {
+              m++;
+            }
+            j++;
+            tmp=cartes[l];
+          }
+        }
+      }
+      if(j>3)
+      {
+        if(m<4)
+        {
+          cout<<"Quinte hauteur "<<hauteur<<endl;
+        }
+        else
+        {
+          cout<<"Quinte flush hauteur "<<hauteur<<endl;
+        }
+        quinteTrouvee=true;
+      }
+
+      k++;
+    } while(quinteTrouvee==false && k!=cartes.size());
 
   }
 }
