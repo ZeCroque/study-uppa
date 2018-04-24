@@ -18,6 +18,7 @@ class Joueur
     ~Joueur();
     Joueur& operator = (const Joueur& j);
     void draw(Deck& deck);
+    Vecteur<Carte> getMain() const;
     friend std::ostream& operator << (std::ostream& os, const Joueur& j);
 };
 

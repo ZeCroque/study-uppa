@@ -37,7 +37,7 @@ template <class Type> Vecteur<Type>::Vecteur(const Vecteur<Type>& v)
 
 template <class Type> Vecteur<Type>::~Vecteur()
 {
-  //delete[] this->_tab;
+
 }
 
 template <class Type> Vecteur<Type>& Vecteur<Type>::operator = (const Vecteur<Type>& v)
@@ -73,7 +73,7 @@ template <class Type> void Vecteur<Type>::resize(int n)
 {
   if(this->_tab!=NULL)
   {
-    Type* tmp=this->_tab;;
+    Type* tmp=this->_tab;
     this->_tab=new Type[n];
     if(this->size()<n)
     {
@@ -90,7 +90,7 @@ template <class Type> void Vecteur<Type>::resize(int n)
       }
     }
     this->_size=n;
-    delete[] this->_tab;
+    delete[] tmp;
   }
   else
   {

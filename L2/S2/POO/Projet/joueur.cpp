@@ -39,6 +39,11 @@ void Joueur::draw(Deck& deck)
   }
 }
 
+Vecteur<Carte> Joueur::getMain() const
+{
+  return this->_main;
+}
+
 ostream& operator << (ostream& os, const Joueur& j)
 {
   os<<j._nom<<"\nMain :\n";
