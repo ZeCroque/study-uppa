@@ -46,7 +46,7 @@ Vecteur<Carte> Joueur::getMain() const
 
 ostream& operator << (ostream& os, const Joueur& j)
 {
-  os<<j._nom<<"\nMain :\n";
+  os<<j._nom<<"\nMAIN :"<<endl;
   for(int i=0; i<j._main.size(); i++)
   {
     os<<j._main[i]<<endl;

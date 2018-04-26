@@ -46,6 +46,7 @@ ostream& operator << (ostream& os, const Carte& c)
   switch(c._valeur)
   {
     case 0 :
+      os<<"Joker de ";
       break;
     case 1 :
       os<<"As de ";
@@ -66,6 +67,7 @@ ostream& operator << (ostream& os, const Carte& c)
   switch (c._famille)
   {
     case 0 :
+      os<<"Debug";
       break;
     case 1 :
       os<<"Trèfle";
