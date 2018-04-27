@@ -67,12 +67,12 @@ int main()
     //afficherTable(table);*/
 
     //DEBUG//
-    table.push_back(Carte(11,1));
-    table.push_back(Carte(12,1));
-    table.push_back(Carte(13,1));
-    table.push_back(Carte(1,2));
-    table.push_back(Carte(10,1));
-    table.push_back(Carte(9,1));
+    table.push_back(Carte(2,1));
+    table.push_back(Carte(2,2));
+    table.push_back(Carte(2,1));
+    table.push_back(Carte(1,1));
+    table.push_back(Carte(1,1));
+    table.push_back(Carte(1,1));
 
     afficherTable(table);
     afficherJoueurs(joueurs, table);

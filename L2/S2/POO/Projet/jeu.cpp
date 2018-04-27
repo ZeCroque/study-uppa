@@ -17,6 +17,28 @@ void afficherTable(const Vecteur<Carte>& table)
   }
 }
 
+void afficherCarte(Carte& carte)
+{
+  switch (carte.getValeur())
+  {
+    case 1:
+      cout<<"As"<<endl;
+      break;
+    case 11:
+      cout<<"Valet"<<endl;
+      break;
+    case 12:
+      cout<<"Dame"<<endl;
+      break;
+    case 13:
+      cout<<"Roi"<<endl;
+      break;
+    default:
+      cout<<carte.getValeur()<<endl;
+      break;
+  }
+}
+
 void afficherJoueurs(const Vecteur<Joueur>& joueurs, const Vecteur<Carte>& table)
 {
   //Compteurs
@@ -65,6 +87,15 @@ void verifierCombinaison(const Vecteur<Carte>& cartes)
     {
       combinaisonTrouvee=verifierQuinte(cartes);
     }
+    if(!combinaisonTrouvee)
+    {
+      combinaisonTrouvee=verifierBrelan(cartes);
+    }
+    if(!combinaisonTrouvee)
+    {
+      combinaisonTrouvee=verifierPaire(cartes);
+    }
+
     //TODO
     //Autre vérifs
 }
@@ -108,15 +139,11 @@ bool verifierQuinteFlush(const Vecteur<Carte>& cartes)
       }
     } while(supTrouve);
 
-    //Si l'on vient de déterminer que 4 cartes ou plus suivent la première
-    if(supCount>3)
+    //Si l'on vient de déterminer que 4 cartes ou plus suivent la première et que le tampon est plus grand que la hauteur max précédemment enregistrée (0 la première fois)
+    if(supCount>3 && (tmp.getValeur()>hauteurmax.getValeur() || tmp.getValeur()==1))
     {
-      //Si le tampon est plus grand que la hauteur max précédemment enregistrée (0 la première fois)
-      if(tmp.getValeur()>hauteurmax.getValeur() || tmp.getValeur()==1)
-      {
-        //La hauteur max devient le tampon
-        hauteurmax=tmp;
-      }
+      //La hauteur max devient le tampon
+      hauteurmax=tmp;
     }
   }
 
@@ -124,7 +151,8 @@ bool verifierQuinteFlush(const Vecteur<Carte>& cartes)
   if(hauteurmax.getValeur()!=0)
   {
     //On affiche et retourne un résultat positif
-    cout<<"Quinte flush hauteur "<<hauteurmax<<endl;
+    cout<<"Quinte flush hauteur ";
+    afficherCarte(hauteurmax);
     return true;
   }
   //Sinon on retourne un résultat négatif
@@ -169,15 +197,12 @@ bool verifierQuinte(const Vecteur<Carte>& cartes)
       }
     } while(supTrouve);
 
-    //Si l'on vient de déterminer que 4 cartes ou plus suivent la première
-    if(supCount>3)
+    //Si l'on vient de déterminer que 4 cartes ou plus suivent la première et que le tampon est plus grand que la hauteur max précédemment enregistrée (0 la première fois)
+
+    if(supCount>3 && (tmp.getValeur()>hauteurmax.getValeur() || tmp.getValeur()==1))
     {
-      //Si le tampon est plus grand que la hauteur max précédemment enregistrée (0 la première fois)
-      if(tmp.getValeur()>hauteurmax.getValeur() || tmp.getValeur()==1)
-      {
         //La hauteur max devient le tampon
         hauteurmax=tmp;
-      }
     }
   }
 
@@ -185,9 +210,95 @@ bool verifierQuinte(const Vecteur<Carte>& cartes)
   if(hauteurmax.getValeur()!=0)
   {
     //On affiche et retourne un résultat positif
-    cout<<"Quinte hauteur "<<hauteurmax<<endl;
+    cout<<"Quinte hauteur ";
+    afficherCarte(hauteurmax);
     return true;
   }
   //Sinon on retourne un résultat négatif
+  return false;
+}
+
+bool verifierCarre(const Vecteur<Carte>& cartes)
+{
+  return false;
+}
+
+bool verifierBrelan(const Vecteur<Carte>& cartes)
+{
+  int k;
+  Carte hauteur;
+
+  for(int i=0; i<cartes.size(); i++)
+  {
+    k=0;
+
+    for(int j=0; j<cartes.size(); j++)
+    {
+      if (cartes[i].getValeur()==cartes[j].getValeur() && i!=j)
+      {
+        k++;
+      }
+    }
+
+    if(k==2 && (cartes[i].getValeur()>hauteur.getValeur() || cartes[i].getValeur()==1))
+    {
+      hauteur=cartes[i];
+    }
+  }
+
+  if (hauteur.getValeur()!=0)
+  {
+    if(hauteur.getValeur()!=1)
+    {
+      cout<<"Brelan de ";
+    }
+    else
+    {
+      cout<<"Brelan d'";
+    }
+
+    afficherCarte(hauteur);
+    return true;
+  }
+  return false;
+}
+
+bool verifierPaire(const Vecteur<Carte>& cartes)
+{
+  int k;
+  Carte hauteur;
+
+  for(int i=0; i<cartes.size(); i++)
+  {
+    k=0;
+
+    for(int j=0; j<cartes.size(); j++)
+    {
+      if (cartes[i].getValeur()==cartes[j].getValeur() && i!=j)
+      {
+        k++;
+      }
+    }
+
+    if(k==1 && (cartes[i].getValeur()>hauteur.getValeur() || cartes[i].getValeur()==1))
+    {
+      hauteur=cartes[i];
+    }
+  }
+
+  if (hauteur.getValeur()!=0)
+  {
+    if(hauteur.getValeur()!=1)
+    {
+      cout<<"Paire de ";
+    }
+    else
+    {
+      cout<<"Paire d'";
+    }
+
+    afficherCarte(hauteur);
+    return true;
+  }
   return false;
 }
