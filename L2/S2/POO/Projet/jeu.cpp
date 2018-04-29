@@ -17,24 +17,24 @@ void afficherTable(const Vecteur<Carte>& table)
   }
 }
 
-void afficherCarte(Carte& carte)
+void afficherCarte(Carte carte)
 {
   switch (carte.getValeur())
   {
     case 1:
-      cout<<"As"<<endl;
+      cout<<"As";
       break;
     case 11:
-      cout<<"Valet"<<endl;
+      cout<<"Valet";
       break;
     case 12:
-      cout<<"Dame"<<endl;
+      cout<<"Dame";
       break;
     case 13:
-      cout<<"Roi"<<endl;
+      cout<<"Roi";
       break;
     default:
-      cout<<carte.getValeur()<<endl;
+      cout<<carte.getValeur();
       break;
   }
 }
@@ -65,16 +65,18 @@ void afficherJoueurs(const Vecteur<Joueur>& joueurs, const Vecteur<Carte>& table
     //Affichage de la main du joueur
     cout<<endl<<joueurs[i]<<endl;
 
-    //Affichage du total des cartes
+    //TODO "Utile de l'afficher?"
+    /*//Affichage du total des cartes
     cout<<"CARTES AVEC LE BOARD"<<endl;
     for(j=0; j<cartes.size(); j++)
     {
       cout<<cartes[j]<<endl;
-    }
+    }*/
 
     //Affichage des meilleures cartes
-    cout<<endl<<"MEILLEURE COMBINAISON"<<endl;
+    cout<<"MEILLEURE COMBINAISON"<<endl;
     verifierCombinaison(cartes);
+    cout<<endl;
   }
 }
 
@@ -85,6 +87,18 @@ void verifierCombinaison(const Vecteur<Carte>& cartes)
     combinaisonTrouvee=verifierQuinteFlush(cartes);
     if(!combinaisonTrouvee)
     {
+      combinaisonTrouvee=verifierCarre(cartes);
+    }
+    if(!combinaisonTrouvee)
+    {
+      combinaisonTrouvee=verifierFull(cartes);
+    }
+    if(!combinaisonTrouvee)
+    {
+      combinaisonTrouvee=verifierCouleur(cartes);
+    }
+    if(!combinaisonTrouvee)
+    {
       combinaisonTrouvee=verifierQuinte(cartes);
     }
     if(!combinaisonTrouvee)
@@ -93,11 +107,17 @@ void verifierCombinaison(const Vecteur<Carte>& cartes)
     }
     if(!combinaisonTrouvee)
     {
+      combinaisonTrouvee=verifierDoublePaire(cartes);
+    }
+    if(!combinaisonTrouvee)
+    {
       combinaisonTrouvee=verifierPaire(cartes);
     }
-
-    //TODO
-    //Autre vérifs
+    if(!combinaisonTrouvee)
+    {
+      cout<<"Carte haute : ";
+      afficherCarte(verifierCarteHaute(cartes));
+    }
 }
 
 bool verifierQuinteFlush(const Vecteur<Carte>& cartes)
@@ -220,6 +240,128 @@ bool verifierQuinte(const Vecteur<Carte>& cartes)
 
 bool verifierCarre(const Vecteur<Carte>& cartes)
 {
+  int k;
+  Carte hauteur;
+
+  for(int i=0; i<cartes.size(); i++)
+  {
+    k=0;
+
+    for(int j=0; j<cartes.size(); j++)
+    {
+      if (cartes[i].getValeur()==cartes[j].getValeur() && i!=j)
+      {
+        k++;
+      }
+    }
+
+    if(k==3 && (cartes[i].getValeur()>hauteur.getValeur() || cartes[i].getValeur()==1))
+    {
+      hauteur=cartes[i];
+    }
+  }
+
+  if (hauteur.getValeur()!=0)
+  {
+    if(hauteur.getValeur()!=1)
+    {
+      cout<<"Carré de ";
+    }
+    else
+    {
+      cout<<"Carré d'";
+    }
+
+    afficherCarte(hauteur);
+    return true;
+  }
+  return false;
+}
+
+bool verifierFull(const Vecteur<Carte>& cartes)
+{
+  int k;
+  Carte hauteur;
+  Carte hauteur2;
+
+  for(int i=0; i<cartes.size(); i++)
+  {
+    k=0;
+
+    for(int j=0; j<cartes.size(); j++)
+    {
+      if (cartes[i].getValeur()==cartes[j].getValeur() && i!=j)
+      {
+        k++;
+      }
+    }
+
+    if(k==2 && (cartes[i].getValeur()>hauteur.getValeur() || cartes[i].getValeur()==1))
+    {
+      hauteur=cartes[i];
+    }
+  }
+
+  if (hauteur.getValeur()!=0)
+  {
+    for(int i=0; i<cartes.size(); i++)
+    {
+      k=0;
+
+      for(int j=0; j<cartes.size(); j++)
+      {
+        if (cartes[i].getValeur()==cartes[j].getValeur() && i!=j)
+        {
+          k++;
+        }
+      }
+
+      if(k==1 && (cartes[i].getValeur()>hauteur2.getValeur() || cartes[i].getValeur()==1))
+      {
+        hauteur2=cartes[i];
+      }
+    }
+    if (hauteur2.getValeur()!=0)
+    {
+      cout<<"Full aux ";
+      afficherCarte(hauteur);
+      cout<<" par les ";
+      afficherCarte(hauteur2);
+      return true;
+    }
+  }
+  return false;
+}
+
+bool verifierCouleur(const Vecteur<Carte>& cartes)
+{
+  int k;
+  Carte hauteur;
+
+  for(int i=0; i<cartes.size(); i++)
+  {
+    k=0;
+
+    for(int j=0; j<cartes.size(); j++)
+    {
+      if (cartes[i].getFamille()==cartes[j].getFamille() && i!=j)
+      {
+        k++;
+      }
+    }
+
+    if(k==4 && (cartes[i].getValeur()>hauteur.getValeur() || cartes[i].getValeur()==1))
+    {
+      hauteur=cartes[i];
+    }
+  }
+
+  if (hauteur.getValeur()!=0)
+  {
+    cout<<"Couleur hauteur ";
+    afficherCarte(hauteur);
+    return true;
+  }
   return false;
 }
 
@@ -263,6 +405,61 @@ bool verifierBrelan(const Vecteur<Carte>& cartes)
   return false;
 }
 
+bool verifierDoublePaire(const Vecteur<Carte>& cartes)
+{
+  int i,k;
+  Carte hauteur;
+  Carte hauteur2;
+
+  for(i=0; i<cartes.size(); i++)
+  {
+    k=0;
+
+    for(int j=0; j<cartes.size(); j++)
+    {
+      if (cartes[i].getValeur()==cartes[j].getValeur() && i!=j)
+      {
+        k++;
+      }
+    }
+
+    if(k==1 && (cartes[i].getValeur()>hauteur.getValeur() || cartes[i].getValeur()==1))
+    {
+      hauteur=cartes[i];
+    }
+  }
+
+  if (hauteur.getValeur()!=0)
+  {
+    for(i=0; i<cartes.size(); i++)
+    {
+      k=0;
+
+      for(int j=0; j<cartes.size(); j++)
+      {
+        if (cartes[i].getValeur()==cartes[j].getValeur() && i!=j && cartes[i].getValeur()!=hauteur.getValeur())
+        {
+          k++;
+        }
+      }
+
+      if(k==1 && (cartes[i].getValeur()>hauteur2.getValeur() || cartes[i].getValeur()==1))
+      {
+        hauteur2=cartes[i];
+      }
+    }
+    if (hauteur2.getValeur()!=0)
+    {
+      cout<<"Double paire : ";
+      afficherCarte(hauteur);
+      cout<<" et ";
+      afficherCarte(hauteur2);
+      return true;
+    }
+  }
+  return false;
+}
+
 bool verifierPaire(const Vecteur<Carte>& cartes)
 {
   int k;
@@ -301,4 +498,17 @@ bool verifierPaire(const Vecteur<Carte>& cartes)
     return true;
   }
   return false;
+}
+
+Carte verifierCarteHaute(const Vecteur<Carte>& cartes)
+{
+  Carte hauteur;
+  for (int i=0; i<cartes.size(); i++)
+  {
+    if(cartes[i].getValeur()>hauteur.getValeur())
+    {
+      hauteur=cartes[i];
+    }
+  }
+  return hauteur;
 }

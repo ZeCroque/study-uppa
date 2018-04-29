@@ -37,13 +37,13 @@ int main()
   //Début du jeu
   while(newTurn)
   {
-    /*Deck deck;
+    Deck deck;
     drawStep(joueurs, deck);
 
     cout<<"=========Nouveau tour========="<<endl;
     cout<<"===========PREFLOP============"<<endl;
-    //afficherJoueurs(joueurs);
-    verifierCombinaison(joueurs, table);
+    table.resize(0);
+    afficherJoueurs(joueurs, table);
 
     cout<<"\n\n=============FLOP============="<<endl;
     table.resize(3);
@@ -51,31 +51,31 @@ int main()
     {
       table[i]=deck.draw();
     }
-    verifierCombinaison(joueurs, table);
-    //afficherTable(table);
+    afficherTable(table);
+    afficherJoueurs(joueurs, table);
+
 
     cout<<"\n\n=============TURN============="<<endl;
     table.resize(4);
     table[3]=deck.draw();
-    verifierCombinaison(joueurs, table);
-    //afficherTable(table);
+    afficherTable(table);
+    afficherJoueurs(joueurs, table);
 
     cout<<"\n\n=============RIVER============"<<endl;
     table.resize(5);
     table[4]=deck.draw();
-    verifierCombinaison(joueurs, table);
-    //afficherTable(table);*/
-
-    //DEBUG//
-    table.push_back(Carte(2,1));
-    table.push_back(Carte(2,2));
-    table.push_back(Carte(2,1));
-    table.push_back(Carte(1,1));
-    table.push_back(Carte(1,1));
-    table.push_back(Carte(1,1));
-
     afficherTable(table);
     afficherJoueurs(joueurs, table);
+
+  /*  //DEBUG//
+    table.push_back(Carte(2,1));
+    table.push_back(Carte(5,3));
+    table.push_back(Carte(7,1));
+    table.push_back(Carte(1,1));
+    table.push_back(Carte(13,2));
+
+    afficherTable(table);
+    afficherJoueurs(joueurs, table);*/
 
 
     //Choix de rejouer
