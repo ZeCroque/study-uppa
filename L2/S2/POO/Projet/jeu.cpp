@@ -238,7 +238,7 @@ bool verifierQuinte(const Vecteur<Carte>& cartes)
   return false;
 }
 
-bool verifierCarre(const Vecteur<Carte>& cartes)
+Carte verifierEgalite(const Vecteur<Carte>& cartes, int number, int valeurExclue=0)
 {
   int k;
   Carte hauteur;
@@ -255,11 +255,18 @@ bool verifierCarre(const Vecteur<Carte>& cartes)
       }
     }
 
-    if(k==3 && (cartes[i].getValeur()>hauteur.getValeur() || cartes[i].getValeur()==1))
+    if(k==number-1 && cartes[i].getValeur()!=valeurExclue && (cartes[i].getValeur()>hauteur.getValeur() || cartes[i].getValeur()==1))
     {
       hauteur=cartes[i];
     }
   }
+
+  return hauteur;
+}
+
+bool verifierCarre(const Vecteur<Carte>& cartes)
+{
+  Carte hauteur=verifierEgalite(cartes, 4);
 
   if (hauteur.getValeur()!=0)
   {
@@ -280,47 +287,12 @@ bool verifierCarre(const Vecteur<Carte>& cartes)
 
 bool verifierFull(const Vecteur<Carte>& cartes)
 {
-  int k;
-  Carte hauteur;
+  Carte hauteur=verifierEgalite(cartes, 3);
   Carte hauteur2;
-
-  for(int i=0; i<cartes.size(); i++)
-  {
-    k=0;
-
-    for(int j=0; j<cartes.size(); j++)
-    {
-      if (cartes[i].getValeur()==cartes[j].getValeur() && i!=j)
-      {
-        k++;
-      }
-    }
-
-    if(k==2 && (cartes[i].getValeur()>hauteur.getValeur() || cartes[i].getValeur()==1))
-    {
-      hauteur=cartes[i];
-    }
-  }
 
   if (hauteur.getValeur()!=0)
   {
-    for(int i=0; i<cartes.size(); i++)
-    {
-      k=0;
-
-      for(int j=0; j<cartes.size(); j++)
-      {
-        if (cartes[i].getValeur()==cartes[j].getValeur() && i!=j)
-        {
-          k++;
-        }
-      }
-
-      if(k==1 && (cartes[i].getValeur()>hauteur2.getValeur() || cartes[i].getValeur()==1))
-      {
-        hauteur2=cartes[i];
-      }
-    }
+    hauteur2=verifierEgalite(cartes, 2);
     if (hauteur2.getValeur()!=0)
     {
       cout<<"Full aux ";
@@ -367,26 +339,7 @@ bool verifierCouleur(const Vecteur<Carte>& cartes)
 
 bool verifierBrelan(const Vecteur<Carte>& cartes)
 {
-  int k;
-  Carte hauteur;
-
-  for(int i=0; i<cartes.size(); i++)
-  {
-    k=0;
-
-    for(int j=0; j<cartes.size(); j++)
-    {
-      if (cartes[i].getValeur()==cartes[j].getValeur() && i!=j)
-      {
-        k++;
-      }
-    }
-
-    if(k==2 && (cartes[i].getValeur()>hauteur.getValeur() || cartes[i].getValeur()==1))
-    {
-      hauteur=cartes[i];
-    }
-  }
+  Carte hauteur=verifierEgalite(cartes, 3);
 
   if (hauteur.getValeur()!=0)
   {
@@ -407,47 +360,12 @@ bool verifierBrelan(const Vecteur<Carte>& cartes)
 
 bool verifierDoublePaire(const Vecteur<Carte>& cartes)
 {
-  int i,k;
-  Carte hauteur;
+  Carte hauteur=verifierEgalite(cartes, 2);
   Carte hauteur2;
-
-  for(i=0; i<cartes.size(); i++)
-  {
-    k=0;
-
-    for(int j=0; j<cartes.size(); j++)
-    {
-      if (cartes[i].getValeur()==cartes[j].getValeur() && i!=j)
-      {
-        k++;
-      }
-    }
-
-    if(k==1 && (cartes[i].getValeur()>hauteur.getValeur() || cartes[i].getValeur()==1))
-    {
-      hauteur=cartes[i];
-    }
-  }
 
   if (hauteur.getValeur()!=0)
   {
-    for(i=0; i<cartes.size(); i++)
-    {
-      k=0;
-
-      for(int j=0; j<cartes.size(); j++)
-      {
-        if (cartes[i].getValeur()==cartes[j].getValeur() && i!=j && cartes[i].getValeur()!=hauteur.getValeur())
-        {
-          k++;
-        }
-      }
-
-      if(k==1 && (cartes[i].getValeur()>hauteur2.getValeur() || cartes[i].getValeur()==1))
-      {
-        hauteur2=cartes[i];
-      }
-    }
+    hauteur2=verifierEgalite(cartes, 2 , hauteur.getValeur());
     if (hauteur2.getValeur()!=0)
     {
       cout<<"Double paire : ";
@@ -462,26 +380,7 @@ bool verifierDoublePaire(const Vecteur<Carte>& cartes)
 
 bool verifierPaire(const Vecteur<Carte>& cartes)
 {
-  int k;
-  Carte hauteur;
-
-  for(int i=0; i<cartes.size(); i++)
-  {
-    k=0;
-
-    for(int j=0; j<cartes.size(); j++)
-    {
-      if (cartes[i].getValeur()==cartes[j].getValeur() && i!=j)
-      {
-        k++;
-      }
-    }
-
-    if(k==1 && (cartes[i].getValeur()>hauteur.getValeur() || cartes[i].getValeur()==1))
-    {
-      hauteur=cartes[i];
-    }
-  }
+  Carte hauteur=verifierEgalite(cartes, 2);
 
   if (hauteur.getValeur()!=0)
   {
@@ -500,7 +399,7 @@ bool verifierPaire(const Vecteur<Carte>& cartes)
   return false;
 }
 
-Carte verifierCarteHaute(const Vecteur<Carte>& cartes)
+Carte verifierCarteHaute(const Vecteur<Carte>& cartes, int* valeurExclue=NULL)
 {
   Carte hauteur;
   for (int i=0; i<cartes.size(); i++)

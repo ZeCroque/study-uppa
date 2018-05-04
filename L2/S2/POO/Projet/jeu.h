@@ -21,6 +21,7 @@ bool verifierQuinte(const Vecteur<Carte>& cartes);
 bool verifierBrelan(const Vecteur<Carte>& cartes);
 bool verifierDoublePaire(const Vecteur<Carte>& cartes);
 bool verifierPaire(const Vecteur<Carte>& cartes);
-Carte verifierCarteHaute(const Vecteur<Carte>& cartes);
+Carte verifierEgalite(const Vecteur<Carte>& cartes, int number, int valeurExclue);
+Carte verifierCarteHaute(const Vecteur<Carte>& cartes, int* valeurExclue);
 
 #endif
