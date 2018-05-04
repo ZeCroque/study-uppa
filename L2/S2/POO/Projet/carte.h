@@ -16,6 +16,8 @@ class Carte
     int getValeur() const;
     int getFamille() const;
     Carte& operator = (const Carte& c);
+    void afficherCouleur();
+    void afficherValeur();
     friend std::ostream& operator << (std::ostream& os, const Carte& c);
 };
 

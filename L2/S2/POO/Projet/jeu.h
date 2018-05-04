@@ -10,18 +10,20 @@
 void drawStep(const Vecteur<Joueur>& joueurs, Deck& deck);
 void afficherTable(const Vecteur<Carte>& table);
 void afficherJoueurs(const Vecteur<Joueur>& joueurs, const Vecteur<Carte>& table);
-void afficherCarte(Carte carte);
+void afficherCouleur(Carte carte);
+void afficherValeur(Carte carte);
+void afficherKicker(const Vecteur<Carte>& cartes, Vecteur<int> valeurExclues, int number);
+Carte verifierEgalite(const Vecteur<Carte>& cartes, int number, int valeurExclue);
+Carte trouverCarteHaute(const Vecteur<Carte>& cartes, const Vecteur<int>& valeursExclues=Vecteur<int>());
 void verifierCombinaison(const Vecteur<Carte>& cartes);
 bool verifierQuinteFlush(const Vecteur<Carte>& cartes);
 bool verifierCarre(const Vecteur<Carte>& cartes);
 bool verifierFull(const Vecteur<Carte>& cartes);
 bool verifierCouleur(const Vecteur<Carte>& cartes);
 bool verifierQuinte(const Vecteur<Carte>& cartes);
-//TODO Kicker
 bool verifierBrelan(const Vecteur<Carte>& cartes);
 bool verifierDoublePaire(const Vecteur<Carte>& cartes);
 bool verifierPaire(const Vecteur<Carte>& cartes);
-Carte verifierEgalite(const Vecteur<Carte>& cartes, int number, int valeurExclue);
-Carte verifierCarteHaute(const Vecteur<Carte>& cartes, int* valeurExclue);
+void verifierCarteHaute(const Vecteur<Carte>& cartes);
 
 #endif

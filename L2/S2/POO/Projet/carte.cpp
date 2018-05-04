@@ -41,6 +41,58 @@ Carte& Carte::operator = (const Carte& c)
   return *this;
 }
 
+void Carte::afficherCouleur()
+{
+  switch (this->_famille)
+  {
+    case 0 :
+      cout<<"Debug";
+      break;
+    case 1 :
+      cout<<"Trèfle";
+      break;
+    case 2 :
+      cout<<"Pique";
+      break;
+    case 3 :
+      cout<<"Carreau";
+      break;
+    case 4 :
+      cout<<"Coeur";
+      break;
+    default :
+      cout<<"Erreur";
+      break;
+  }
+}
+
+void Carte::afficherValeur()
+{
+  switch(this->_valeur)
+  {
+    case 0 :
+      cout<<"Joker";
+      break;
+    case 1 :
+      cout<<"As";
+      break;
+    case 11 :
+      cout<<"Valet";
+      break;
+    case 12 :
+      cout<<"Dame";
+      break;
+    case 13 :
+      cout<<"Roi";
+      break;
+    default :
+      cout<<this->_valeur;
+      break;
+  }
+}
+
+
+
 ostream& operator << (ostream& os, const Carte& c)
 {
   switch(c._valeur)

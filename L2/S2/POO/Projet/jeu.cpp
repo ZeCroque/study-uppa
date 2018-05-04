@@ -17,28 +17,6 @@ void afficherTable(const Vecteur<Carte>& table)
   }
 }
 
-void afficherCarte(Carte carte)
-{
-  switch (carte.getValeur())
-  {
-    case 1:
-      cout<<"As";
-      break;
-    case 11:
-      cout<<"Valet";
-      break;
-    case 12:
-      cout<<"Dame";
-      break;
-    case 13:
-      cout<<"Roi";
-      break;
-    default:
-      cout<<carte.getValeur();
-      break;
-  }
-}
-
 void afficherJoueurs(const Vecteur<Joueur>& joueurs, const Vecteur<Carte>& table)
 {
   //Compteurs
@@ -115,8 +93,7 @@ void verifierCombinaison(const Vecteur<Carte>& cartes)
     }
     if(!combinaisonTrouvee)
     {
-      cout<<"Carte haute : ";
-      afficherCarte(verifierCarteHaute(cartes));
+      verifierCarteHaute(cartes);
     }
 }
 
@@ -172,7 +149,7 @@ bool verifierQuinteFlush(const Vecteur<Carte>& cartes)
   {
     //On affiche et retourne un résultat positif
     cout<<"Quinte flush hauteur ";
-    afficherCarte(hauteurmax);
+    hauteurmax.afficherValeur();
     return true;
   }
   //Sinon on retourne un résultat négatif
@@ -231,7 +208,7 @@ bool verifierQuinte(const Vecteur<Carte>& cartes)
   {
     //On affiche et retourne un résultat positif
     cout<<"Quinte hauteur ";
-    afficherCarte(hauteurmax);
+    hauteurmax.afficherValeur();
     return true;
   }
   //Sinon on retourne un résultat négatif
@@ -255,13 +232,30 @@ Carte verifierEgalite(const Vecteur<Carte>& cartes, int number, int valeurExclue
       }
     }
 
-    if(k==number-1 && cartes[i].getValeur()!=valeurExclue && (cartes[i].getValeur()>hauteur.getValeur() || cartes[i].getValeur()==1))
+    if(k==number-1 && cartes[i].getValeur()!=valeurExclue && ((cartes[i].getValeur()>hauteur.getValeur() && hauteur.getValeur()!=1) || cartes[i].getValeur()==1))
     {
       hauteur=cartes[i];
     }
   }
 
   return hauteur;
+}
+
+void afficherKicker(const Vecteur<Carte>& cartes, Vecteur<int> valeursExclues, int number)
+{
+  Carte tmp;
+
+  cout<<"\nKicker: ";
+  for(int i=0; i<number; i++)
+  {
+    tmp=trouverCarteHaute(cartes, valeursExclues);
+    valeursExclues.push_back(tmp.getValeur());
+    tmp.afficherValeur();
+    if(i!=number-1)
+    {
+      cout<<", ";
+    }
+  }
 }
 
 bool verifierCarre(const Vecteur<Carte>& cartes)
@@ -279,7 +273,10 @@ bool verifierCarre(const Vecteur<Carte>& cartes)
       cout<<"Carré d'";
     }
 
-    afficherCarte(hauteur);
+    hauteur.afficherValeur();
+    Vecteur<int> valeursExclues;
+    valeursExclues.push_back(hauteur.getValeur());
+    afficherKicker(cartes, valeursExclues, 1);
     return true;
   }
   return false;
@@ -296,9 +293,9 @@ bool verifierFull(const Vecteur<Carte>& cartes)
     if (hauteur2.getValeur()!=0)
     {
       cout<<"Full aux ";
-      afficherCarte(hauteur);
+      hauteur.afficherValeur();
       cout<<" par les ";
-      afficherCarte(hauteur2);
+      hauteur2.afficherValeur();
       return true;
     }
   }
@@ -330,8 +327,10 @@ bool verifierCouleur(const Vecteur<Carte>& cartes)
 
   if (hauteur.getValeur()!=0)
   {
-    cout<<"Couleur hauteur ";
-    afficherCarte(hauteur);
+    cout<<"Couleur à ";
+    hauteur.afficherCouleur();
+    cout<<" hauteur ";
+    hauteur.afficherValeur();
     return true;
   }
   return false;
@@ -352,7 +351,10 @@ bool verifierBrelan(const Vecteur<Carte>& cartes)
       cout<<"Brelan d'";
     }
 
-    afficherCarte(hauteur);
+    hauteur.afficherValeur();
+    Vecteur<int> valeursExclues;
+    valeursExclues.push_back(hauteur.getValeur());
+    afficherKicker(cartes, valeursExclues, 2);
     return true;
   }
   return false;
@@ -369,9 +371,13 @@ bool verifierDoublePaire(const Vecteur<Carte>& cartes)
     if (hauteur2.getValeur()!=0)
     {
       cout<<"Double paire : ";
-      afficherCarte(hauteur);
+      hauteur.afficherValeur();
       cout<<" et ";
-      afficherCarte(hauteur2);
+      hauteur2.afficherValeur();
+      Vecteur<int> valeursExclues;
+      valeursExclues.push_back(hauteur.getValeur());
+      valeursExclues.push_back(hauteur2.getValeur());
+      afficherKicker(cartes, valeursExclues, 1);
       return true;
     }
   }
@@ -393,21 +399,45 @@ bool verifierPaire(const Vecteur<Carte>& cartes)
       cout<<"Paire d'";
     }
 
-    afficherCarte(hauteur);
+    hauteur.afficherValeur();
+    Vecteur<int> valeursExclues;
+    valeursExclues.push_back(hauteur.getValeur());
+    afficherKicker(cartes, valeursExclues, 3);
     return true;
   }
   return false;
 }
 
-Carte verifierCarteHaute(const Vecteur<Carte>& cartes, int* valeurExclue=NULL)
+Carte trouverCarteHaute(const Vecteur<Carte>& cartes, const Vecteur<int>& valeursExclues)
 {
   Carte hauteur;
   for (int i=0; i<cartes.size(); i++)
   {
-    if(cartes[i].getValeur()>hauteur.getValeur())
+    if((cartes[i].getValeur()>hauteur.getValeur() &&  hauteur.getValeur()!=1) || cartes[i].getValeur()==1)
     {
-      hauteur=cartes[i];
+      bool estDansValeursExclues=false;
+      for(int j=0; j<valeursExclues.size() && !estDansValeursExclues; j++)
+      {
+        if(cartes[i].getValeur()==valeursExclues[j])
+        {
+          estDansValeursExclues=true;
+        }
+      }
+      if (!estDansValeursExclues)
+      {
+        hauteur=cartes[i];
+      }
     }
   }
   return hauteur;
+}
+
+void verifierCarteHaute(const Vecteur<Carte>& cartes)
+{
+  Carte hauteur=trouverCarteHaute(cartes);
+  cout<<"Carte haute : ";
+  hauteur.afficherValeur();
+  Vecteur<int> valeursExclues;
+  valeursExclues.push_back(hauteur.getValeur());
+  afficherKicker(cartes, valeursExclues, 4);
 }

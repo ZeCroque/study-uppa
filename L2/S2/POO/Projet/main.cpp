@@ -37,7 +37,7 @@ int main()
   //Début du jeu
   while(newTurn)
   {
-  /*  Deck deck;
+    /*Deck deck;
     drawStep(joueurs, deck);
 
     cout<<"=========Nouveau tour========="<<endl;
@@ -68,11 +68,11 @@ int main()
     afficherJoueurs(joueurs, table);*/
 
     //DEBUG//
-    table.push_back(Carte(2,1));
-    table.push_back(Carte(2,3));
     table.push_back(Carte(1,1));
     table.push_back(Carte(1,1));
-    table.push_back(Carte(13,2));
+    table.push_back(Carte(4,1));
+    table.push_back(Carte(13,1));
+    table.push_back(Carte(5,1));
 
     afficherTable(table);
     afficherJoueurs(joueurs, table);
