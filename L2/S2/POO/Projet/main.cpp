@@ -1,11 +1,12 @@
 #include <iostream>
 #include <time.h>
 #include <cstdlib>
-#include "deck.h"
 #include "vecteur.h"
 #include "joueur.h"
 #include "jeu.h"
 #include "outils.h"
+
+#define DEBUG_MODE 42
 
 using namespace std;
 
@@ -18,73 +19,45 @@ int main()
   int playerCount=0;
   int newTurn=1;
   Vecteur<Joueur> joueurs;
-  Vecteur<Carte> table;
 
   //Choix du nombre de joueurs
+  //On recommence tant que l'utilisateur n'entre pas une valeur entre 2 et 10
+  //Ou la valeur cachée pour entrer en debugMode
   do
   {
-    cout<<"Entrez le nombre de joueur :"<<endl;
+    cout<<"Entrez le nombre de joueur (2-10) :"<<endl;
     playerCount=readUnsignedInt();
-  } while(playerCount<2 || playerCount>10);
+  } while(playerCount<2 || (playerCount>10 && playerCount!=DEBUG_MODE));
 
-  //Création des joueurs
-  joueurs.resize(playerCount);
-  for (int i=0; i<playerCount; i++)
+  //Si l'on est pas en debug mode
+  if(playerCount!=DEBUG_MODE)
   {
-    joueurs[i]=Joueur("Joueur "+ intToString(i+1));
-  }
-
-  //Début du jeu
-  while(newTurn)
-  {
-    /*Deck deck;
-    drawStep(joueurs, deck);
-
-    cout<<"=========Nouveau tour========="<<endl;
-    cout<<"===========PREFLOP============"<<endl;
-    table.resize(0);
-    afficherJoueurs(joueurs, table);
-
-    cout<<"\n\n=============FLOP============="<<endl;
-    table.resize(3);
-    for(int i=0; i<3; i++)
+    //Création des joueurs
+    joueurs.resize(playerCount);
+    for (int i=0; i<playerCount; i++)
     {
-      table[i]=deck.draw();
+      joueurs[i]=Joueur("Joueur "+ intToString(i+1));
     }
-    afficherTable(table);
-    afficherJoueurs(joueurs, table);
 
-
-    cout<<"\n\n=============TURN============="<<endl;
-    table.resize(4);
-    table[3]=deck.draw();
-    afficherTable(table);
-    afficherJoueurs(joueurs, table);
-
-    cout<<"\n\n=============RIVER============"<<endl;
-    table.resize(5);
-    table[4]=deck.draw();
-    afficherTable(table);
-    afficherJoueurs(joueurs, table);*/
-
-    //DEBUG//
-    table.push_back(Carte(1,1));
-    table.push_back(Carte(1,1));
-    table.push_back(Carte(4,1));
-    table.push_back(Carte(13,1));
-    table.push_back(Carte(5,1));
-
-    afficherTable(table);
-    afficherJoueurs(joueurs, table);
-
-
-    //Choix de rejouer
-    do
+    //Début du jeu
+    while(newTurn)
     {
-      cout<<"\n\nJouer un autre tour ? (y/n)"<<endl;
-      newTurn=readBool();
-    } while(newTurn==-1);
+      jouerTour(joueurs);
+
+      //Choix de rejouer
+      do
+      {
+        cout<<"\n\nJouer un autre tour ? (y/n)"<<endl;
+        newTurn=readBool();
+      } while(newTurn==-1);
+    }
   }
+  //Entrée en debugMode
+  else
+  {
+    debugMode();
+  }
+
 
   return 0;
 }

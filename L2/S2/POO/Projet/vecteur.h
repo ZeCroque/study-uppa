@@ -6,6 +6,10 @@
 
 using namespace std;
 
+//TODO COMMENTAIRES CPP & H
+//TRY/CATCH
+
+//Implémentation maison de la classe vecteur
 template <class Type> class Vecteur
 {
   private:

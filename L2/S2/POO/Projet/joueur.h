@@ -6,6 +6,8 @@
 #include "vecteur.h"
 #include "deck.h"
 
+//TODO COMMENTAIRES CPP & H
+
 class Joueur
 {
   private:

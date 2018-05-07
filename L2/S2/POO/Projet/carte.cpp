@@ -41,101 +41,62 @@ Carte& Carte::operator = (const Carte& c)
   return *this;
 }
 
-void Carte::afficherCouleur()
+string Carte::afficherFamille() const
 {
   switch (this->_famille)
   {
     case 0 :
-      cout<<"Debug";
+      return "Debug";
       break;
     case 1 :
-      cout<<"Trèfle";
+      return "Trèfle";
       break;
     case 2 :
-      cout<<"Pique";
+      return "Pique";
       break;
     case 3 :
-      cout<<"Carreau";
+      return "Carreau";
       break;
     case 4 :
-      cout<<"Coeur";
+      return "Coeur";
       break;
     default :
-      cout<<"Erreur";
+      return "Erreur";
       break;
   }
 }
 
-void Carte::afficherValeur()
+string Carte::afficherValeur() const
 {
+  stringstream ss;
   switch(this->_valeur)
   {
     case 0 :
-      cout<<"Joker";
+      ss<<"Joker";
       break;
     case 1 :
-      cout<<"As";
+      ss<<"As";
       break;
     case 11 :
-      cout<<"Valet";
+      ss<<"Valet";
       break;
     case 12 :
-      cout<<"Dame";
+      ss<<"Dame";
       break;
     case 13 :
-      cout<<"Roi";
+      ss<<"Roi";
       break;
     default :
-      cout<<this->_valeur;
+      ss<<this->_valeur;
       break;
   }
+  return ss.str();
 }
 
 
 
 ostream& operator << (ostream& os, const Carte& c)
 {
-  switch(c._valeur)
-  {
-    case 0 :
-      os<<"Joker de ";
-      break;
-    case 1 :
-      os<<"As de ";
-      break;
-    case 11 :
-      os<<"Valet de ";
-      break;
-    case 12 :
-      os<<"Dame de ";
-      break;
-    case 13 :
-      os<<"Roi de ";
-      break;
-    default :
-      os<<c._valeur<<" de ";
-      break;
-  }
-  switch (c._famille)
-  {
-    case 0 :
-      os<<"Debug";
-      break;
-    case 1 :
-      os<<"Trèfle";
-      break;
-    case 2 :
-      os<<"Pique";
-      break;
-    case 3 :
-      os<<"Carreau";
-      break;
-    case 4 :
-      os<<"Coeur";
-      break;
-    default :
-      os<<"Erreur";
-      break;
-  }
+  os<<c.afficherValeur()<<" de "<<c.afficherFamille();
   return os;
 }

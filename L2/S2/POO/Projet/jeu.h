@@ -4,26 +4,19 @@
 #include "vecteur.h"
 #include "carte.h"
 #include "joueur.h"
+#include "combinaison.h"
 
-//TODO Modulariser recherche paire/brelan/etc
+//Affiche les résultat d'un tour de jeu
+void jouerTour(const Vecteur<Joueur>& joueurs);
 
+//Appelle la fonction draw sur chacun des joueurs avec le deck donné
 void drawStep(const Vecteur<Joueur>& joueurs, Deck& deck);
+
+//Affiche les cartes présente sur le board
 void afficherTable(const Vecteur<Carte>& table);
+
+//Affiche le nom des joueurs, le contenue de leur main
+//et la meilleure combinaison qu'ils ont avec le board passé en paramètre
 void afficherJoueurs(const Vecteur<Joueur>& joueurs, const Vecteur<Carte>& table);
-void afficherCouleur(Carte carte);
-void afficherValeur(Carte carte);
-void afficherKicker(const Vecteur<Carte>& cartes, Vecteur<int> valeurExclues, int number);
-Carte verifierEgalite(const Vecteur<Carte>& cartes, int number, int valeurExclue);
-Carte trouverCarteHaute(const Vecteur<Carte>& cartes, const Vecteur<int>& valeursExclues=Vecteur<int>());
-void verifierCombinaison(const Vecteur<Carte>& cartes);
-bool verifierQuinteFlush(const Vecteur<Carte>& cartes);
-bool verifierCarre(const Vecteur<Carte>& cartes);
-bool verifierFull(const Vecteur<Carte>& cartes);
-bool verifierCouleur(const Vecteur<Carte>& cartes);
-bool verifierQuinte(const Vecteur<Carte>& cartes);
-bool verifierBrelan(const Vecteur<Carte>& cartes);
-bool verifierDoublePaire(const Vecteur<Carte>& cartes);
-bool verifierPaire(const Vecteur<Carte>& cartes);
-void verifierCarteHaute(const Vecteur<Carte>& cartes);
 
 #endif

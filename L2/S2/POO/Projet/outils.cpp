@@ -2,6 +2,27 @@
 
 using namespace std;
 
+//Menu de DEBUG
+void debugMode()
+{
+  Vecteur<Carte> table;
+
+  table.push_back(Carte(9,1));
+  table.push_back(Carte(10,1));
+  table.push_back(Carte(11,1));
+  table.push_back(Carte(13,1));
+  table.push_back(Carte(12,1));
+  table.push_back(Carte(1,2));
+
+  afficherTable(table);
+  cout<<endl;
+  afficherCombinaison(table);
+  cout<<endl;
+}
+
+//TODO TRY/CATCH
+//Permet de demander à l'utilisateur un entier non signé
+//En évitant les erreurs de lecture
 unsigned int readUnsignedInt()
 {
   string input="";
@@ -20,6 +41,9 @@ unsigned int readUnsignedInt()
   return result;
 }
 
+//TODO TRY/CATCH
+//Permet de demander à l'utilisateur un booléen
+//En évitant les erreurs de lecture
 int readBool()
 {
   string input="";
