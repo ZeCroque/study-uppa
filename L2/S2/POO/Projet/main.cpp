@@ -52,7 +52,7 @@ int main()
       } while(newTurn==-1);
     }
   }
-  //Entrée en debugMode
+  //Sinon entrée en debugMode
   else
   {
     debugMode();
