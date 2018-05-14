@@ -54,12 +54,17 @@ void afficherKicker(const Vecteur<Carte>& cartes, Vecteur<int> valeursExclues, i
   Carte tmp;
 
   cout<<"\nKicker: ";
+  //On effectue number fois l'opération suivante :
   for(int i=0; i<number; i++)
   {
+    //On affecte la carte haute dans un tampon en excluant les valeurs données en paramètre
     tmp=trouverCarteHaute(cartes, valeursExclues);
+    //Si une carte haute a bien été trouvée
     if (tmp.getValeur()!=0)
     {
+      //On l'ajoute aux valeurs exclues
       valeursExclues.push_back(tmp.getValeur());
+      //On l'affiche
       cout<<tmp.afficherValeur();
       if(i!=number-1)
       {
@@ -72,11 +77,15 @@ void afficherKicker(const Vecteur<Carte>& cartes, Vecteur<int> valeursExclues, i
 //Affiche la carte haute et 4 kickers
 void afficherCarteHaute(const Vecteur<Carte>& cartes)
 {
+  //On affect la carte haute dans un tampon
   Carte hauteur=trouverCarteHaute(cartes);
+  //On l'affiche
   cout<<"Carte haute : ";
   cout<<hauteur.afficherValeur();
+  //On ajoute dans le vecteur des valeurs exclues le tampon
   Vecteur<int> valeursExclues;
   valeursExclues.push_back(hauteur.getValeur());
+  //On affiche 4 kicker en excluant la hauteur trouvée
   afficherKicker(cartes, valeursExclues, 4);
 }
 
@@ -91,24 +100,35 @@ Carte trouverCartesEgales(const Vecteur<Carte>& cartes, int number, int valeurEx
   int k;
   Carte hauteur;
 
+  //Pour chaque carte passé en paramètre
   for(int i=0; i<cartes.size(); i++)
   {
     k=0;
-
+    //On la compare à toutes les cartes passées en paramètre
     for(int j=0; j<cartes.size(); j++)
     {
+      //Si deux carte on la même valeur
+      //ET ce n'est pas la même carte
       if (cartes[i].getValeur()==cartes[j].getValeur() && i!=j)
       {
+        //On incrémente un compteur
         k++;
       }
     }
 
+    //Si le compteur a atteint la valeur demandée
+    //ET que la valeur de la carte examinée n'est pas dans les valeur exclues
+    //ET (que la carte trouvée a une valeur supérieure à la hauteur enregistrée
+        //OU  que la carte trouvée est un as)
     if(k==number-1 && cartes[i].getValeur()!=valeurExclue && ((cartes[i].getValeur()>hauteur.getValeur() && hauteur.getValeur()!=1) || cartes[i].getValeur()==1))
     {
+      //On affecte au tampon hauteur la carte trouvée
       hauteur=cartes[i];
     }
   }
 
+  //On renvoie une la carte pour indiquer la hauteur de la combinaison
+  //OU la carte par défaut si aucune carte n'a été trouvée
   return hauteur;
 }
 
@@ -117,24 +137,35 @@ Carte trouverCartesEgales(const Vecteur<Carte>& cartes, int number, int valeurEx
 Carte trouverCarteHaute(const Vecteur<Carte>& cartes, const Vecteur<int>& valeursExclues)
 {
   Carte hauteur;
+  //On parcoure toutes les cartes passées en paramètre
   for (int i=0; i<cartes.size(); i++)
   {
+    //Si la carte trouvée a une valeur supérieure à la hauteur enregistrée
+    //OU  que la carte trouvée est un as
     if((cartes[i].getValeur()>hauteur.getValeur() &&  hauteur.getValeur()!=1) || cartes[i].getValeur()==1)
     {
       bool estDansValeursExclues=false;
+      //On parcoure toute les valeurs exclues
       for(int j=0; j<valeursExclues.size() && !estDansValeursExclues; j++)
       {
+        //Si la valeur de la carte s'y trouve
         if(cartes[i].getValeur()==valeursExclues[j])
         {
+          //On passe le booléen correspondant à vrai
           estDansValeursExclues=true;
         }
       }
+      //Si la carte n'était pas dans les valeurs exclues
       if (!estDansValeursExclues)
       {
+        //Le tampon de hauteur prend la valeur de la carte
         hauteur=cartes[i];
       }
     }
   }
+
+  //On renvoie la carte trouvée
+  //OU la carte par défaut si aucune carte n'a été trouvée
   return hauteur;
 }
 
@@ -208,45 +239,63 @@ bool verifierQuinteFlush(const Vecteur<Carte>& cartes)
 
 bool verifierCarre(const Vecteur<Carte>& cartes)
 {
+  //On affecte la hauteur renvoyée par la fonction dans un tampon
   Carte hauteur=trouverCartesEgales(cartes, 4);
 
+  //Si le tampon est différent de la carte par défaut
   if (hauteur.getValeur()!=0)
   {
+    //Si la carte est un as
     if(hauteur.getValeur()!=1)
     {
       cout<<"Carré de ";
     }
+    //Sinon
     else
     {
       cout<<"Carré d'";
     }
 
+    //On affiche la hauteur
     cout<<hauteur.afficherValeur();
+
+    //On ajoute au valeurs exclues la hauteur trouvée
     Vecteur<int> valeursExclues;
     valeursExclues.push_back(hauteur.getValeur());
+
+    //On affiche un kicker excluant la hauteur trouvée
     afficherKicker(cartes, valeursExclues, 1);
+    //On renvoie vrai
     return true;
   }
+  //Sinon on renvoie faux
   return false;
 }
 
 bool verifierFull(const Vecteur<Carte>& cartes)
 {
+  //On affecte la hauteur renvoyée par la fonction dans un tampon
   Carte hauteur=trouverCartesEgales(cartes, 3);
   Carte hauteur2;
 
+  //Si le tampon est différent de la carte par défaut
   if (hauteur.getValeur()!=0)
   {
+    //On affecte la hauteur renvoyée par la fonction dans un tampon
     hauteur2=trouverCartesEgales(cartes, 2);
+    //Si le tampon est différent de la carte par défaut
     if (hauteur2.getValeur()!=0)
     {
+      //On affiche
       cout<<"Full aux ";
       cout<<hauteur.afficherValeur();
       cout<<" par les ";
       cout<<hauteur2.afficherValeur();
+      //On renvoie vrai
       return true;
     }
   }
+  //Sinon on renvoie faux
   return false;
 }
 
@@ -255,32 +304,46 @@ bool verifierCouleur(const Vecteur<Carte>& cartes)
   int k;
   Carte hauteur;
 
+  //Pour chaque carte passé en paramètre
   for(int i=0; i<cartes.size(); i++)
   {
     k=0;
 
+    //On la compare à toutes les cartes passées en paramètre
     for(int j=0; j<cartes.size(); j++)
     {
+      //Si deux carte on la même famille
+      //ET ce n'est pas la même carte
       if (cartes[i].getFamille()==cartes[j].getFamille() && i!=j)
       {
+        //On incrémente un compteur
         k++;
       }
     }
 
+
+    //Si le compteur a atteint la valeur demandée
+    //ET (que la carte trouvée a une valeur supérieure à la hauteur enregistrée
+    //OU  que la carte trouvée est un as)
     if(k==4 && ((cartes[i].getValeur()>hauteur.getValeur() && hauteur.getValeur()!=1) || cartes[i].getValeur()==1))
     {
+      //On affecte au tampon hauteur la carte trouvée
       hauteur=cartes[i];
     }
   }
 
+  //Si le tampon est différent de la carte par défaut
   if (hauteur.getValeur()!=0)
   {
+    //On affiche
     cout<<"Couleur à ";
     cout<<hauteur.afficherFamille();
     cout<<" hauteur ";
     cout<<hauteur.afficherValeur();
+    //On renvoie vrai
     return true;
   }
+  //Sinon on renvoie faux
   return false;
 }
 
@@ -345,72 +408,99 @@ bool verifierQuinte(const Vecteur<Carte>& cartes)
 
 bool verifierBrelan(const Vecteur<Carte>& cartes)
 {
+  //On affecte la hauteur renvoyée par la fonction dans un tampon
   Carte hauteur=trouverCartesEgales(cartes, 3);
 
+  //Si le tampon est différent de la carte par défaut
   if (hauteur.getValeur()!=0)
   {
+    //Si la carte est un as
     if(hauteur.getValeur()!=1)
     {
       cout<<"Brelan de ";
     }
+    //Sinon
     else
     {
       cout<<"Brelan d'";
     }
 
+    //On affiche la hauteur
     cout<<hauteur.afficherValeur();
+    //On ajoute au valeurs exclues la hauteur trouvée
     Vecteur<int> valeursExclues;
     valeursExclues.push_back(hauteur.getValeur());
+    //On affiche deux kickers excluant la hauteur trouvée
     afficherKicker(cartes, valeursExclues, 2);
+    //On renvoie vrai
     return true;
   }
+  //Sinon on renvoie faux
   return false;
 }
 
 bool verifierDoublePaire(const Vecteur<Carte>& cartes)
 {
+  //On affecte la hauteur renvoyée par la fonction dans un tampon
   Carte hauteur=trouverCartesEgales(cartes, 2);
   Carte hauteur2;
 
+  //Si le tampon est différent de la carte par défaut
   if (hauteur.getValeur()!=0)
   {
+    //On affecte la hauteur renvoyée par la fonction dans un tampon
     hauteur2=trouverCartesEgales(cartes, 2 , hauteur.getValeur());
+    //Si le tampon est différent de la carte par défaut
     if (hauteur2.getValeur()!=0)
     {
+      //On affiche
       cout<<"Double paire : ";
       cout<<hauteur.afficherValeur();
       cout<<" et ";
       cout<<hauteur2.afficherValeur();
+      //On ajoute au valeurs exclues les hauteurs trouvée
       Vecteur<int> valeursExclues;
       valeursExclues.push_back(hauteur.getValeur());
       valeursExclues.push_back(hauteur2.getValeur());
+      //On affiche un kicker excluant la hauteur trouvée
       afficherKicker(cartes, valeursExclues, 1);
+      //On renvoie vrai
       return true;
     }
   }
+  //Sinon on renvoie faux
   return false;
 }
 
 bool verifierPaire(const Vecteur<Carte>& cartes)
 {
+    //On affecte la hauteur renvoyée par la fonction dans un tampon
   Carte hauteur=trouverCartesEgales(cartes, 2);
 
+  //Si le tampon est différent de la carte par défaut
   if (hauteur.getValeur()!=0)
   {
+    //Si la carte est un as
     if(hauteur.getValeur()!=1)
     {
       cout<<"Paire de ";
     }
+    //Sinon
     else
     {
       cout<<"Paire d'";
     }
 
+    //On affiche la hauteur
     cout<<hauteur.afficherValeur();
+    //On ajoute au valeurs exclues la hauteur trouvée
     Vecteur<int> valeursExclues;
     valeursExclues.push_back(hauteur.getValeur());
+        //On affiche trois kickers excluant la hauteur trouvée
     afficherKicker(cartes, valeursExclues, 3);
+    //On renvoie vrai
     return true;
   }
+  //Sinon on renvoie faux
   return false;
 }

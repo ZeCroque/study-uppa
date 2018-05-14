@@ -5,6 +5,8 @@
 
 using namespace std;
 
+//Forme canonique de coplien
+
 Deck::Deck()
 {
   //Génère le jeu de 52 de cartes, triées dans l'ordre
@@ -38,11 +40,13 @@ Deck& Deck::operator = (const Deck& j)
   return *this;
 }
 
+//Mélange le vecteur de Carte
 void Deck::shuffle()
 {
   Carte cTmp;
   int iRandom;
 
+  //Echange 52 fois la carte à l'indice i et une carte à un indice aléatoire
   for(int i=0; i<this->_deck.size(); i++)
   {
     iRandom=rand() % (this->_deck.size()-1);
@@ -53,12 +57,14 @@ void Deck::shuffle()
   }
 }
 
+//Enlève la première carte du deck et la renvoie
 Carte Deck::draw()
 {
   Carte cTmp=this->_deck.pop_back();
   return cTmp;
 }
 
+//Affichage
 ostream& operator << (ostream& os, const Deck& c)
 {
   for(int i=0; i<c._deck.size(); i++)

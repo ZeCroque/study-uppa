@@ -4,7 +4,6 @@
 #include "carte.h"
 #include "vecteur.h"
 
-//TODO COMMENTAIRES CPP
 
 //****************************
 //*        AFFICHAGE         *

@@ -1,3 +1,7 @@
+#ifndef DEBUG_MODE
+#define DEBUG_MODE 42
+#endif
+
 #ifndef outils_h
 #define outils_h
 
@@ -8,7 +12,7 @@
 #include "carte.h"
 #include "jeu.h"
 
-//TODO Perfectionner le menu de DEBUG
+//TODO
 //COMMENTAIRES CPP
 //TRY/CATCH
 

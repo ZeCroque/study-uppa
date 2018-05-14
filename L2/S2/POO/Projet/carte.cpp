@@ -2,6 +2,7 @@
 
 using namespace std;
 
+//Forme canonique de coplien
 Carte::Carte()
 {
   this->_famille=0;
@@ -13,25 +14,10 @@ Carte::Carte(const Carte& c)
   *this=c;
 }
 
-Carte::Carte(int valeur, int famille)
-{
-  this->_famille=famille;
-  this->_valeur=valeur;
-}
 
 Carte::~Carte()
 {
 
-}
-
-int Carte::getValeur() const
-{
-  return this->_valeur;
-}
-
-int Carte::getFamille() const
-{
-  return this->_famille;
 }
 
 Carte& Carte::operator = (const Carte& c)
@@ -41,6 +27,28 @@ Carte& Carte::operator = (const Carte& c)
   return *this;
 }
 
+
+
+//Constructeur surchargé instantiant la carte à la bonne valeur et famille
+Carte::Carte(int valeur, int famille)
+{
+  this->_famille=famille;
+  this->_valeur=valeur;
+}
+
+//Retourne la valeur de la carte
+int Carte::getValeur() const
+{
+  return this->_valeur;
+}
+
+//Retourne la famille de la carte
+int Carte::getFamille() const
+{
+  return this->_famille;
+}
+
+//Renvoie un string correspondant à la famille de la carte
 string Carte::afficherFamille() const
 {
   switch (this->_famille)
@@ -66,6 +74,8 @@ string Carte::afficherFamille() const
   }
 }
 
+
+//Renvoie un string correspondant à la valeur de la carte
 string Carte::afficherValeur() const
 {
   stringstream ss;
@@ -93,8 +103,7 @@ string Carte::afficherValeur() const
   return ss.str();
 }
 
-
-
+//Affichage
 ostream& operator << (ostream& os, const Carte& c)
 {
   os<<c.afficherValeur()<<" de "<<c.afficherFamille();

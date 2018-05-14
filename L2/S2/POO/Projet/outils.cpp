@@ -6,13 +6,30 @@ using namespace std;
 void debugMode()
 {
   Vecteur<Carte> table;
+  int valeur=0;
+  int famille=0;
 
-  table.push_back(Carte(9,1));
-  table.push_back(Carte(10,1));
-  table.push_back(Carte(11,1));
-  table.push_back(Carte(13,1));
-  table.push_back(Carte(12,1));
-  table.push_back(Carte(1,2));
+  for (int i=0; i<7 && valeur!=DEBUG_MODE && famille!=DEBUG_MODE; i++)
+  {
+    do
+    {
+      cout<<"Entrez la valeur de la carte "<<table.size()+1<<" (1-13; "<<DEBUG_MODE<<" pour arrêter)"<<endl;
+      valeur=readUnsignedInt();
+    } while (valeur>13 && valeur!=DEBUG_MODE);
+    if(valeur!=DEBUG_MODE)
+    {
+      do
+      {
+        cout<<"Entrez la famille de la carte "<<table.size()+1<<"\n1: Trèfle\n2: Pique\n3: Carreau\n4: Coeur\n"<<DEBUG_MODE<<": arrêter"<<endl;
+        famille=readUnsignedInt();
+      } while(famille>4 && famille!=DEBUG_MODE);
+      if(famille!=DEBUG_MODE)
+      {
+        table.push_back(Carte(valeur,famille));
+        cout<<table[table.size()-1]<<endl;
+      }
+    }
+  }
 
   afficherTable(table);
   cout<<endl;

@@ -2,15 +2,11 @@
 
 using namespace std;
 
+//Forme canonique de coplien
+
 Joueur::Joueur()
 {
   this->_nom="";
-  this->_main.resize(2);
-}
-
-Joueur::Joueur(string nom)
-{
-  this->_nom=nom;
   this->_main.resize(2);
 }
 
@@ -31,6 +27,15 @@ Joueur& Joueur::operator = (const Joueur& j)
   return *this;
 }
 
+//Constructeur surchargé initialisant avec le nom
+Joueur::Joueur(string nom)
+{
+  this->_nom=nom;
+  this->_main.resize(2);
+}
+
+//Pioche 2 cartes dans le deck passé en paramètre
+//Les ajoute à la main du joueur
 void Joueur::draw(Deck& deck)
 {
   for (int i=0; i<2; i++)
@@ -39,11 +44,13 @@ void Joueur::draw(Deck& deck)
   }
 }
 
+//Renvoie la main du joueur
 Vecteur<Carte> Joueur::getMain() const
 {
   return this->_main;
 }
 
+//Affichage
 ostream& operator << (ostream& os, const Joueur& j)
 {
   os<<j._nom<<"\nMAIN :"<<endl;
