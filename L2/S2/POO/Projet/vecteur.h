@@ -1,12 +1,13 @@
 #ifndef vecteur_h
 #define vecteur_h
 
+#ifndef OOR_ERROR
+#define OOR_ERROR -1
+#endif
+
 #include <iostream>
-#include <stdlib.h>
 
 using namespace std;
-
-//TODO TRY/CATCH
 
 //Implémentation maison de la classe vecteur
 template <class Type> class Vecteur
@@ -74,26 +75,37 @@ template <class Type> Vecteur<Type>& Vecteur<Type>::operator = (const Vecteur<Ty
 //Lecture seule
 template <class Type> Type Vecteur<Type>::operator [] (int index) const
 {
-  if (index<this->_size)
+  try
   {
-    return this->_tab[index];
+    if (index>=this->_size)
+    {
+      throw OOR_ERROR;
+    }
   }
-  cout<<"Index hors tableau!"<<endl;
-  //TODO Try/catch block
-  exit(-1);
+  catch(int errorcode)
+  {
+    cout<<"Index hors tableau!"<<endl;
+  }
+  return this->_tab[index];
+
 }
 
 //Accès à l'élément à l'index donné
 //Ecriture
 template <class Type> Type& Vecteur<Type>::operator [] (int index)
 {
-  if (index<this->_size)
+  try
   {
-    return this->_tab[index];
+    if (index>=this->_size)
+    {
+      throw OOR_ERROR;
+    }
   }
-  cout<<"Index hors tableau!"<<endl;
-  //TODO Try/catch block
-  exit(-1);
+  catch(int errorcode)
+  {
+    cout<<"Index hors tableau!"<<endl;
+  }
+  return this->_tab[index];
 }
 
 //Redimensionne le tableau à la taille donnée

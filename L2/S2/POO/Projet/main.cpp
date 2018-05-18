@@ -6,7 +6,9 @@
 #include "jeu.h"
 #include "outils.h"
 
+#ifndef DEBUG_MODE
 #define DEBUG_MODE 42
+#endif
 
 using namespace std;
 
@@ -19,15 +21,33 @@ int main()
   int playerCount=0;
   int newTurn=1;
   Vecteur<Joueur> joueurs;
+  bool saisieOK=true;
+
 
   //Choix du nombre de joueurs
   //On recommence tant que l'utilisateur n'entre pas une valeur entre 2 et 10
   //Ou la valeur cachée pour entrer en debugMode
   do
   {
-    cout<<"Entrez le nombre de joueur (2-10) :"<<endl;
-    playerCount=readUnsignedInt();
-  } while(playerCount<2 || (playerCount>10 && playerCount!=DEBUG_MODE));
+      if(saisieOK)
+      {
+        cout<<"Entrez le nombre de joueur (2-10) :"<<endl;
+      }
+      playerCount=readUnsignedInt();
+      if (playerCount<2 || (playerCount>10 && playerCount!=DEBUG_MODE))
+      {
+        saisieOK=false;
+      }
+      else
+      {
+        saisieOK=true;
+      }
+      if(!saisieOK)
+      {
+        cout<<"La valeur n'est pas dans l'interval demandé, veuillez saisir à nouveau."<<endl;
+      }
+  } while(!saisieOK);
+
 
   //Si l'on est pas en debug mode
   if(playerCount!=DEBUG_MODE)

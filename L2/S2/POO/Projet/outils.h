@@ -2,6 +2,10 @@
 #define DEBUG_MODE 42
 #endif
 
+#ifndef INPUT_ERROR
+#define INPUT_ERROR -1
+#endif
+
 #ifndef outils_h
 #define outils_h
 
@@ -14,7 +18,6 @@
 
 //TODO
 //COMMENTAIRES CPP
-//TRY/CATCH
 
 //Menu de DEBUG
 void debugMode();
@@ -25,7 +28,7 @@ unsigned int readUnsignedInt();
 
 //Permet de demander à l'utilisateur un booléen
 //En évitant les erreurs de lecture
-int readBool();
+bool readBool();
 
 //Permet de convertir un entier donné en son équivalent en caractères
 std::string intToString(int number);

@@ -77,16 +77,21 @@ void afficherKicker(const Vecteur<Carte>& cartes, Vecteur<int> valeursExclues, i
 //Affiche la carte haute et 4 kickers
 void afficherCarteHaute(const Vecteur<Carte>& cartes)
 {
-  //On affect la carte haute dans un tampon
+  //On affecte la carte haute dans un tampon
   Carte hauteur=trouverCarteHaute(cartes);
-  //On l'affiche
-  cout<<"Carte haute : ";
-  cout<<hauteur.afficherValeur();
-  //On ajoute dans le vecteur des valeurs exclues le tampon
-  Vecteur<int> valeursExclues;
-  valeursExclues.push_back(hauteur.getValeur());
-  //On affiche 4 kicker en excluant la hauteur trouvée
-  afficherKicker(cartes, valeursExclues, 4);
+
+  //Si l'on a bien trouvé une carte haute (tableau non vide)
+  if(hauteur.getValeur()!=0)
+  {
+    //On l'affiche
+    cout<<"Carte haute : ";
+    cout<<hauteur.afficherValeur();
+    //On ajoute dans le vecteur des valeurs exclues le tampon
+    Vecteur<int> valeursExclues;
+    valeursExclues.push_back(hauteur.getValeur());
+    //On affiche 4 kicker en excluant la hauteur trouvée
+    afficherKicker(cartes, valeursExclues, 4);
+  }
 }
 
 //****************************
