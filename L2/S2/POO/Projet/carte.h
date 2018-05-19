@@ -8,10 +8,10 @@
 class Carte
 {
   private:
-    //Famille de la carte (1-13)
+    //Famille de la carte (1-4)
     int _famille;
 
-    //Valeur de la carte (1-4)
+    //Valeur de la carte (1-13)
     int _valeur;
   public:
     //Forme canonique de coplien
