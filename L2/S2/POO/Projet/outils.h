@@ -16,9 +16,6 @@
 #include "carte.h"
 #include "jeu.h"
 
-//TODO
-//COMMENTAIRES CPP
-
 //Menu de DEBUG
 void debugMode();
 
