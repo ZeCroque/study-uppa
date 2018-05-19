@@ -1,6 +1,8 @@
 #ifndef deck_h
 #define deck_h
 
+#include <iostream>
+#include <stdlib.h>
 #include "carte.h"
 #include "vecteur.h"
 

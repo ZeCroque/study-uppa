@@ -1,3 +1,7 @@
+#ifndef DEBUG_MODE
+#define DEBUG_MODE 42
+#endif
+
 #include <iostream>
 #include <time.h>
 #include <cstdlib>
@@ -5,10 +9,6 @@
 #include "joueur.h"
 #include "jeu.h"
 #include "outils.h"
-
-#ifndef DEBUG_MODE
-#define DEBUG_MODE 42
-#endif
 
 using namespace std;
 
