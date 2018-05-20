@@ -66,7 +66,7 @@ void afficherTable(const Vecteur<Carte>& table)
   }
 }
 
-//Affiche le nom des joueurs, le contenue de leur main
+//Affiche le nom des joueurs, le contenu de leur main
 //et la meilleure combinaison qu'ils ont avec le board passé en paramètre
 void afficherJoueurs(const Vecteur<Joueur>& joueurs, const Vecteur<Carte>& table)
 {
