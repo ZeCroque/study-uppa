@@ -12,7 +12,9 @@ function saisieINSEE()
 		window.alert("La librairie sweetalert n'a pas été chargée, le script ne pourra pas fonctionner");
 	}
 	else
-	{
+	{	
+		var p=new Promise(
+		Promise.resolve(
 		swal.mixin
 		({	
 			input: 'number',
@@ -46,13 +48,13 @@ function saisieINSEE()
 					}
   				}
 			}
-		])
+		]))
 		.then((result) => 
 		{	
 			if(result.value)
 			{
 				
-				if(verifierINSEE(result.value)==true)
+				if(97-(result.value[0]%97)==result.value[1])
 				{
 					swal
 					({
@@ -64,7 +66,22 @@ function saisieINSEE()
 				}
 				else
 				{
-
+					swal
+					({
+						confirmButtonText: 'Réessayer',
+						cancelButtonText: 'Quitter',
+						showCancelButton: true,
+						title: 'Vérification terminée',
+						type:'error',
+						text: 'Vos numéros ne correspondent pas.\nVoulez vous réessayer ?',
+					})
+					.then((result) => 
+					{
+						if(result.value)
+						{
+							saisieINSEE();
+						}
+					})
 				}
 			}
 			else
@@ -77,13 +94,8 @@ function saisieINSEE()
 				  	confirmButtonText: 'Au revoir'
 				})
 			}
-		})
-	}
-}
+		});
 
-function verifierINSEE(input)
-{
-	console.log(input);
-	return true;
+	}
 }
 	
