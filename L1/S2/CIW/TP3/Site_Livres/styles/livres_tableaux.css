@@ -1,0 +1,118 @@
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td:not(:last-child){
+    white-space: nowrap;
+}
+
+td:last-child{
+    width: 100%;
+}
+
+/* Header */
+
+header {
+  color: white;
+  background-color: #393939;
+}
+
+header td {
+  padding: 0;
+  vertical-align: top;
+}
+
+header img {
+  display: block;
+}
+
+header tr:first-child img {
+  height: 100px;
+}
+
+header h1 {
+  font-family: "Crimson Text", "freeserif", serif;
+  font-size: 21.8px;
+  font-weight: normal;
+  margin: 40px 0 0 30px;
+  line-height: 0;
+}
+
+header a {
+  color: white;
+  padding: 0 20px 4px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 8.6px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+header a.actif {
+  border-bottom: 4px solid #FFBC23;
+}
+
+header tr:nth-child(3) {
+  background-image: url(../graphisme/livre_img_barre_fond.png);
+  background-repeat: repeat-x;
+}
+
+/* Article */
+
+article {
+  width: 70%;
+}
+
+article td {
+  vertical-align: top;
+  padding: 0 20px;
+}
+
+article tr:first-child {
+  height: 150px;
+}
+
+article tr:first-child td:first-child {
+  text-align: center;
+}
+
+article td>img, article td>a:first-child>img {
+  height: 330px;
+}
+
+article h2, article h3, article h4, article h5 {
+  font-family: "Open-Sans", sans-serif;
+  font-weight: normal;
+  font-size: 11px;
+  color: #393939;
+}
+
+article h3 {
+  color: #ABABAB;
+}
+
+article h3 a {
+  color: #3B3B3B;
+  text-decoration: none;
+  font-size: 8.6px;
+}
+
+article h5 {
+  border-bottom-color: #E9E9E9;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+}
+
+article p {
+  font-family: "Crimson Text", "freeserif", serif;
+  font-size: 11.7px;
+  font-weight: 300;
+  color: #3B3B3B;
+  line-height: 17.55px;
+}
+
+/* Footer */
+
+footer {
+  margin-left: 20px;
+}
