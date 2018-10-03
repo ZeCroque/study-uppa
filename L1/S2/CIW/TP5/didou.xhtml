@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Ton ami Didou !</title>
+	<script type="text/javascript" src="./didou.js"></script>
+</head>
+
+<body>
+	<h1>Ton ami Didou !</h1>
+	<p>Didou, dessine-moi <b id="id_quoi">un animal...</b></p>
+	<p><img id="id_image" src="images/didou.jpg" height="350px"/></p>
+	<label>Méthode 1 : </label>
+	<input type="button" value="un chien" onclick="changeImageM1('images/chien.jpg', 'un chien !')"/>
+	<input type="button" value="un loup" onclick="changeImageM1('images/loup.jpg', 'un loup !')"/>
+	<br/>
+	<label>Méthode 2 : </label>
+	<input type="button" value="une chouette" onclick="changeImageM2('id_image', 'id_quoi', 'images/chouette.jpg', 'une chouette')"/>
+	<input type="button" value="un singe" onclick="changeImageM2('id_image', 'id_quoi', 'images/singe.jpg', 'un singe')"/>
+	<br/>
+	<label>Méthode 3 : </label>
+	<input type="button" value="un mouton" onclick=" changeImageM3('images/mouton.jpg', 'un mouton')"/>
+	<input type="button" value="un dauphin" onclick=" changeImageM3('images/dauphin.jpg', 'un dauphin')"/>
+	<br/>
+	<br/>
+	<input type="button" value="Remise à l'état initial" onclick=" changeImageM3('images/didou.jpg', 'un animal')"/>
+	<table>
+		<tr>
+			<td><img src="images/didou.jpg" height="30px" width="50px" onmouseover=" changeImageM3('images/didou.jpg', 'un animal')"/></td>
+			<td><img src="images/chien.jpg" height="30px" width="50px" onmouseover="changeImageM1('images/chien.jpg', 'un chien !')"/></td>
+			<td><img src="images/loup.jpg" height="30px" width="50px" onmouseover="changeImageM1('images/loup.jpg', 'un loup !')"/></td>
+			<td><img src="images/chouette.jpg" height="30px" width="50px" onmouseover="changeImageM2('id_image', 'id_quoi', 'images/chouette.jpg', 'une chouette')"/></td>
+			<td><img src="images/singe.jpg" height="30px" width="50px" onmouseover="changeImageM2('id_image', 'id_quoi', 'images/singe.jpg', 'un singe')"/></td>
+			<td><img src="images/mouton.jpg" height="30px" width="50px" onmouseover="changeImageM3('images/mouton.jpg', 'un mouton')"/></td>
+			<td><img src="images/dauphin.jpg" height="30px" width="50px" onmouseover="changeImageM3('images/dauphin.jpg', 'un dauphin')"/></td>
+		</tr>
+	</table>
+ </body>
+
+</html>
