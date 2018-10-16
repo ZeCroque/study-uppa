@@ -25,10 +25,10 @@ public class BCMS extends Timer_monitor {
     private final long _negotiation_limit = 180000L; // 3 min.
     private int _number_of_fire_truck_required = 0;
     private int _number_of_police_vehicle_required = 0;
-    private java.util.ArrayList<String> _fire_trucks_dispatched = new java.util.ArrayList();
-    private java.util.ArrayList<String> _police_vehicles_dispatched = new java.util.ArrayList();
-    private java.util.ArrayList<String> _fire_trucks_arrived = new java.util.ArrayList();
-    private java.util.ArrayList<String> _police_vehicles_arrived = new java.util.ArrayList();
+    private java.util.ArrayList<String> _fire_trucks_dispatched = new java.util.ArrayList<>();
+    private java.util.ArrayList<String> _police_vehicles_dispatched = new java.util.ArrayList<>();
+    private java.util.ArrayList<String> _fire_trucks_arrived = new java.util.ArrayList<>();
+    private java.util.ArrayList<String> _police_vehicles_arrived = new java.util.ArrayList<>();
     // SCXML event fields
     private final static String _FSC_connection_request = "FSC connection request";
     private final static String _PSC_connection_request = "PSC connection request";
@@ -122,10 +122,10 @@ public class BCMS extends Timer_monitor {
     protected AbstractStatechart _Completion_of_objectives;
     protected AbstractStatechart _End_of_crisis;
     protected AbstractStatechart_monitor _bCMS_state_machine;
-
+    
 // Statechart initialization:
     private void init_structure() throws Statechart_exception {
-        _timeout_log = new java.util.LinkedList();
+        _timeout_log = new java.util.LinkedList<>();
     }
 
     private void init_behavior() throws Statechart_exception {
@@ -246,8 +246,8 @@ public class BCMS extends Timer_monitor {
         // PauWare view activated ('pv' as last argument of next constructor). Toggle comment on following line for disactivation:
         pv = new com.pauware.pauware_view.PauWare_view();
 
-        // PauWare view activated (last argument):
-        _bCMS_state_machine = new Statechart_monitor(_Init.xor(_FSC_connected).xor(_PSC_connected).xor(_Crisis_details_exchange).xor(_Step_3_Coordination).xor(_Step_4_Dispatching).xor(_All_fire_trucks_dispatched).xor(_All_police_vehicles_dispatched).xor(_Step_5_Arrival).xor(_Completion_of_objectives).xor(_End_of_crisis), this.getClass().getSimpleName(), AbstractStatechart_monitor.Don_t_show_on_system_out, pv);*/
+        // PauWare view activated (last argument):*/
+        _bCMS_state_machine = new Statechart_monitor(_Init.xor(_FSC_connected).xor(_PSC_connected).xor(_Crisis_details_exchange).xor(_Step_3_Coordination).xor(_Step_4_Dispatching).xor(_All_fire_trucks_dispatched).xor(_All_police_vehicles_dispatched).xor(_Step_5_Arrival).xor(_Completion_of_objectives).xor(_End_of_crisis), this.getClass().getSimpleName(), AbstractStatechart_monitor.Show_on_system_out);//, pv);
     }
 
     public void start() throws Statechart_exception {
@@ -695,108 +695,5 @@ public class BCMS extends Timer_monitor {
         _bCMS_state_machine.to_state(_Init.name());
     }
 
-    public static void main(String args[]) {
-        try {
-            final BCMS bCMS = new BCMS();
-            bCMS.start();
-
-            bCMS.FSC_connection_request();
-            bCMS.PSC_connection_request();
-            bCMS.state_fire_truck_number(2);
-            bCMS.state_police_vehicle_number(2);
-
-            bCMS.route_for_police_vehicles();
-            Thread.sleep(100);
-            /**
-             * Bug due to PlantUML modeling style. One must await so that
-             * 'route_for_police_vehicles' that is re-sent internally, arrives
-             * before what follows:
-             */
-            bCMS.route_for_fire_trucks();
-            bCMS.FSC_disagrees_about_fire_truck_route();
-            bCMS.route_for_fire_trucks();
-            bCMS.FSC_agrees_about_police_vehicle_route();
-            bCMS.FSC_agrees_about_fire_truck_route();
-            Thread.sleep(100);
-            /**
-             * Bug due to PlantUML modeling style. One must await so that
-             * 'completion' that is sent internally, arrives before what
-             * follows:
-             */
-
-            bCMS.fire_truck_dispatched("FT1");
-            Thread.sleep(100);
-            bCMS.fire_truck_dispatched("FT2");
-            Thread.sleep(100);
-            bCMS.police_vehicle_dispatched("PV1");
-            Thread.sleep(100);
-            bCMS.police_vehicle_dispatched("PV2");
-            Thread.sleep(100);
-            bCMS.police_vehicle_breakdown("PV1", null);
-            bCMS.fire_truck_arrived("FT1");
-            bCMS.fire_truck_arrived("FT2");
-
-            bCMS.police_vehicle_arrived("PV2");
-            // 'PV1' had an accident above, so between comments:
-            // bCMS.police_vehicle_arrived("PV1");
-            Thread.sleep(100);
-            bCMS.close();
-
-            Thread.sleep(100);
-            bCMS.reset();
-
-            Thread.sleep(100);
-            bCMS.FSC_connection_request();
-            bCMS.PSC_connection_request();
-            bCMS.state_fire_truck_number(4);
-            bCMS.state_police_vehicle_number(2);
-
-            bCMS.route_for_police_vehicles();
-            Thread.sleep(100);
-            /**
-             * Bug due to PlantUML modeling style. One must await so that
-             * 'route_for_police_vehicles' that is re-sent internally, arrives
-             * before what follows:
-             */
-            bCMS.route_for_fire_trucks();
-            bCMS.FSC_agrees_about_police_vehicle_route();
-            bCMS.FSC_agrees_about_fire_truck_route();
-            Thread.sleep(100);
-            /**
-             * Bug due to PlantUML modeling style. One must await so that
-             * 'completion' that is sent internally, arrives before what
-             * follows:
-             */
-
-            bCMS.fire_truck_dispatched("FT1");
-            Thread.sleep(100);
-            bCMS.fire_truck_dispatched("FT2");
-            Thread.sleep(100);
-            bCMS.fire_truck_dispatched("FT3");
-            Thread.sleep(100);
-            bCMS.fire_truck_dispatched("FT4");
-            Thread.sleep(100);
-            bCMS.police_vehicle_dispatched("PV1");
-            Thread.sleep(100);
-            bCMS.police_vehicle_dispatched("PV2");
-            Thread.sleep(100);
-            bCMS.fire_truck_breakdown("FT1", "FT1_outsider");
-            bCMS.fire_truck_arrived("FT4");
-            bCMS.fire_truck_arrived("FT2");
-            bCMS.fire_truck_arrived("FT3");
-            bCMS.police_vehicle_arrived("PV1");
-            bCMS.police_vehicle_arrived("PV2");
-            bCMS.crisis_is_less_severe();
-            Thread.sleep(100);
-            bCMS.close();
-            /**
-             * End of state machine is delayed so that events sent internally
-             * are effectively processed:
-             */
-            Thread.sleep(100);
-            bCMS.stop();
-        } catch (Throwable t) {
-            t.printStackTrace();
-        }
-    }
+    
 }
