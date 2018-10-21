@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+
+        <title>Feature detection</title>
+
+        <script src="js/chai.js"></script>
+
+        <script src="js/tracking.js/tracking-min.js"></script>
+        <script src="js/tracking.js/data/eye-min.js"></script>
+        <script src="js/tracking.js/data/face-min.js"></script>
+        <script src="js/tracking.js/data/mouth-min.js"></script>
+
+        <script src="js/Feature_detection.js"></script>
+        <script src="js/Character.js"></script>
+
+        <script>
+            if (typeof chai === "undefined")
+                alert("STOP");
+            chai.assert.isDefined(tracking, 'tracking-min.js has not been loaded...');
+        </script>
+    </head>
+    <body id="Feature_detection" oncontextmenu="return false;"> 
+    </body>
+</html>
