@@ -17,25 +17,21 @@ var statechartModel =
             ]
         },
         {
-            id : 'busy_parallel',
+            id : 'busy',
             $type:'parallel',
-
+            transitions :
+            [
+                {
+                    event : 'e',
+                    target : 'idle'
+                },
+                {
+                    event : 'c1',
+                    target : 'S22',
+                }
+            ],
             states:
             [
-              {
-                id : 'busy',
-                transitions :
-                [
-                    {
-                        event : 'e',
-                        target : 'idle'
-                    },
-                    {
-                        event : 'c1',
-                        target : 'S22',
-                    }
-                ]
-              },
               {
                 id : 'S1',
                 transitions:
@@ -85,25 +81,21 @@ var statechartModel =
                 ]
               },
               {
-                id : 'S3_parallel',
+                id : 'S3',
                 $type : 'parallel',
+                transitions :
+                [
+                    {
+                        event : 'b',
+                        target : 'S12'
+                    },
+                    {
+                        event : 'c',
+                        target : 'S12',
+                    }
+                ],
                 states:
                 [
-                  {
-                    id: 'S3',
-                    transitions :
-                    [
-                        {
-                            event : 'b',
-                            target : 'S12'
-                        },
-                        {
-                            event : 'c',
-                            target : 'S12',
-                        }
-                    ]
-
-                  },
                   {
                     id : 'S31',
                     transitions :
@@ -147,6 +139,7 @@ if(scion!==undefined)
     boutonStart.addEventListener('click', function(event)
     {
         interpreter.start();
+        console.log(interpreter.getConfiguration());
     });
 
     boutonC.addEventListener('click', function(event)
@@ -169,9 +162,8 @@ if(scion!==undefined)
 
       boutons[i].addEventListener("click",function(event)
       {
-        console.log(interpreter.getConfiguration());
-
         interpreter.gen({name : event.target.id,data: event});
+        console.log(interpreter.getConfiguration());
       });
     }
   });
