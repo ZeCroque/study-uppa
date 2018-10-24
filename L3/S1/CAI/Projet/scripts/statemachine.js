@@ -1,5 +1,8 @@
 "use strict";
 
+var boutonTest;
+var boutonCache;
+
 //Déclaration de la machine à état
 var statechartModel =
 {
@@ -9,62 +12,169 @@ var statechartModel =
             id : 'idle',
             onEntry : function()
             {
-                console.log("1");
+                boutonCache.style="display:none";
+                console.log("idle");
             },
             transitions :
             [
                 {
-                    event : 'click',
-                    target : 'clicked',
+                    event : 'go',
+                    target : ['S22', 'S31', 'S32', 'S11'],
                     onTransition : function(event)
-                    {                      }
+                    {}
                 }
             ]
         },
         {
-            id : 'clicked',
-            onEntry : function()
-            {
-                console.log("2");
-            },
-            /*transitions :
+            id : 'busy',
+            transitions :
             [
                 {
-                    event : 'mouseup',
+                    event : 'e',
                     target : 'idle'
                 },
                 {
-                    event : 'mousemove',
-                    target : 'dragging',
-                    onTransition : function(event)
-                    {
-                        var dx = eventStamp.clientX - event.data.clientX;
-                        var dy = eventStamp.clientY - event.data.clientY;
-
-                        rectNode.style.left = (rectX -= dx) + 'px';
-                        rectNode.style.top = (rectY -= dy) + 'px';
-
-                        eventStamp = event.data;
-                    }
+                    event : 'c',
+                    target : 'S22'
                 }
-            ]*/
+            ],
+            states:
+            [
+              {
+                id : 'S1',
+                onEntry : function()
+                {
+                    console.log("S1");
+                },
+                transitions:
+                [
+                  {
+                      event : 'd',
+                      target : 'S21'
+                  }
+                ],
+                states:
+                [
+                  {
+                    id : 'S11',
+                    onEntry : function()
+                    {
+                        console.log("S11");
+                    }
+                  },
+                  {
+                    id : 'S12',
+                    onEntry : function()
+                    {
+                        console.log("S12");
+                    },
+                    transitions :
+                    [
+                      {
+                        event : 'g',
+                        target : 'S11'
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                id : 'S2',
+                onEntry : function()
+                {
+                    console.log("S2");
+                },
+                states:
+                [
+                  {
+                    id : 'S21',
+                    onEntry : function()
+                    {
+                        console.log("S21");
+                    },
+                    transitions :
+                    [
+                        {
+                            event : 'f',
+                            target : 'idle'
+                        }
+                    ]
+                  },
+                  {
+                    id : 'S22',
+                    onEntry : function()
+                    {
+                      //interpreter.gen("h");
+                    }
+                  }
+                ]
+              },
+              {
+                id : 'S3',
+                onEntry : function()
+                {
+                    console.log("S3");
+                },
+                states:
+                [
+                  {
+                    id : 'S31',
+                    onEntry : function()
+                    {
+                        console.log("S31");
+                    },
+                    transitions :
+                    [
+                        {
+                            event : 'h',
+                            target : 'S31'
+                        }
+                    ]
+                  },
+                  {
+                    id : 'S32',
+                    onEntry : function()
+                    {
+                        console.log("S32");
+                    }
+                  }
+                ],
+                transitions :
+                [
+                    {
+                        event : ['b','c'],
+                        target : 'S12'
+                    }
+                ]
+              }
+            ]
         }
     ]
 };
 
-//Déclaration & lancement de l'interpréteur
-var interpreter = new scion.Statechart(statechartModel);
-interpreter.start();
-
-//Gestion des listeners
-window.addEventListener("load", function()
+if(scion!==undefined)
 {
+  //Déclaration & lancement de l'interpréteur
+  var interpreter = new scion.Statechart(statechartModel);
+  interpreter.start();
 
-
-  let bouton = document.getElementById('boutonTest');
-  let texte = document.getElementById('texteCache')
-  bouton.addEventListener('click', function(event)
+  //Gestion des listeners
+  window.addEventListener("load", function()
   {
-    interpreter.gen({name : event.type,data: event});
+    boutonTest = document.getElementById('boutonTest');
+    boutonCache = document.getElementById('boutonCache')
+    boutonTest.addEventListener('click', function(event)
+    {
+      interpreter.gen({name : "go",data: event});
+    });
+    boutonCache.addEventListener('click', function(event)
+    {
+      interpreter.gen({name : "",data: event});
+    });
   });
-});
+}
+else
+{
+  console.log("Scion library was not loaded, nothing will work.")
+}
+
