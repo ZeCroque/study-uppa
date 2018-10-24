@@ -3,6 +3,7 @@
 //Déclaration de la machine à état
 var statechartModel =
 {
+    id : 'mydevice',
     states :
     [
         {
@@ -139,7 +140,7 @@ if(scion!==undefined)
     boutonStart.addEventListener('click', function(event)
     {
         interpreter.start();
-        console.log(interpreter.getConfiguration());
+        console.log(interpreter.getFullConfiguration());
     });
 
     boutonC.addEventListener('click', function(event)
@@ -163,7 +164,7 @@ if(scion!==undefined)
       boutons[i].addEventListener("click",function(event)
       {
         interpreter.gen({name : event.target.id,data: event});
-        console.log(interpreter.getConfiguration());
+        console.log(interpreter.getFullConfiguration());
       });
     }
   });
