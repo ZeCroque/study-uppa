@@ -142,7 +142,11 @@ var statechartModel =
                 transitions :
                 [
                     {
-                        event : ['b','c'],
+                        event : 'b',
+                        target : 'S12'
+                    },
+                    {
+                        event : 'c',
                         target : 'S12'
                     }
                 ]
