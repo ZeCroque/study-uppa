@@ -1,6 +1,5 @@
 "use strict";
 
-
 //Déclaration de la machine à état
 var statechartModel =
 {
@@ -9,46 +8,36 @@ var statechartModel =
         {
             id : 'idle',
             $type:'initial',
-            onEntry : function()
-            {
-                console.log("idle");
-            },
             transitions :
             [
                 {
                     event : 'go',
-                    target : ['busy'],
-                    onTransition : function(event)
-                    {}
+                    target : 'busy',
                 }
             ]
         },
         {
-            id : 'busy',
-            $type : 'parallel',
-            onEntry : function()
-            {
-                console.log("busy");
-            },
-            transitions :
-            [
-                {
-                    event : 'e',
-                    target : 'idle'
-                },
-                {
-                    event : 'c',
-                    target : 'S22'
-                }
-            ],
+            id : 'busy_parallel',
+            $type:'parallel',
+
             states:
             [
               {
+                id : 'busy',
+                transitions :
+                [
+                    {
+                        event : 'e',
+                        target : 'idle'
+                    },
+                    {
+                        event : 'c1',
+                        target : 'S22',
+                    }
+                ]
+              },
+              {
                 id : 'S1',
-                onEntry : function()
-                {
-                    console.log("S1");
-                },
                 transitions:
                 [
                   {
@@ -61,18 +50,9 @@ var statechartModel =
                   {
                     id : 'S11',
                     $type : 'initial',
-                    onEntry : function()
-                    {
-                        console.log("S11");
-                    }
                   },
                   {
                     id : 'S12',
-
-                    onEntry : function()
-                    {
-                        console.log("S12");
-                    },
                     transitions :
                     [
                       {
@@ -85,21 +65,11 @@ var statechartModel =
               },
               {
                 id : 'S2',
-                onEntry : function()
-                {
-                    console.log("S2");
-
-                },
                 states:
                 [
                   {
 
                     id : 'S21',
-
-                    onEntry : function()
-                    {
-                        console.log("S21");
-                    },
                     transitions :
                     [
                         {
@@ -111,76 +81,53 @@ var statechartModel =
                   {
                     id : 'S22',
                     $type : 'initial',
-                    onEntry : function()
-                    {
-                      console.log("S22");
-                      interpreter.gen("h");
-                    }
                   }
                 ]
               },
               {
-                id : 'S3',
+                id : 'S3_parallel',
                 $type : 'parallel',
-                onEntry : function()
-                {
-                    console.log("S3");
-                },
                 states:
                 [
                   {
-                    id : 'S31',
-                    onEntry : function()
-                    {
-                        console.log("S31");
-                    },
+                    id: 'S3',
                     transitions :
                     [
                         {
-                            event : 'h',
-                            target : 'S31'
+                            event : 'b',
+                            target : 'S12'
+                        },
+                        {
+                            event : 'c',
+                            target : 'S12',
+                        }
+                    ]
+
+                  },
+                  {
+                    id : 'S31',
+                    transitions :
+                    [
+                        {
+                          event : 'h',
+                          target : 'S31',
+                          onTransition:function(event)
+                          {
+                            console.log("a");
+                          }
                         }
                     ]
                   },
                   {
-                    id : 'S32',
-                    onEntry : function()
-                    {
-                        console.log("S32");
-                    }
+                    id : 'S32'
                   }
-                ],
-                transitions :
-                [
-                    {
-                        event : 'b',
-                        target : 'S12'
-                    },
-                    {
-                        event : 'c',
-                        target : 'S12',
-                    }
                 ]
               }
-            ],
-            transitions :
-            [
-                {
-                    event : 'b',
-                    target : 'S12'
-                },
-                {
-                    event : 'c',
-                    target : 'S22',
-                    onTransition:function(event)
-                    {
-                      console.log("a");
-                    }
-                }
             ]
         }
     ]
 };
+
 
 if(scion!==undefined)
 {
@@ -190,24 +137,26 @@ if(scion!==undefined)
   //Gestion des listeners
   window.addEventListener("load", function()
   {
-    let boutons=document.querySelectorAll("input[type=button]");
+    var i=0;
 
-    let boutonStart = document.getElementById('boutonStart');
-    let boutonGo = document.getElementById('boutonGo');
-    let boutonC = document.getElementById('boutonC');
+    let boutons=document.getElementsByClassName("boutonRequest");
+
+    let boutonStart = document.getElementById('start');
+    let boutonC = document.getElementById('c');
 
     boutonStart.addEventListener('click', function(event)
     {
         interpreter.start();
     });
-    boutonGo.addEventListener('click', function(event)
+
+    boutonC.addEventListener('click', function(event)
     {
-      interpreter.gen({name : "go",data: event});
+      interpreter.gen({name : "h",data: event});
     });
 
     boutonC.addEventListener('click', function(event)
     {
-      interpreter.gen({name : "c",data: event});
+      interpreter.gen({name : "c1",data: event});
     });
 
     interpreter.registerListener({onTransition:function(source, target, index)
@@ -217,9 +166,12 @@ if(scion!==undefined)
 
     for(let i=0; i<boutons.length; i++)
     {
-      boutons[i].addEventListener("click",function()
+
+      boutons[i].addEventListener("click",function(event)
       {
         console.log(interpreter.getConfiguration());
+
+        interpreter.gen({name : event.target.id,data: event});
       });
     }
   });
