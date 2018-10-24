@@ -1,0 +1,76 @@
+/*----------------------------------------------------*/
+/*Panel de Contrôle*/
+/*----------------------------------------------------*/
+
+#panel{
+  display:flex;
+  flex-direction:column;
+  width:300px;
+  height: 210px;
+  border-radius: 12px;
+  border: 3px solid black;
+}
+
+#controllers{
+  display:flex;
+  flex-direction: line;
+  width: 100%;
+}
+
+#requests{
+  display:flex;
+  flex-direction: line;
+  align-items: center;
+  width: 100%;
+}
+
+#gauche,#droite{
+  display:flex;
+  flex-direction: column;
+}
+
+#gauche{
+  margin-left: 10px;
+  margin-right: 5px;
+}
+
+#droite{
+  margin-right: 10px;
+  margin-left: 5px;
+}
+
+#controllers>input{
+  width:80px;
+  height: 40px;
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+#boutonStart{
+
+}
+
+#boutonGo{
+
+}
+
+#boutonStop{
+
+}
+
+.boutonRequest{
+  background-color: white;
+  color: black;
+  border: 3px solid grey;
+  width:135px;
+  height: 40px;
+  margin-top: 10px;
+  font-size: 18px;
+  transition-duration: 0.4s;
+  border-radius: 12px;
+}
+
+/*----------------------------------------------------*\
+Etats de la machine
+\*----------------------------------------------------*/

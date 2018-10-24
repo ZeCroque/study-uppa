@@ -5,11 +5,28 @@
   <title>TP1</title>
   <script type="text/javascript" src="https://cdn.rawgit.com/jbeard4/SCION-CORE/1.1.2/lib/scion.js"></script>
   <script type="text/javascript" src="./scripts/statemachine.js"></script>
+  <link rel="stylesheet" type="text/css" href="./scripts/projet.css"></link>
 </head>
 <body>
-  <input id="boutonStart" type="button" value="Start"/>
-  <input id="boutonGo" type="button" value="Go"/>
-  <input id="boutonStop" type="button" value="Stop"/>
-  <input id="boutonC" type="button" value="Request C"/>
+  <div id="panel">
+    <div id="controllers">
+      <input id="boutonStart" type="button" value="Start"/>
+      <input id="boutonGo" type="button" value="Go"/>
+      <input id="boutonStop" type="button" value="Stop"/>
+    </div>
+    <div id="requests">
+      <div id="gauche">
+        <input class="boutonRequest" id="boutonB" type="button" value="Request B"/>
+        <input class="boutonRequest" id="boutonC" type="button" value="Request C"/>
+        <input class="boutonRequest" id="boutonD" type="button" value="Request D"/>
+      </div>
+      <div id="droite">
+        <input class="boutonRequest" id="boutonE" type="button" value="Request E"/>
+        <input class="boutonRequest" id="boutonF" type="button" value="Request F"/>
+        <input class="boutonRequest" id="boutonG" type="button" value="Request G"/>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
