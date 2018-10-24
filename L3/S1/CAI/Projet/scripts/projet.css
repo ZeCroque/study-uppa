@@ -1,15 +1,101 @@
 /*-------------------------*\
+    Machine/Body
+\*-------------------------*/
+
+body{
+  background-color: black;
+}
+#boxBusy{
+  background-color: grey;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 20px;
+  margin-top: 20px;
+  width:700px;
+  height: 700px;
+}
+
+#busy{
+  text-align: center;
+  background-color: white;
+  width: 100%;
+  flex:1;
+  margin-top: 0;
+}
+
+#boxS1-2-3{
+  display: flex;
+  flex-direction: line;
+  align-items: center;
+  width: 100%;
+  align-content:center;
+  flex:8;
+}
+
+#boxS1-3{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 5;
+  height: 100%;
+}
+
+#boxS2{
+  flex: 3;
+  width: 100%;
+}
+
+#boxS1,#boxS3{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  border: 3px solid black;
+  border-radius: 12px;
+}
+
+#S1,#S3{
+  flex:1;
+  text-align: center;
+  width: 100%;
+  background-color: white;
+}
+
+#boxS11-12,#boxS32-31{
+  flex:7;
+  display: flex;
+  flex-direction: line;
+  align-items: center;
+
+}
+
+#S11{
+  width: 100px;
+  border-style: groove;
+  margin-right: 20px;
+}
+
+#S12{
+  width: 100px;
+  border-style: groove;
+  margin-left: 20px;
+  align
+}
+
+
+
+
+
+
+/*-------------------------*\
     Footer
 \*-------------------------*/
 
 footer{
   display:flex;
   flex-direction: line;
-  position:fixed;
-  bottom: 0;
-  left: 10px;
   margin: 0 -5px;
-
 }
 
 
@@ -50,17 +136,17 @@ textarea{
   width: 100%;
 }
 
-#gauche,#droite{
+#requestGauche,#requestDroite{
   display:flex;
   flex-direction: column;
 }
 
-#gauche{
+#requestGauche{
   margin-left: 10px;
   margin-right: 5px;
 }
 
-#droite{
+#requestDroite{
   margin-right: 10px;
   margin-left: 5px;
 }
@@ -79,7 +165,7 @@ textarea{
   color: black;
 }
 
-#boutonStart{
+#start{
   background-color: blue;
   color: white;
   font-size: 18px;
@@ -87,7 +173,7 @@ textarea{
   border-radius: 12px;
 }
 
-#boutonGo{
+#go{
   background-color: green;
   color: white;
   font-size: 18px;
@@ -95,7 +181,7 @@ textarea{
   border-radius: 12px;
 }
 
-#boutonStop{
+#stop{
   background-color: red;
   color: white;
   font-size: 18px;
@@ -103,7 +189,7 @@ textarea{
   border-radius: 12px;
 }
 
-.boutonRequest{
+#b,#c,#d,#e,#f,#g{
   background-color: grey;
   color: white;
   border: 3px solid black;
