@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="src" path="My_device_JavaFX/_My_device"/>
-	<classpathentry kind="lib" path="My_device_JavaFX/lib/PauWare_Java_EE.jar"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="lib/PauWare_Java_EE.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
