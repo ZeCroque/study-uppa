@@ -3,17 +3,21 @@
 \*-------------------------*/
 
 body{
-  background-color: black;
+  background-image: url("../Ressources/background.jpeg");
+  background-repeat: no-repeat;
+
 }
 #boxBusy{
   background-color: grey;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 20px;
+  margin-left: 400px;
   margin-top: 20px;
   width:700px;
   height: 700px;
+  border: 3px solid white;
+  border-radius: 12px;
 }
 
 #busy{
@@ -43,16 +47,31 @@ body{
 
 #boxS2{
   flex: 3;
-  width: 100%;
+  margin-right: 20px;
+  margin-left: 20px;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-#boxS1,#boxS3{
+#boxS1{
+  flex:1;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 90%;
-  border: 3px solid black;
-  border-radius: 12px;
+  margin-bottom: 5%;
+}
+
+#boxS3{
+  flex:1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  margin-bottom: 5%;
+  margin-top: 5%;
 }
 
 #S1,#S3{
@@ -60,6 +79,10 @@ body{
   text-align: center;
   width: 100%;
   background-color: white;
+  border: 3px solid black;
+  border-radius: 12px;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 #boxS11-12,#boxS32-31{
@@ -67,20 +90,109 @@ body{
   display: flex;
   flex-direction: line;
   align-items: center;
-
+  width: 100%;
+  background-color: white;
+  border: 3px solid black;
+  border-radius: 12px;
+  margin-top: 5px;
 }
 
 #S11{
   width: 100px;
-  border-style: groove;
-  margin-right: 20px;
+  height: 100px;
+  border: 3px solid black;
+  border-radius: 12px;
+  text-align: center;
+  margin-left: 40px;
+  margin-bottom: 70px;
+  background-color: white;
 }
 
 #S12{
   width: 100px;
-  border-style: groove;
-  margin-left: 20px;
-  align
+  height: 100px;
+  border: 3px solid black;
+  border-radius: 12px;
+  text-align: center;
+  margin-left: 80px;
+  margin-bottom: 70px;
+  background-color: white;
+
+}
+
+#pointi{
+  flex:1;
+  width: 100%;
+  height: 100%;
+  border-right:10px dotted black;
+  align-items: center;
+}
+
+#S32{
+  width: 80%;
+  height: 40%;
+  margin-left: 8%;
+  margin-top: 30%;
+  border: 3px solid black;
+  border-radius: 12px;
+  text-align: center;
+  background-color: white;
+}
+
+#S31{
+  flex:1;
+  margin-right: 70px;
+  margin-bottom: 90px;
+  margin-left: 10px;
+  max-width: 100px;
+  max-height: 70px;
+  border: 3px solid black;
+  border-radius: 12px;
+  text-align: center;
+  background-color: white;
+}
+
+#S2{
+  flex: 1;
+  background-color: white;
+  border: 3px solid black;
+  border-radius: 12px;
+  width: 100%;
+  text-align: center;
+}
+
+#S21-22{
+  flex:9;
+  display:flex;
+  flex-direction: column;
+  background-color: white;
+  border: 3px solid black;
+  border-radius: 12px;
+  width: 100%;
+  align-items: center;
+}
+
+#S21{
+  flex:1;
+  width: 40%;
+  max-height: 70px;
+  background-color: white;
+  border: 3px solid black;
+  border-radius: 12px;
+  text-align: center;
+  margin-top: 25px;
+}
+
+#S22{
+  flex:1;
+  width: 50%;
+  max-height: 80px;
+  background-color: white;
+  border: 3px solid black;
+  border-radius: 12px;
+  text-align: center;
+  margin-top: 70px;
+
 }
 
 
@@ -96,18 +208,21 @@ footer{
   display:flex;
   flex-direction: line;
   margin: 0 -5px;
+  margin-top: 20px;
+  margin-left: 22px;
 }
 
 
 /* Textarea */
 
 textarea{
-  width:700px;
+  width:800px;
   height: 210px;
   resize: none;
   background-color: lightgrey;
   border-style: none;
   margin: 0 5px;
+  margin-right: 20px;
 }
 
 /* Panel de contrôle */
@@ -201,7 +316,7 @@ textarea{
   border-radius: 12px;
 }
 
-.boutonRequest:hover{
+#b:hover,#c:hover,#d:hover,#e:hover,#f:hover,#g:hover{
   background-color: white;
   color: black;
 }
