@@ -3,20 +3,20 @@
 \*-------------------------*/
 
 body{
-  background-image: url("../Ressources/background.jpeg");
+  background-image: url("../Ressources/backgroundOFF.jpeg") ;
   background-repeat: no-repeat;
-
 }
+
 #boxBusy{
-  background-color: grey;
+  background-color: none;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 400px;
-  margin-top: 20px;
+  margin-left: 300px;
+  margin-top: 30px;
   width:700px;
   height: 700px;
-  border: 3px solid white;
+  border: 5px solid white;
   border-radius: 12px;
 }
 
@@ -216,13 +216,15 @@ footer{
 /* Textarea */
 
 textarea{
-  width:800px;
+  width:900px;
   height: 210px;
   resize: none;
-  background-color: lightgrey;
-  border-style: none;
+  background-color: black;
+  border: 5px solid white;
+  border-radius: 12px;
   margin: 0 5px;
   margin-right: 20px;
+  opacity: 0.9;
 }
 
 /* Panel de contrôle */
@@ -233,7 +235,7 @@ textarea{
   width:300px;
   height: 210px;
   border-radius: 12px;
-  border: 3px solid black;
+  border: 5px solid white;
   background-image: url("../Ressources/metal.jpeg");
   margin: 0 5px;
 }

@@ -135,6 +135,8 @@ if(scion!==undefined)
     let boutons=document.getElementsByClassName("boutonRequest");
 
     let boutonStart = document.getElementById('start');
+    let boutonStop = document.getElementById('stop');
+    let boutonGo = document.getElementById('go');
     let boutonC = document.getElementById('c');
 
     boutonStart.addEventListener('click', function(event)
@@ -143,11 +145,18 @@ if(scion!==undefined)
         console.log(interpreter.getFullConfiguration());
     });
 
+    boutonStart.addEventListener('click', function(event)
+    {
+        document.body.style.backgroundImage = "url('../Ressources/backgroundON.jpeg')";
+        console.log("test");
+    });
+
+
     boutonC.addEventListener('click', function(event)
     {
       interpreter.gen({name : "h",data: event});
     });
-
+//on peut pas foutre la ligne dans la fonction en dessuus dans celle d'au dessus ?
     boutonC.addEventListener('click', function(event)
     {
       interpreter.gen({name : "c1",data: event});
@@ -173,4 +182,3 @@ else
 {
   console.log("Scion library was not loaded, nothing will work.")
 }
-
