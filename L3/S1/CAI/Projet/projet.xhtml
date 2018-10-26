@@ -12,48 +12,48 @@
 <body>
   <div id="boxBody">
     <div id="boxBusy">
-      <h4 id="busy">Busy</h4>
+      <h4 id="busy" class='busy inactive'>Busy</h4>
         <div id="boxS1-2-3">
           <div id="boxS1-3">
             <div id="boxS1">
-              <h4 id="S1">S1</h4>
-              <div id="boxS11-12">
-                <div id="S11">
+              <h4 id="S1" class='S1 inactive'>S1</h4>
+              <div id="boxS11-12" class='S1 inactive'>
+                <div id="S11" class='S11 inactive'>
                   <h4>S11</h4>
                 </div>
-                <div id="S12">
+                <div id="S12" class='S12 inactive'>
                   <h4>S12</h4>
                 </div>
               </div>
             </div>
-            <div id="boxS3">
-              <h4 id="S3">S3</h4>
-              <div id="boxS32-31">
+            <div id="boxS3" >
+              <h4 id="S3" class='S3 inactive'>S3</h4>
+              <div id="boxS32-31" class='S3 inactive'>
                   <div id="pointi">
-                    <div id="S32">
+                    <div id="S32" class='S32 inactive'>
                       <h4>S32</h4>
                     </div>
                   </div>
-                  <div id="S31">
+                  <div id="S31" class='S32 inactive'>
                     <h4>S31</h4>
                   </div>
               </div>
             </div>
         </div>
-        <div id="boxS2">
-          <h4 id="S2">S2</h4>
-          <div id="S21-22">
-              <div id="S21">
+        <div id="boxS2" >
+          <h4 id="S2" class='S2 inactive'>S2</h4>
+          <div id="S21-22" class='S2 inactive'>
+              <div id="S21" class='S21 inactive'>
                 <h4>S21</h4>
               </div>
-              <div id="S22">
+              <div id="S22" class='S22 inactive'>
                 <h4>S22</h4>
               </div>
           </div>
         </div>
       </div>
     </div>
-    <div id="boxIdle">
+    <div id="boxIdle" class='idle  inactive'>
       <h4 id="idle">Idle</h4>
     </div>
     <img src="./Ressources/UI.png" alt="Italian Trulli"></img>
@@ -69,24 +69,24 @@
 </body>
 
 <footer>
-  <textarea>
+  <textarea id="console">
   </textarea>
   <div id="panel">
     <div id="controllers">
       <input id="start" type="button" value="START"/>
-      <input class="boutonRequest" id="go" type="button" value="GO"/>
+      <input class="boutonRequest go" type="button" value="GO"/>
       <input id="stop" type="button" value="STOP"/>
     </div>
     <div id="requests">
       <div id="requestGauche">
-        <input class="boutonRequest" id="b" type="button" value="Request B"/>
-        <input class="boutonRequest" id="c" type="button" value="Request C"/>
-        <input class="boutonRequest" id="d" type="button" value="Request D"/>
+        <input class="boutonRequest b" type="button" value="Request B"/>
+        <input class="boutonRequest c" type="button" value="Request C"/>
+        <input class="boutonRequest d" type="button" value="Request D"/>
       </div>
       <div id="requestDroite">
-        <input class="boutonRequest" id="e" type="button" value="Request E"/>
-        <input class="boutonRequest" id="f" type="button" value="Request F"/>
-        <input class="boutonRequest" id="g" type="button" value="Request G"/>
+        <input class="boutonRequest e" type="button" value="Request E"/>
+        <input class="boutonRequest f" type="button" value="Request F"/>
+        <input class="boutonRequest g" type="button" value="Request G"/>
       </div>
     </div>
   </div>
