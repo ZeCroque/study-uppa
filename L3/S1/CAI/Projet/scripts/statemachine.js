@@ -1,5 +1,4 @@
 "use strict";
-
 //Déclaration de la machine à état
 var statechartModel =
 {
@@ -27,7 +26,7 @@ var statechartModel =
                     target : 'idle'
                 },
                 {
-                    event : 'c1',
+                    event : 'c',
                     target : 'S22',
                 }
             ],
@@ -78,6 +77,10 @@ var statechartModel =
                   {
                     id : 'S22',
                     $type : 'initial',
+                    onEntry : function()
+                    {
+                      //this.send({name: "h", data:event});
+                    }
                   }
                 ]
               },
@@ -130,10 +133,8 @@ if(scion!==undefined)
   //Gestion des listeners
   window.addEventListener("load", function()
   {
-    var i=0;
-
+    //Boutons
     let boutons=document.getElementsByClassName("boutonRequest");
-
     let boutonStart = document.getElementById('start');
     let boutonStop = document.getElementById('stop');
     let boutonGo = document.getElementById('go');
@@ -143,23 +144,13 @@ if(scion!==undefined)
     {
         interpreter.start();
         console.log(interpreter.getFullConfiguration());
+        document.body.style.backgroundImage="url('./Ressources/backgroundON.jpeg')" ;
     });
-
-    boutonStart.addEventListener('click', function(event)
-    {
-        document.body.style.backgroundImage = "url('../Ressources/backgroundON.jpeg')";
-        console.log("test");
-    });
-
 
     boutonC.addEventListener('click', function(event)
     {
-      interpreter.gen({name : "h",data: event});
-    });
-//on peut pas foutre la ligne dans la fonction en dessuus dans celle d'au dessus ?
-    boutonC.addEventListener('click', function(event)
-    {
-      interpreter.gen({name : "c1",data: event});
+      //interpreter.gen({name : "h",data: event});
+      //interpreter.gen({name : "c1",data: event});
     });
 
     interpreter.registerListener({onTransition:function(source, target, index)
