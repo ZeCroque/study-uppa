@@ -1,8 +1,3 @@
-.arrowButtons{
-  position: absolute;
-  top: 0;
-  left: 0;
-}
 
 
 /*-------------------------*\
@@ -330,7 +325,7 @@ textarea{
   border-radius: 12px;
 }
 
-.boutonRequest{
+.button{
   background-color: grey;
   color: white;
   border: 3px solid black;
@@ -342,7 +337,7 @@ textarea{
   border-radius: 12px;
 }
 
-.boutonRequest:hover
+.button:hover
 {
   background-color: white;
   color: black;
@@ -356,5 +351,14 @@ textarea{
   border-radius: 12px;
 }
 
+.arrow{
+  position: absolute;
+  background: none;
+  top: 0;
+  left: 0;
+}
 
-
+.arrow:hover
+{
+  background-color: none;
+}
