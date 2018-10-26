@@ -1,3 +1,10 @@
+.arrowButtons{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
 /*-------------------------*\
     Machine/Body
 \*-------------------------*/
@@ -219,7 +226,6 @@ img{
   border-radius: 12px;
   text-align: center;
   margin-top: 70px;
-
 }
 
 

@@ -150,6 +150,11 @@ if(scion!==undefined)
         lastEvent=event;
     });
 
+    boutonStop.addEventListener('click', function(event)
+    {
+        document.body.style.backgroundImage="url('./Ressources/backgroundOFF.jpeg')" ;
+    });
+
     boutonC.addEventListener('click', function(event)
     {
       //interpreter.gen({name : "c1",data: event});
