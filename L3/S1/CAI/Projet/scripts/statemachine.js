@@ -1,4 +1,5 @@
 "use strict";
+var lastEvent;
 //Déclaration de la machine à état
 var statechartModel =
 {
@@ -79,7 +80,8 @@ var statechartModel =
                     $type : 'initial',
                     onEntry : function()
                     {
-                      //this.send({name: "h", data:event});
+                      this.raise({name: "h", data:lastEvent.data});
+                      lastEvent=undefined;
                     }
                   }
                 ]
@@ -145,11 +147,11 @@ if(scion!==undefined)
         interpreter.start();
         console.log(interpreter.getFullConfiguration());
         document.body.style.backgroundImage="url('./Ressources/backgroundON.jpeg')" ;
+        lastEvent=event;
     });
 
     boutonC.addEventListener('click', function(event)
     {
-      //interpreter.gen({name : "h",data: event});
       //interpreter.gen({name : "c1",data: event});
     });
 
@@ -165,6 +167,7 @@ if(scion!==undefined)
       {
         interpreter.gen({name : event.target.id,data: event});
         console.log(interpreter.getFullConfiguration());
+        lastEvent=event;
       });
     }
   });
