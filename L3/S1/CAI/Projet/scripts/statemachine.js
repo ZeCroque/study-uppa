@@ -162,7 +162,7 @@ if(scion!==undefined)
   window.addEventListener("load", function()
   {
     //Boutons
-    let boutons=document.getElementsByClassName("boutonRequest");
+    let boutons=document.getElementsByClassName("request");
     let boutonStart = document.getElementById('start');
     let boutonStop = document.getElementById('stop');
     let consoleTextArea = document.getElementById('console');
@@ -200,8 +200,8 @@ if(scion!==undefined)
       let activeStates=document.getElementsByClassName(stateId);
       for (let i=0; i<activeStates.length; i++)
       {
-        activeStates[i].classList.remove("inactive");
         activeStates[i].classList.add("active");
+        activeStates[i].classList.remove("inactive");
       }
     }});
     interpreter.registerListener({onExit:function(stateId)
