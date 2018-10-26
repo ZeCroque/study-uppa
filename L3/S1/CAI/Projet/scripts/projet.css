@@ -251,6 +251,7 @@ textarea{
   margin: 0 5px;
   margin-right: 20px;
   opacity: 0.9;
+  color: white;
 }
 
 /* Panel de contrôle */
@@ -354,12 +355,51 @@ textarea{
 .arrow{
   position: absolute;
   background: none;
-  top: 0;
-  left: 0;
 }
 
 .arrow:hover
 {
   background-color: none;
   transform: scale(1.1);
+  transition-duration: 0.4s;
+}
+
+.arrow.b{
+  top: 295px;
+  left: 440px;
+}
+
+#C1{
+  top: 305px;
+  left: 600px;
+}
+
+#C2{
+  top: 485px;
+  left: 935px;
+}
+
+.arrow.d{
+  top: 367px;
+  left: 735px;
+}
+
+.arrow.e{
+  top: 150px;
+  left: 1015px;
+}
+
+.arrow.f{
+  top: 340px;
+  left: 926px;
+}
+
+.arrow.g{
+  top: 230px;
+  left: 480px;
+}
+
+.arrow.go{
+  top: 470px;
+  left: 1015px;
 }
