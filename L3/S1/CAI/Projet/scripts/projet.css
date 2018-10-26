@@ -252,6 +252,9 @@ textarea{
   margin-right: 20px;
   opacity: 0.9;
   color: white;
+  overflow:hidden;
+  font-size: 12px;
+ text-indent: 10px;
 }
 
 /* Panel de contrôle */

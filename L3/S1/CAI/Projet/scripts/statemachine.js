@@ -201,10 +201,12 @@ if(scion!==undefined)
     let boutonStop = document.getElementById('stop');
     let consoleTextArea = document.getElementById('console');
 
+    consoleTextArea.readOnly = true;
+    consoleTextArea.scrollTop = document.getElementById("console").scrollHeight
     boutonStart.addEventListener('click', function(event)
     {
         interpreter.start();
-        consoleTextArea.textContent+="\nACTIVE STATES : "+getActiveStates(interpreter);
+        consoleTextArea.textContent+="\n      ACTIVE STATES : "+getActiveStates(interpreter);
         document.body.style.backgroundImage="url('./Ressources/backgroundON.jpeg')" ;
     });
 
@@ -220,7 +222,8 @@ if(scion!==undefined)
       boutons[i].addEventListener("click",function(event)
       {
         interpreter.gen({name : event.target.classList[1],data: event});
-        consoleTextArea.textContent+="\nACTIVE STATES : "+getActiveStates(interpreter);
+        consoleTextArea.textContent+="\n      ACTIVE STATES : "+getActiveStates(interpreter);
+        consoleTextArea.scrollTop = consoleTextArea.scrollHeight ;
       });
     }
 
@@ -228,7 +231,7 @@ if(scion!==undefined)
     {
       if(source[0]!="$" && target[0]!="$")
       {
-        consoleTextArea.textContent+="\nELIGIBLE TRANSITION :"+source+" -> "+target;
+        consoleTextArea.textContent+="\n      ELIGIBLE TRANSITION :"+source+" -> "+target;
       }
     }});
 
@@ -245,7 +248,7 @@ if(scion!==undefined)
       //Trace
       if(stateId[0]!="$")
       {
-        consoleTextArea.textContent+="\nACTIVATED STATE :"+stateId;
+        consoleTextArea.textContent+="\n      ACTIVATED STATE :"+stateId;
       }
     }});
     interpreter.registerListener({onExit:function(stateId)
@@ -261,7 +264,7 @@ if(scion!==undefined)
       //Trace
       if(stateId[0]!="$")
       {
-        consoleTextArea.textContent+="\nDESACTIVATED STATE :"+stateId;
+        consoleTextArea.textContent+="\n      DESACTIVATED STATE :"+stateId;
       }
     }});
 
