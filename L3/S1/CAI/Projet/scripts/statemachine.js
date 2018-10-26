@@ -87,7 +87,6 @@ var statechartModel =
                     onEntry : function(event)
                     {
                         //this.send({name: "h", data:event});
-                        cEvent=undefined;
                     }
                   },
                   {
