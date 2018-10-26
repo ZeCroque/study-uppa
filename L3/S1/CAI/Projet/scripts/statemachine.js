@@ -186,7 +186,7 @@ if(scion!==undefined)
 
       boutons[i].addEventListener("click",function(event)
       {
-        interpreter.gen({name : event.target.classList[0],data: event});
+        interpreter.gen({name : event.target.classList[1],data: event});
         consoleTextArea.textContent+="\n"+interpreter.getFullConfiguration();
       });
     }

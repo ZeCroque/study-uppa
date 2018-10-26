@@ -342,6 +342,12 @@ textarea{
   border-radius: 12px;
 }
 
+.boutonRequest:hover
+{
+  background-color: white;
+  color: black;
+}
+
 .go{
   background-color: green;
   color: white;
@@ -350,9 +356,5 @@ textarea{
   border-radius: 12px;
 }
 
-boutonRequest:hover
-{
-  background-color: white;
-  color: black;
-}
+
 
