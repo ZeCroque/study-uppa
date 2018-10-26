@@ -1,5 +1,4 @@
 "use strict";
-var lastEvent;
 //Déclaration de la machine à état
 var statechartModel =
 {
@@ -40,13 +39,24 @@ var statechartModel =
                   {
                       event : 'd',
                       target : 'S21'
+                  },
+                  {
+                      event : 'b',
+                      target : 'S12'
                   }
                 ],
                 states:
                 [
                   {
                     id : 'S11',
-                    $type : 'initial',
+                    onEntry : function(event)
+                    {
+                      console.log("w");
+                    },
+                    onExit : function(event)
+                    {
+                      console.log("x")
+                    }
                   },
                   {
                     id : 'S12',
@@ -56,7 +66,15 @@ var statechartModel =
                         event : 'g',
                         target : 'S11'
                       }
-                    ]
+                    ],
+                    onEntry : function(event)
+                    {
+                      console.log("y");
+                    },
+                    onExit : function(event)
+                    {
+                      console.log("z")
+                    }
                   }
                 ]
               },
@@ -64,6 +82,14 @@ var statechartModel =
                 id : 'S2',
                 states:
                 [
+                  {
+                    id : 'S22',
+                    onEntry : function(event)
+                    {
+                        //this.send({name: "h", data:event});
+                        cEvent=undefined;
+                    }
+                  },
                   {
 
                     id : 'S21',
@@ -75,15 +101,7 @@ var statechartModel =
                         }
                     ]
                   },
-                  {
-                    id : 'S22',
-                    $type : 'initial',
-                    onEntry : function()
-                    {
-                      this.raise({name: "h", data:lastEvent.data});
-                      lastEvent=undefined;
-                    }
-                  }
+
                 ]
               },
               {
@@ -91,10 +109,6 @@ var statechartModel =
                 $type : 'parallel',
                 transitions :
                 [
-                    {
-                        event : 'b',
-                        target : 'S12'
-                    },
                     {
                         event : 'c',
                         target : 'S12',
@@ -117,13 +131,26 @@ var statechartModel =
                     ]
                   },
                   {
-                    id : 'S32'
+                    id : 'S32',
+                    onEntry:function(event)
+                    {
+                      port.listenTo();
+                    }
                   }
                 ]
               }
             ]
         }
     ]
+};
+
+//Fakeport
+var port =
+{
+  listenTo : function()
+  {
+    console.log("I'm listening");
+  }
 };
 
 
@@ -139,26 +166,14 @@ if(scion!==undefined)
     let boutons=document.getElementsByClassName("boutonRequest");
     let boutonStart = document.getElementById('start');
     let boutonStop = document.getElementById('stop');
-    let boutonGo = document.getElementById('go');
-    let boutonC = document.getElementById('c');
+    let consoleTextArea = document.getElementById('console');
 
     boutonStart.addEventListener('click', function(event)
     {
         interpreter.start();
-        console.log(interpreter.getFullConfiguration());
+        consoleTextArea.textContent+="\n"+interpreter.getFullConfiguration();
         document.body.style.backgroundImage="url('./Ressources/backgroundON.jpeg')" ;
-        lastEvent=event;
     });
-
-    boutonC.addEventListener('click', function(event)
-    {
-      //interpreter.gen({name : "c1",data: event});
-    });
-
-    interpreter.registerListener({onTransition:function(source, target, index)
-    {
-      console.log("source :"+source+"\ntarget :"+target);
-    }});
 
     for(let i=0; i<boutons.length; i++)
     {
@@ -166,10 +181,34 @@ if(scion!==undefined)
       boutons[i].addEventListener("click",function(event)
       {
         interpreter.gen({name : event.target.id,data: event});
-        console.log(interpreter.getFullConfiguration());
-        lastEvent=event;
+        consoleTextArea.textContent+="\n"+interpreter.getFullConfiguration();
       });
     }
+
+    interpreter.registerListener({onTransition:function(source, target, index)
+    {
+      consoleTextArea.textContent+="\nsource :"+source+"\ntarget :"+target;
+    }});
+
+    interpreter.registerListener({onEntry:function(stateId)
+    {
+      let activeStates=document.getElementsByClassName(stateId);
+      for (let i=0; i<activeStates.length; i++)
+      {
+        activeStates[i].classList.remove("inactive");
+        activeStates[i].classList.add("active");
+      }
+    }});
+    interpreter.registerListener({onExit:function(stateId)
+    {
+      let activeStates=document.getElementsByClassName(stateId);
+      for (let i=0; i<activeStates.length; i++)
+      {
+        activeStates[i].classList.add("inactive");
+        activeStates[i].classList.remove("active");
+      }
+    }});
+
   });
 }
 else
