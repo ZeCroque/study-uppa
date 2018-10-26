@@ -361,4 +361,5 @@ textarea{
 .arrow:hover
 {
   background-color: none;
+  transform: scale(1.1);
 }
