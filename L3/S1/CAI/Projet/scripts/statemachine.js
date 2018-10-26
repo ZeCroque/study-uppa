@@ -2,144 +2,160 @@
 //Déclaration de la machine à état
 var statechartModel =
 {
-    id : 'mydevice',
-    states :
-    [
-        {
-            id : 'idle',
-            $type:'initial',
-            transitions :
-            [
+  states:
+  [
+    {
+      id : 'mydevice',
+      states :
+      [
+          {
+              id : 'idle',
+              $type:'initial',
+              transitions :
+              [
+                  {
+                      event : 'go',
+                      target : 'busy',
+                  }
+              ]
+          },
+          {
+              id : 'busy',
+              $type:'parallel',
+              transitions :
+              [
+                  {
+                      event : 'e',
+                      target : 'idle'
+                  },
+                  {
+                      event : 'c',
+                      target : 'S22',
+                  }
+              ],
+              states:
+              [
                 {
-                    event : 'go',
-                    target : 'busy',
-                }
-            ]
-        },
-        {
-            id : 'busy',
-            $type:'parallel',
-            transitions :
-            [
-                {
-                    event : 'e',
-                    target : 'idle'
+                  id : 'S1',
+                  transitions:
+                  [
+                    {
+                        event : 'd',
+                        target : 'S21'
+                    },
+                    {
+                        event : 'b',
+                        target : 'S12'
+                    }
+                  ],
+                  states:
+                  [
+                    {
+                      id : 'S11',
+                      onEntry : function(event)
+                      {
+                        console.log("w");
+                      },
+                      onExit : function(event)
+                      {
+                        console.log("x")
+                      }
+                    },
+                    {
+                      id : 'S12',
+                      transitions :
+                      [
+                        {
+                          event : 'g',
+                          target : 'S11'
+                        }
+                      ],
+                      onEntry : function(event)
+                      {
+                        console.log("y");
+                      },
+                      onExit : function(event)
+                      {
+                        console.log("z")
+                      }
+                    }
+                  ]
                 },
                 {
-                    event : 'c',
-                    target : 'S22',
-                }
-            ],
-            states:
-            [
-              {
-                id : 'S1',
-                transitions:
-                [
-                  {
-                      event : 'd',
-                      target : 'S21'
-                  },
-                  {
-                      event : 'b',
-                      target : 'S12'
-                  }
-                ],
-                states:
-                [
-                  {
-                    id : 'S11',
-                    onEntry : function(event)
+                  id : 'S2',
+                  states:
+                  [
                     {
-                      console.log("w");
-                    },
-                    onExit : function(event)
-                    {
-                      console.log("x")
-                    }
-                  },
-                  {
-                    id : 'S12',
-                    transitions :
-                    [
+                      id : 'S22',
+                      onEntry : function(event)
                       {
-                        event : 'g',
-                        target : 'S11'
+                          //this.send({name: "h", data:event});
                       }
-                    ],
-                    onEntry : function(event)
-                    {
-                      console.log("y");
                     },
-                    onExit : function(event)
                     {
-                      console.log("z")
-                    }
-                  }
-                ]
-              },
-              {
-                id : 'S2',
-                states:
-                [
-                  {
-                    id : 'S22',
-                    onEntry : function(event)
-                    {
-                        //this.send({name: "h", data:event});
-                    }
-                  },
-                  {
 
-                    id : 'S21',
-                    transitions :
-                    [
-                        {
-                            event : 'f',
-                            target : 'idle'
-                        }
-                    ]
-                  },
-
-                ]
-              },
-              {
-                id : 'S3',
-                $type : 'parallel',
-                transitions :
-                [
-                    {
-                        event : 'c',
-                        target : 'S12',
-                    }
-                ],
-                states:
-                [
-                  {
-                    id : 'S31',
-                    transitions :
-                    [
-                        {
-                          event : 'h',
-                          target : 'S31',
-                          onTransition:function(event)
+                      id : 'S21',
+                      transitions :
+                      [
                           {
-                            console.log("a");
+                              event : 'f',
+                              target : 'idle'
                           }
-                        }
-                    ]
-                  },
-                  {
-                    id : 'S32',
-                    onEntry:function(event)
+                      ]
+                    },
+
+                  ]
+                },
+                {
+                  id : 'S3',
+                  $type : 'parallel',
+                  transitions :
+                  [
+                      {
+                          event : 'c',
+                          target : 'S12',
+                      }
+                  ],
+                  states:
+                  [
                     {
-                      port.listenTo();
+                      id : 'S31',
+                      transitions :
+                      [
+                          {
+                            event : 'h',
+                            target : 'S31',
+                            onTransition:function(event)
+                            {
+                              console.log("a");
+                            }
+                          }
+                      ]
+                    },
+                    {
+                      id : 'S32',
+                      onEntry:function(event)
+                      {
+                        port.listenTo();
+                      }
                     }
-                  }
-                ]
-              }
-            ]
-        }
+                  ]
+                }
+              ]
+          },
+        ],
+        transitions :
+        [
+          {
+            event : 'stop',
+            target : '$final'
+          }
+        ]
+      },
+      {
+        id:'$final',
+        $type:'final'
+      }
     ]
 };
 
@@ -152,6 +168,24 @@ var port =
   }
 };
 
+//Retourne les états actifs sans les états générés par défaut
+function getActiveStates(itr)
+{
+  let temp=itr.getFullConfiguration();
+  let result=[0];
+  for(let i=0, j=0; i<temp.length; i++, j++)
+  {
+    if(temp[i][0]!='$')
+    {
+      result[j]=temp[i];
+    }
+    else
+    {
+      j--;
+    }
+  }
+  return result;
+}
 
 if(scion!==undefined)
 {
@@ -170,7 +204,7 @@ if(scion!==undefined)
     boutonStart.addEventListener('click', function(event)
     {
         interpreter.start();
-        consoleTextArea.textContent+="\n"+interpreter.getFullConfiguration();
+        consoleTextArea.textContent+="\nACTIVE STATES : "+getActiveStates(interpreter);
         document.body.style.backgroundImage="url('./Ressources/backgroundON.jpeg')" ;
     });
 
@@ -186,31 +220,48 @@ if(scion!==undefined)
       boutons[i].addEventListener("click",function(event)
       {
         interpreter.gen({name : event.target.classList[1],data: event});
-        consoleTextArea.textContent+="\n"+interpreter.getFullConfiguration();
+        consoleTextArea.textContent+="\nACTIVE STATES : "+getActiveStates(interpreter);
       });
     }
 
     interpreter.registerListener({onTransition:function(source, target, index)
     {
-      consoleTextArea.textContent+="\nsource :"+source+"\ntarget :"+target;
+      if(source[0]!="$" && target[0]!="$")
+      {
+        consoleTextArea.textContent+="\nELIGIBLE TRANSITION :"+source+" -> "+target;
+      }
     }});
 
     interpreter.registerListener({onEntry:function(stateId)
     {
+      //Coloration
       let activeStates=document.getElementsByClassName(stateId);
       for (let i=0; i<activeStates.length; i++)
       {
         activeStates[i].classList.add("active");
         activeStates[i].classList.remove("inactive");
       }
+
+      //Trace
+      if(stateId[0]!="$")
+      {
+        consoleTextArea.textContent+="\nACTIVATED STATE :"+stateId;
+      }
     }});
     interpreter.registerListener({onExit:function(stateId)
     {
+      //Coloration
       let activeStates=document.getElementsByClassName(stateId);
       for (let i=0; i<activeStates.length; i++)
       {
         activeStates[i].classList.add("inactive");
         activeStates[i].classList.remove("active");
+      }
+
+      //Trace
+      if(stateId[0]!="$")
+      {
+        consoleTextArea.textContent+="\nDESACTIVATED STATE :"+stateId;
       }
     }});
 
