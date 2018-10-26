@@ -173,8 +173,6 @@ if(scion!==undefined)
         interpreter.start();
         consoleTextArea.textContent+="\n"+interpreter.getFullConfiguration();
         document.body.style.backgroundImage="url('./Ressources/backgroundON.jpeg')" ;
-<<<<<<< HEAD
-        lastEvent=event;
     });
 
     boutonStop.addEventListener('click', function(event)
@@ -182,19 +180,13 @@ if(scion!==undefined)
         document.body.style.backgroundImage="url('./Ressources/backgroundOFF.jpeg')" ;
     });
 
-    boutonC.addEventListener('click', function(event)
-    {
-      //interpreter.gen({name : "c1",data: event});
-=======
->>>>>>> 00037e95687742f012fd3f2d81fa96830132afce
-    });
 
     for(let i=0; i<boutons.length; i++)
     {
 
       boutons[i].addEventListener("click",function(event)
       {
-        interpreter.gen({name : event.target.id,data: event});
+        interpreter.gen({name : event.target.classList[0],data: event});
         consoleTextArea.textContent+="\n"+interpreter.getFullConfiguration();
       });
     }

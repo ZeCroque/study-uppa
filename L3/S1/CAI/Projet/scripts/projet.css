@@ -322,14 +322,6 @@ textarea{
   border-radius: 12px;
 }
 
-#go{
-  background-color: green;
-  color: white;
-  font-size: 18px;
-  transition-duration: 0.4s;
-  border-radius: 12px;
-}
-
 #stop{
   background-color: red;
   color: white;
@@ -338,7 +330,7 @@ textarea{
   border-radius: 12px;
 }
 
-#b,#c,#d,#e,#f,#g{
+.boutonRequest{
   background-color: grey;
   color: white;
   border: 3px solid black;
@@ -350,7 +342,17 @@ textarea{
   border-radius: 12px;
 }
 
-#b:hover,#c:hover,#d:hover,#e:hover,#f:hover,#g:hover{
+.go{
+  background-color: green;
+  color: white;
+  font-size: 18px;
+  transition-duration: 0.4s;
+  border-radius: 12px;
+}
+
+boutonRequest:hover
+{
   background-color: white;
   color: black;
 }
+
