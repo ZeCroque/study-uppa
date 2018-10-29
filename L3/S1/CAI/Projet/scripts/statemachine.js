@@ -234,12 +234,10 @@ if(scion!==undefined)
     //Récupération de la console intégrée
     let consoleTextArea = document.getElementById('console');
 
-<<<<<<< HEAD
+
     consoleTextArea.readOnly = true;
     consoleTextArea.scrollTop = consoleTextArea.scrollHeight
-=======
     //Bouton start
->>>>>>> 99118a922d64444fbab31aba6522a19f553d4c6b
     boutonStart.addEventListener('click', function(event)
     {
         interpreter.start();
