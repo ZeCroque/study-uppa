@@ -1,4 +1,35 @@
 "use strict";
+
+//Fakeport
+var port =
+{
+  open:false,
+  listenTo : function()
+  {
+    console.log("I'm listening");
+  },
+  setOpen : function(boolean)
+  {
+    this.open=boolean;
+    if(boolean)
+    {
+      console.log("Port opened");
+    }
+    else
+    {
+      console.log("Port closed");
+    }
+  },
+  isOpen : function()
+  {
+    return this.open;
+  },
+  isClosed : function()
+  {
+    return !this.open;
+  }
+};
+
 //Déclaration de la machine à état
 var statechartModel =
 {
@@ -22,6 +53,10 @@ var statechartModel =
           {
               id : 'busy',
               $type:'parallel',
+              onEntry : function()
+              {
+                port.setOpen(true);
+              },
               transitions :
               [
                   {
@@ -154,18 +189,13 @@ var statechartModel =
       },
       {
         id:'$final',
-        $type:'final'
+        $type:'final',
+        onEntry : function()
+        {
+          port.setOpen(false);
+        }
       }
     ]
-};
-
-//Fakeport
-var port =
-{
-  listenTo : function()
-  {
-    console.log("I'm listening");
-  }
 };
 
 //Retourne les états actifs sans les états générés par défaut
@@ -187,6 +217,7 @@ function getActiveStates(itr)
   return result;
 }
 
+//Assure the required library is loaded
 if(scion!==undefined)
 {
   //Déclaration
@@ -195,14 +226,20 @@ if(scion!==undefined)
   //Gestion des listeners
   window.addEventListener("load", function()
   {
-    //Boutons
+    //Recupération des boutons/flèches
     let boutons=document.getElementsByClassName("request");
     let boutonStart = document.getElementById('start');
     let boutonStop = document.getElementById('stop');
+
+    //Récupération de la console intégrée
     let consoleTextArea = document.getElementById('console');
 
+<<<<<<< HEAD
     consoleTextArea.readOnly = true;
     consoleTextArea.scrollTop = consoleTextArea.scrollHeight
+=======
+    //Bouton start
+>>>>>>> 99118a922d64444fbab31aba6522a19f553d4c6b
     boutonStart.addEventListener('click', function(event)
     {
         interpreter.start();
@@ -210,12 +247,13 @@ if(scion!==undefined)
         document.body.style.backgroundImage="url('./Ressources/backgroundON.jpeg')" ;
     });
 
+    //Bouton stop
     boutonStop.addEventListener('click', function(event)
     {
         document.body.style.backgroundImage="url('./Ressources/backgroundOFF.jpeg')" ;
     });
 
-
+    //Boutons/Flèches request
     for(let i=0; i<boutons.length; i++)
     {
 
@@ -227,14 +265,18 @@ if(scion!==undefined)
       });
     }
 
+    //Statemachine listeners
+
+    //Transitions
     interpreter.registerListener({onTransition:function(source, target, index)
     {
-      if(source[0]!="$" && target[0]!="$")
+      if(source[0]!="$" && target[0]!='$' && target!='$final')
       {
         consoleTextArea.textContent+="\n      ELIGIBLE TRANSITION :"+source+" -> "+target;
       }
     }});
 
+    //Entries
     interpreter.registerListener({onEntry:function(stateId)
     {
       //Coloration
@@ -251,6 +293,8 @@ if(scion!==undefined)
         consoleTextArea.textContent+="\n      ACTIVATED STATE :"+stateId;
       }
     }});
+
+    //Exits
     interpreter.registerListener({onExit:function(stateId)
     {
       //Coloration
@@ -270,6 +314,7 @@ if(scion!==undefined)
 
   });
 }
+//If library is not loaded script logs an error and does nothing
 else
 {
   console.log("Scion library was not loaded, nothing will work.")
