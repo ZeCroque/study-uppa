@@ -202,7 +202,7 @@ if(scion!==undefined)
     let consoleTextArea = document.getElementById('console');
 
     consoleTextArea.readOnly = true;
-    consoleTextArea.scrollTop = document.getElementById("console").scrollHeight
+    consoleTextArea.scrollTop = consoleTextArea.scrollHeight
     boutonStart.addEventListener('click', function(event)
     {
         interpreter.start();
