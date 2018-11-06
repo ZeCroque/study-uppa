@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane id="AnchorPane" prefHeight="1000" prefWidth="1200" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="_My_device.My_device_GUI">
+    <children>
+        <ImageView fitHeight="897.0" fitWidth="1262.0" pickOnBounds="true">
+            <image>
+                <Image url="@Images/Background.jpg" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="16.0" fitWidth="380.0" layoutX="347.0" layoutY="328.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Dashed_line_2.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="489.0" fitWidth="7.0" layoutX="727.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Dashed_line_1.png" />
+            </image>
+        </ImageView>
+        <Rectangle fx:id="_busy_shape" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="67.0" layoutX="347.0" layoutY="30.0" stroke="BLACK" strokeType="INSIDE" width="622.0" />
+        <Ellipse fx:id="_idle_shape" fill="WHITE" layoutX="1107.0" layoutY="283.0" radiusX="53.0" radiusY="82.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+        <ImageView fitHeight="607.0" fitWidth="1191.0" layoutX="15.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Robot.png" />
+            </image>
+        </ImageView>
+        <TextArea fx:id="_verbose" layoutX="14.0" layoutY="601.0" opacity="0.5" prefHeight="282.0" prefWidth="799.0" />
+        <ImageView fitHeight="60.0" fitWidth="142.0" layoutX="881.0" layoutY="602.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Buttons/Start_active.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="_start_button" fitHeight="61.0" fitWidth="90.0" layoutX="881.0" layoutY="602.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Buttons/Start_inactive.png" />
+            </image>
+        </ImageView>
+        <Button layoutX="881.0" layoutY="602.0" mnemonicParsing="false" onAction="#start" onMouseEntered="#mouse_over_start_button" onMouseExited="#mouse_off_start_button" opacity="0.0" prefHeight="60.0" prefWidth="90.0" text="DEMARRAGE AUTOMATE" textAlignment="CENTER" wrapText="true" AnchorPane.topAnchor="602.0" />
+        <ImageView fitHeight="60.0" fitWidth="90.0" layoutX="1104.0" layoutY="602.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Buttons/Stop_active.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="_stop_button" fitHeight="60.0" fitWidth="90.0" layoutX="1104.0" layoutY="603.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Buttons/Stop_inactive.png" />
+            </image>
+        </ImageView>
+        <Button layoutX="1104.0" layoutY="603.0" mnemonicParsing="false" onAction="#stop" onMouseEntered="#mouse_over_stop_button" onMouseExited="#mouse_off_stop_button" opacity="0.0" prefHeight="60.0" prefWidth="90.0" text="ARRET AUTOMATE" textAlignment="CENTER" wrapText="true" />
+        <ImageView fitHeight="60.0" fitWidth="90.0" layoutX="993.0" layoutY="603.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Buttons/Go_active.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="_go_button" fitHeight="60.0" fitWidth="90.0" layoutX="993.0" layoutY="603.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Buttons/Go_inactive.png" />
+            </image>
+        </ImageView>
+        <Button layoutX="993.0" layoutY="602.0" mnemonicParsing="false" onAction="#go" onMouseEntered="#mouse_over_go_button" onMouseExited="#mouse_off_go_button" opacity="0.0" prefHeight="60.0" prefWidth="90.0" text="ACTIVER L'AUTOMATE" textAlignment="CENTER" wrapText="true" />
+        <ImageView fitHeight="61.0" fitWidth="182.0" layoutX="880.0" layoutY="689.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Buttons/Request_b_active.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="_request_b_button" fitHeight="61.0" fitWidth="181.0" layoutX="881.0" layoutY="690.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Buttons/Request_b_inactive.png" />
+            </image>
+        </ImageView>
+        <Button layoutX="881.0" layoutY="687.0" mnemonicParsing="false" onAction="#request_b" onMouseEntered="#mouse_over_request_b_button" onMouseExited="#mouse_off_request_b_button" opacity="0.0" prefHeight="61.0" prefWidth="148.0" text="Activer S12" />
+        <ImageView fitHeight="61.0" fitWidth="175.0" layoutX="879.0" layoutY="754.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Buttons/Request_c_active.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="_request_c_button" fitHeight="61.0" fitWidth="148.0" layoutX="881.0" layoutY="756.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Buttons/Request_c_inactive.png" />
+            </image>
+        </ImageView>
+        <Button layoutX="880.0" layoutY="754.0" mnemonicParsing="false" onAction="#request_c" onMouseEntered="#mouse_over_request_c_button" onMouseExited="#mouse_off_request_c_button" opacity="0.0" prefHeight="61.0" prefWidth="148.0" text="Activer S12 et S22" textAlignment="CENTER" wrapText="true" />
+        <ImageView fitHeight="61.0" fitWidth="185.0" layoutX="880.0" layoutY="821.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Buttons/Request_d_active.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="_request_d_button" fitHeight="82.0" fitWidth="148.0" layoutX="881.0" layoutY="822.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Buttons/Request_d_inactive.png" />
+            </image>
+        </ImageView>
+        <Button layoutX="880.0" layoutY="821.0" mnemonicParsing="false" onAction="#request_d" onMouseEntered="#mouse_over_request_d_button" onMouseExited="#mouse_off_request_d_button" opacity="0.0" prefHeight="61.0" prefWidth="148.0" text="Activer S21" />
+        <ImageView fitHeight="61.0" fitWidth="164.0" layoutX="1046.0" layoutY="688.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Buttons/Request_e_active.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="_request_e_button" fitHeight="82.0" fitWidth="148.0" layoutX="1048.0" layoutY="690.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Buttons/Request_e_inactive.png" />
+            </image>
+        </ImageView>
+        <Button layoutX="1047.0" layoutY="690.0" mnemonicParsing="false" onAction="#request_e" onMouseEntered="#mouse_over_request_e_button" onMouseExited="#mouse_off_request_e_button" opacity="0.0" prefHeight="61.0" prefWidth="148.0" text="Etat IDLE" />
+        <ImageView fitHeight="61.0" fitWidth="171.0" layoutX="1048.0" layoutY="755.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Buttons/Request_f_active.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="_request_f_button" fitHeight="61.0" fitWidth="171.0" layoutX="1048.0" layoutY="756.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Buttons/Request_f_inactive.png" />
+            </image>
+        </ImageView>
+        <Button layoutX="1047.0" layoutY="756.0" mnemonicParsing="false" onAction="#request_f" onMouseEntered="#mouse_over_request_f_button" onMouseExited="#mouse_off_request_f_button" opacity="0.0" prefHeight="61.0" prefWidth="148.0" text="Etat IDLE si état S21 actif" textAlignment="CENTER" wrapText="true" />
+        <ImageView fitHeight="61.0" fitWidth="169.0" layoutX="1048.0" layoutY="822.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Buttons/Request_g_active.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="_request_g_button" fitHeight="82.0" fitWidth="148.0" layoutX="1048.0" layoutY="822.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Buttons/Request_g_inactive.png" />
+            </image>
+        </ImageView>
+        <Button layoutX="1047.0" layoutY="820.0" mnemonicParsing="false" onAction="#request_g" onMouseEntered="#mouse_over_request_g_button" onMouseExited="#mouse_off_request_g_button" opacity="0.0" prefHeight="61.0" prefWidth="148.0" text="Active S11" />
+        <Rectangle fx:id="S1" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="164.0" layoutX="381.0" layoutY="144.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" width="314.0" />
+        <Rectangle fx:id="S2" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="282.0" layoutX="747.0" layoutY="212.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" width="203.0" />
+        <Rectangle fx:id="S3" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="164.0" layoutX="381.0" layoutY="384.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" width="314.0" />
+        <Rectangle fx:id="S11" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="79.0" layoutX="415.0" layoutY="170.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="77.0" />
+        <Rectangle fx:id="S12" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="79.0" layoutX="583.0" layoutY="170.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="77.0" />
+        <Rectangle fx:id="S31" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="60.0" layoutX="549.0" layoutY="409.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="77.0" />
+        <Rectangle fx:id="S32" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="79.0" layoutX="394.0" layoutY="427.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="127.0" />
+        <Rectangle fx:id="S21" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="60.0" layoutX="812.0" layoutY="238.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="77.0" />
+        <Rectangle fx:id="S22" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="79.0" layoutX="797.0" layoutY="338.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="106.0" />
+        <Rectangle fx:id="S1bis" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="35.0" layoutX="381.0" layoutY="107.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" width="314.0" />
+        <Label layoutX="523.0" layoutY="116.0" text="S1">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Label>
+        <Label layoutX="439.0" layoutY="179.0" text="S11">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Label>
+        <Label layoutX="608.0" layoutY="178.0" text="S12">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Label>
+        <Label layoutX="1093.0" layoutY="252.0" text="Idle">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Label>
+        <Label layoutX="640.0" layoutY="37.0" text="Busy">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Label>
+        <Rectangle fx:id="S3bis" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="35.0" layoutX="381.0" layoutY="345.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" width="314.0" />
+        <Label layoutX="526.0" layoutY="356.0" text="S3">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Label>
+        <Label layoutX="444.0" layoutY="437.0" text="S32">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Label>
+        <Label layoutX="574.0" layoutY="431.0" text="S31">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Label>
+        <Rectangle fx:id="S2bis" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="35.0" layoutX="747.0" layoutY="174.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" width="203.0" />
+        <Label layoutX="839.0" layoutY="184.0" text="S2">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Label>
+        <Label layoutX="835.0" layoutY="260.0" text="S21">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Label>
+        <Label layoutX="836.0" layoutY="349.0" text="S22">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Label>
+        <ImageView fx:id="_robot_brain" fitHeight="119.0" fitWidth="119.0" layoutX="14.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Robot_brain.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="164.0" fitWidth="28.0" layoutX="532.0" layoutY="384.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Dashed_line_3.png" />
+            </image>
+        </ImageView>
+        <Label layoutX="428.0" layoutY="207.0" text="entry/ w" />
+        <Label layoutX="433.0" layoutY="227.0" text="exit/ x" />
+        <Label layoutX="595.0" layoutY="207.0" text="entry/ y" />
+        <Label layoutX="602.0" layoutY="227.0" text="exit/ z" />
+        <Label layoutX="399.0" layoutY="477.0" text="do/ port.listenTo()" />
+        <Label layoutX="831.0" layoutY="377.0" text="entry/" />
+        <Label layoutX="805.0" layoutY="395.0" text="^self.request h" />
+        <Label layoutX="1058.0" layoutY="276.0" text="[port.isClosed()]">
+            <font>
+                <Font size="12.0" />
+            </font>
+        </Label>
+        <Label layoutX="575.0" layoutY="59.0" text="entry/ port.setOpen(true)" />
+        <Label layoutX="610.0" layoutY="77.0" text="[port.isOpen()]" />
+        <ImageView fitHeight="79.0" fitWidth="36.0" layoutX="607.0" layoutY="249.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Arrows/Request_c_green.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="_request_c_2_arrow" fitHeight="79.0" fitWidth="40.0" layoutX="607.0" layoutY="249.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Arrows/Request_c_red.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="113.0" fitWidth="162.0" layoutX="971.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Arrows/Request_e_green.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="_request_e_arrow" fitHeight="103.0" fitWidth="175.0" layoutX="971.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Arrows/Request_e_red.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="103.0" fitWidth="106.0" layoutX="477.0" layoutY="227.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Arrows/Request_b_green.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="_request_b_arrow" fitHeight="79.0" fitWidth="106.0" layoutX="477.0" layoutY="227.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Arrows/Request_b_red.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="60.0" fitWidth="83.0" layoutX="729.0" layoutY="259.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Arrows/Request_d_green.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="_request_d_arrow" fitHeight="42.0" fitWidth="83.0" layoutX="729.0" layoutY="259.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Arrows/Request_d_red.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="61.0" fitWidth="162.0" layoutX="890.0" layoutY="247.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Arrows/Request_d_green.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="_request_f_arrow" fitHeight="78.0" fitWidth="162.0" layoutX="890.0" layoutY="247.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Arrows/Request_d_red.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="36.0" fitWidth="90.0" layoutX="493.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Arrows/Request_c_2_green.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="_request_g_arrow" fitHeight="35.0" fitWidth="90.0" layoutX="493.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Arrows/Request_c_2_red.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="35.0" fitWidth="68.0" layoutX="903.0" layoutY="340.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Arrows/Request_c_2_green.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="_request_c_arrow" fitHeight="31.0" fitWidth="68.0" layoutX="903.0" layoutY="340.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Arrows/Request_c_2_red.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="181.0" fitWidth="148.0" layoutX="957.0" layoutY="331.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Arrows/Go_green.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="_go_arrow" fitHeight="177.0" fitWidth="166.0" layoutX="954.0" layoutY="331.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Arrows/Go_red.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="103.0" fitWidth="98.0" layoutX="575.0" layoutY="414.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Arrows/Request_h.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="67.0" fitWidth="39.0" layoutX="831.0" layoutY="415.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Arrows/Input_state1.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="60.0" fitWidth="29.0" layoutX="439.0" layoutY="249.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Arrows/Input_state1.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="78.0" fitWidth="83.0" layoutX="1161.0" layoutY="261.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Arrows/Input_state2.png" />
+            </image>
+        </ImageView>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#323232" height="25.0" layoutX="399.0" layoutY="132.0" stroke="BLACK" strokeType="INSIDE" width="7.0" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#323232" height="25.0" layoutX="670.0" layoutY="130.0" stroke="BLACK" strokeType="INSIDE" width="7.0" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#323232" height="25.0" layoutX="670.0" layoutY="370.0" stroke="BLACK" strokeType="INSIDE" width="7.0" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#323232" height="25.0" layoutX="399.0" layoutY="370.0" stroke="BLACK" strokeType="INSIDE" width="7.0" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#323232" height="25.0" layoutX="764.0" layoutY="198.0" stroke="BLACK" strokeType="INSIDE" width="7.0" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#323232" height="25.0" layoutX="926.0" layoutY="198.0" stroke="BLACK" strokeType="INSIDE" width="7.0" />
+        <Label layoutX="514.0" layoutY="152.0" text="request g" />
+        <Label layoutX="518.0" layoutY="209.0" text="request b" />
+        <Label layoutX="550.0" layoutY="283.0" text="request c" />
+        <Label layoutX="764.0" layoutY="299.0" text="request d" />
+        <Label layoutX="873.0" layoutY="320.0" text="request c" />
+        <Label layoutX="865.0" layoutY="219.0" text="request f" textFill="WHITE" />
+        <Label layoutX="979.0" layoutY="307.0" text="request f" textFill="WHITE" />
+        <Label layoutX="1002.0" layoutY="77.0" text="request e" textFill="WHITE" />
+        <Label layoutX="1074.0" layoutY="438.0" text="go" textFill="WHITE">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <Label layoutX="591.0" layoutY="509.0" text="request h/ a" />
+        <Button layoutX="493.0" layoutY="173.0" mnemonicParsing="false" onAction="#request_g" onMouseEntered="#mouse_over_request_g_arrow" onMouseExited="#mouse_off_request_g_arrow" opacity="0.0" prefHeight="26.0" prefWidth="90.0" />
+        <Button layoutX="478.0" layoutY="225.0" mnemonicParsing="false" onAction="#request_b" onMouseEntered="#mouse_over_request_b_arrow" onMouseExited="#mouse_off_request_b_arrow" opacity="0.0" prefHeight="79.0" prefWidth="106.0" />
+        <Button layoutX="606.0" layoutY="249.0" mnemonicParsing="false" onAction="#request_c" onMouseEntered="#mouse_over_request_c_arrow" onMouseExited="#mouse_off_request_c_arrow" opacity="0.0" prefHeight="78.0" prefWidth="31.0" />
+        <Button layoutX="730.0" layoutY="261.0" mnemonicParsing="false" onAction="#request_d" onMouseEntered="#mouse_over_request_d_arrow" onMouseExited="#mouse_off_request_d_arrow" opacity="0.0" prefHeight="26.0" prefWidth="83.0" />
+        <Button layoutX="889.0" layoutY="254.0" mnemonicParsing="false" onAction="#request_f" onMouseEntered="#mouse_over_request_f_arrow" onMouseExited="#mouse_off_request_f_arrow" opacity="0.0" prefHeight="44.0" prefWidth="162.0" />
+        <Button layoutX="903.0" layoutY="340.0" mnemonicParsing="false" onAction="#request_c" onMouseEntered="#mouse_over_request_c_arrow" onMouseExited="#mouse_off_request_c_arrow" opacity="0.0" prefHeight="26.0" prefWidth="68.0" />
+        <Button layoutX="977.0" layoutY="93.0" mnemonicParsing="false" onAction="#request_e" onMouseEntered="#mouse_over_request_e_arrow" onMouseExited="#mouse_off_request_e_arrow" opacity="0.0" prefHeight="103.0" prefWidth="148.0" />
+        <Button layoutX="978.0" layoutY="369.0" mnemonicParsing="false" onAction="#go" onMouseEntered="#mouse_over_go_arrow" onMouseExited="#mouse_off_go_arrow" opacity="0.0" prefHeight="113.0" prefWidth="119.0" />
+        <ImageView fx:id="_robot_eye" fitHeight="44.0" fitWidth="41.0" layoutX="222.0" layoutY="183.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Images/Robot_eye.png" />
+            </image>
+        </ImageView>
+    </children>
+</AnchorPane>

@@ -1,12 +1,31 @@
+/*
+ * 
+ * 
+    toBack
+
+    public void toBack()
+
+    Moves this Node to the back of its sibling nodes in terms of z-order. This is accomplished by moving this Node to the first position in its parent's content ObservableList. This function has no effect if this Node is not part of a group.
+
+    toFront
+
+    public void toFront()
+
+    Moves this Node to the front of its sibling nodes in terms of z-order. This is accomplished by moving this Node to the last position in its parent's content ObservableList. This function has no effect if this Node is not part of a group.
+
+ */
+
+
 package croquefer._BCMSUI;
 
 import com.FranckBarbier.Java._BCMS.BCMS;
-
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -22,6 +41,7 @@ public class BCMSUI extends Application
 	private static final String unlogButtonText="Se déconnecter";
 	public static final String FSCConnectionButtonText="Pompier";
 	public static final String PSCConnectionButtonText="Policier";
+	public static BCMS bCMS;
 	
 	
 	@Override
@@ -31,10 +51,10 @@ public class BCMSUI extends Application
 		//Lancement de la machine à état
 		try 
 		{
-			BCMS bCMS = new BCMS();
+			bCMS = new BCMS();
 			bCMS.start();
 		
-			//Déclaration des Scènes
+			/*//Déclaration des Scènes
 			Group connectionRoot = new Group();
 			Scene connectionScene = new Scene(connectionRoot, 300, 250, Color.LIGHTGREEN);
 			Group FSCHomeRoot = new Group();
@@ -58,18 +78,25 @@ public class BCMSUI extends Application
 			//Ecran d'acceuil des pompiers
 			VBox FSCHomeMainLayout=new VBox();
 			FSCHomeRoot.getChildren().add(FSCHomeMainLayout);
+			VehiclesManager FTManager = new VehiclesManager(Service.FSC, bCMS);			
+			FSCHomeMainLayout.getChildren().add(FTManager);
 			FSCHomeMainLayout.getChildren().add(new UnlogButton(primaryStage, connectionScene, unlogButtonText, connectionTitle, bCMS));
 			
 			//Ecran d'acceuil des policiers
 			VBox PSCHomeMainLayout=new VBox();
 			PSCHomeRoot.getChildren().add(PSCHomeMainLayout);
+			VehiclesManager PVManager = new VehiclesManager(Service.PSC, bCMS);			
+			PSCHomeMainLayout.getChildren().add(PVManager);
 			PSCHomeMainLayout.getChildren().add(new UnlogButton(primaryStage, connectionScene, unlogButtonText, connectionTitle, bCMS));
 			
 			//Préparation de l'écran de connexion		
 	
 			primaryStage.setTitle("Connexion");
-			primaryStage.setScene(connectionScene);
+			primaryStage.setScene(connectionScene);*/
 			
+			StackPane root = (StackPane)FXMLLoader.load(getClass().getResource("BCMSUI.fxml"));
+			Scene scene = new Scene(root,400,400);
+			primaryStage.setScene(scene);
 			//Lancement de l'UI
 			primaryStage.show();
 		}
@@ -88,7 +115,7 @@ public class BCMSUI extends Application
 
             bCMS.FSC_connection_request();
             bCMS.PSC_connection_request();
-            bCMS.state_fire_truck_number(2);
+
             bCMS.state_police_vehicle_number(2);
 
             bCMS.route_for_police_vehicles();

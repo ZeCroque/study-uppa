@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import croquefer._BCMSUI.Components.*?>
+<?import javafx.scene.layout.HBox?>
+<?import java.lang.String?>
+
+<StackPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="croquefer._BCMSUI.BCMSUIController">
+   <children>
+      <TitledPane fx:id="fSCHome" animated="false" collapsible="false" layoutX="10.0" layoutY="10.0" prefHeight="499.0" prefWidth="600.0" text="Pompier - Acceuil" textAlignment="CENTER" underline="true">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+         </content>
+      </TitledPane>
+      <TitledPane fx:id="pSCHome" animated="false" collapsible="false" layoutX="10.0" layoutY="10.0" prefHeight="499.0" prefWidth="600.0" text="Policier - Acceuil" textAlignment="CENTER" underline="true">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+         </content>
+      </TitledPane>
+      <TitledPane animated="false" collapsible="false" prefHeight="499.0" prefWidth="600.0" text="Connexion" textAlignment="CENTER" underline="true">
+        <content>
+          <HBox>
+               <children>
+                  <Button mnemonicParsing="false" onAction="#connectionButtonController" text="Pompier" />
+               </children>
+          </HBox>
+        </content>
+      </TitledPane>
+   </children>
+</StackPane>

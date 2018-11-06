@@ -22,7 +22,7 @@ public class UnlogButton extends Button
 				{
 					stage.setScene(scene);
 		            Thread.sleep(100);
-		            bCMS.stop();
+		            bCMS.reset();
 				}
 				catch (InterruptedException e) 
 				{
