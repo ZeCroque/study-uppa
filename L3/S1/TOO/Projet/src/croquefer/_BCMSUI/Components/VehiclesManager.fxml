@@ -8,9 +8,5 @@
 		<NumberTextField/>
 		<Button onAction="#vehiclesManagerController" text="Envoyer"/>
 	</children>
-</fx>
-
-<!-- TODO
-https://docs.oracle.com/javafx/2/fxml_get_started/custom_control.htm
--->
+</fx:root>
 

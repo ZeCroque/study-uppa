@@ -1,6 +1,7 @@
 package croquefer._BCMSUI;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import com.FranckBarbier.Java._BCMS.BCMS;
@@ -30,98 +31,128 @@ public class BCMSUIController implements Initializable
 			
             /*bCMS.FSC_connection_request();
             bCMS.PSC_connection_request();
-
+            bCMS.state_fire_truck_number(2);
             bCMS.state_police_vehicle_number(2);
 
+            for (String s : bCMS.get_fire_trucks()) {
+                System.out.println("Idle: " + s);
+            }
+
             bCMS.route_for_police_vehicles();
-            Thread.sleep(100);
-            **
-             * Bug due to PlantUML modeling style. One must await so that
-             * 'route_for_police_vehicles' that is re-sent internally, arrives
-             * before what follows:
-             *
+
             bCMS.route_for_fire_trucks();
             bCMS.FSC_disagrees_about_fire_truck_route();
             bCMS.route_for_fire_trucks();
             bCMS.FSC_agrees_about_police_vehicle_route();
             bCMS.FSC_agrees_about_fire_truck_route();
-            Thread.sleep(100);
-            **
-             * Bug due to PlantUML modeling style. One must await so that
-             * 'completion' that is sent internally, arrives before what
-             * follows:
-             *
+            Thread.sleep(10);
+    
 
-            bCMS.fire_truck_dispatched("FT1");
-            Thread.sleep(100);
-            bCMS.fire_truck_dispatched("FT2");
-            Thread.sleep(100);
-            bCMS.police_vehicle_dispatched("PV1");
-            Thread.sleep(100);
-            bCMS.police_vehicle_dispatched("PV2");
-            Thread.sleep(100);
-            bCMS.police_vehicle_breakdown("PV1", null);
-            bCMS.fire_truck_arrived("FT1");
-            bCMS.fire_truck_arrived("FT2");
+            bCMS.fire_truck_dispatched("Fire truck #1");
+            Thread.sleep(10);
+            bCMS.fire_truck_dispatched("Fire truck #2");
+            Thread.sleep(10);
+            for (String s : bCMS.get_fire_trucks(Status.Dispatched)) {
+                System.out.println(Status.Dispatched + ": " + s);
+            }
 
-            bCMS.police_vehicle_arrived("PV2");
-            // 'PV1' had an accident above, so between comments:
-            // bCMS.police_vehicle_arrived("PV1");
-            Thread.sleep(100);
+            bCMS.police_vehicle_dispatched("Police vehicle #1");
+            Thread.sleep(10);
+            bCMS.police_vehicle_dispatched("Police vehicle #2");
+            Thread.sleep(10);
+            for (String s : bCMS.get_police_vehicles(Status.Dispatched)) {
+                System.out.println(Status.Dispatched + ": " + s);
+            }
+
+            bCMS.police_vehicle_breakdown("Police vehicle #1", "");
+            for (String s : bCMS.get_police_vehicles(Status.Breakdown)) {
+                System.out.println(Status.Breakdown + ": " + s);
+            }
+
+            bCMS.fire_truck_arrived("Fire truck #1");
+            Thread.sleep(10);
+            bCMS.fire_truck_arrived("Fire truck #2");
+            Thread.sleep(10);
+            for (String s : bCMS.get_fire_trucks(Status.Dispatched)) {
+                System.out.println(Status.Dispatched + ": " + s);
+            }
+            for (String s : bCMS.get_fire_trucks(Status.Arrived)) {
+                System.out.println(Status.Arrived + ": " + s);
+            }
+
+            bCMS.police_vehicle_arrived("Police vehicle #2");
+            Thread.sleep(10);
+            for (String s : bCMS.get_police_vehicles(Status.Dispatched)) {
+                System.out.println(Status.Dispatched + ": " + s);
+            }
+            for (String s : bCMS.get_police_vehicles(Status.Arrived)) {
+                System.out.println(Status.Arrived + ": " + s);
+            }
             bCMS.close();
+      
+            Thread.sleep(10);
+            bCMS.stop();
 
-            Thread.sleep(100);
-            bCMS.reset();
+            bCMS = new BCMS();
+            bCMS.start();
 
-            Thread.sleep(100);
+            Thread.sleep(10);
             bCMS.FSC_connection_request();
             bCMS.PSC_connection_request();
-            bCMS.state_fire_truck_number(4);
+            bCMS.state_fire_truck_number(3);
             bCMS.state_police_vehicle_number(2);
 
             bCMS.route_for_police_vehicles();
-            Thread.sleep(100);
-            **
-             * Bug due to PlantUML modeling style. One must await so that
-             * 'route_for_police_vehicles' that is re-sent internally, arrives
-             * before what follows:
-             *
+            Thread.sleep(10);
+
             bCMS.route_for_fire_trucks();
             bCMS.FSC_agrees_about_police_vehicle_route();
             bCMS.FSC_agrees_about_fire_truck_route();
-            Thread.sleep(100);
-            **
-             * Bug due to PlantUML modeling style. One must await so that
-             * 'completion' that is sent internally, arrives before what
-             * follows:
-             *
+            Thread.sleep(10);
 
-            bCMS.fire_truck_dispatched("FT1");
-            Thread.sleep(100);
-            bCMS.fire_truck_dispatched("FT2");
-            Thread.sleep(100);
-            bCMS.fire_truck_dispatched("FT3");
-            Thread.sleep(100);
-            bCMS.fire_truck_dispatched("FT4");
-            Thread.sleep(100);
-            bCMS.police_vehicle_dispatched("PV1");
-            Thread.sleep(100);
-            bCMS.police_vehicle_dispatched("PV2");
-            Thread.sleep(100);
-            bCMS.fire_truck_breakdown("FT1", "FT1_outsider");
-            bCMS.fire_truck_arrived("FT4");
-            bCMS.fire_truck_arrived("FT2");
-            bCMS.fire_truck_arrived("FT3");
-            bCMS.police_vehicle_arrived("PV1");
-            bCMS.police_vehicle_arrived("PV2");
+
+            bCMS.fire_truck_dispatched("Fire truck #1");
+            Thread.sleep(10);
+            bCMS.fire_truck_dispatched("Fire truck #2");
+            Thread.sleep(10);
+            bCMS.fire_truck_dispatched("Fire truck #3");
+            Thread.sleep(10);
+            bCMS.police_vehicle_dispatched("Police vehicle #2");
+            Thread.sleep(10);
+            bCMS.police_vehicle_dispatched("Police vehicle #1");
+            Thread.sleep(10);
+            bCMS.fire_truck_breakdown("Fire truck #1", "Fire truck #4");
+            Thread.sleep(10);
+            for (String s : bCMS.get_fire_trucks(Status.Dispatched)) {
+                System.out.println(Status.Dispatched + ": " + s);
+            }
+
+            bCMS.fire_truck_arrived("Fire truck #4");
+            Thread.sleep(10);
+            bCMS.fire_truck_arrived("Fire truck #3");
+            Thread.sleep(10);
+            bCMS.fire_truck_arrived("Fire truck #2");
+            Thread.sleep(10);
+            bCMS.fire_truck_arrived("Fire truck #1"); // No effect!
+            Thread.sleep(10);
+            for (String s : bCMS.get_fire_trucks(Status.Arrived)) {
+                System.out.println(Status.Arrived + ": " + s);
+            }
+            bCMS.police_vehicle_arrived("Police vehicle #1");
+            Thread.sleep(10);
             bCMS.crisis_is_less_severe();
-            Thread.sleep(100);
+            Thread.sleep(10);
+            for (String s : bCMS.get_police_vehicles(Status.Dispatched)) {
+                System.out.println(Status.Dispatched + ": " + s);
+            }
+            for (String s : bCMS.get_police_vehicles(Status.Arrived)) {
+                System.out.println(Status.Arrived + ": " + s);
+            }
+            bCMS.police_vehicle_arrived("Police vehicle #2"); // No effect!
+            Thread.sleep(10);
             bCMS.close();
-            **
-             * End of state machine is delayed so that events sent internally
-             * are effectively processed:
-             *
-            Thread.sleep(100);
+           
+            Thread.sleep(10);
             bCMS.stop();*/
 		}
 		catch (Statechart_exception e) 
@@ -189,19 +220,24 @@ public class BCMSUIController implements Initializable
 		{					
 			Button target = (Button) event.getTarget();
 			VehiclesManager manager = (VehiclesManager) target.getParent();
-			NumberTextField countField = (NumberTextField) manager.getChildrenUnmodifiable().get(0);
+			NumberTextField countField = (NumberTextField) manager.getChildren().get(0);
 			String content = countField.getText();
 			if(content!=null && !content.isEmpty())
 			{
-				if(manager.getService()==Service.Pompier.toString())
+				if(manager.getService().equals(Service.Pompier.toString()))
 				{
 					bCMS.state_fire_truck_number(Integer.parseInt(content));
+					bCMS.route_for_fire_trucks();
+					for (String s : bCMS.get_fire_trucks()) {
+		                System.out.println("Idle: " + s);
+		            }
 				}
 				else
 				{
 					bCMS.state_police_vehicle_number(Integer.parseInt(content));
+					bCMS.route_for_police_vehicles();
 				}
-					
+				countField.setText("");					
 			}
 			else
 			{
@@ -212,6 +248,9 @@ public class BCMSUIController implements Initializable
 			}					
 		} 
 		catch (Statechart_exception e) 
+		{
+			e.printStackTrace();
+		} catch (SQLException e) 
 		{
 			e.printStackTrace();
 		} 

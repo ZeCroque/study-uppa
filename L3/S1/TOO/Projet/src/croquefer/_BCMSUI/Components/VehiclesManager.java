@@ -11,11 +11,20 @@ public class VehiclesManager extends HBox
 {
 	private String _service;
 
-	public VehiclesManager(/*@NamedArg("service") String service*/) throws IOException
+	public VehiclesManager(@NamedArg("service") String service) throws IOException
 	{
-		super();
-		this.getChildren().add((HBox)FXMLLoader.load(getClass().getResource("VehiclesManager.fxml")));
-		//this._service=service;
+		//super();
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("VehiclesManager.fxml"));
+		fxmlLoader.setRoot(this);
+		this._service=service;
+		try 
+		{
+            fxmlLoader.load();
+        } 
+		catch (IOException exception) 
+		{
+            throw new RuntimeException(exception);
+        }
 	}
 	
 	public String getService()
