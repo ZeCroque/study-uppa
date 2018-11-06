@@ -1,4 +1,4 @@
-package croquefer._BCMSUI;
+package croquefer._BCMSUI.Components;
 
 import javafx.scene.control.TextField;
 

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import croquefer._BCMSUI.Components.*?>
+
+<fx:root type="javafx.scene.layout.HBox" xmlns:fx="http://javafx.com/fxml/1" fx:controller="croquefer._BCMSUI.BCMSUIController">	
+<children>
+		<NumberTextField/>
+		<Button onAction="#vehiclesManagerController" text="Envoyer"/>
+	</children>
+</fx>
+
+<!-- TODO
+https://docs.oracle.com/javafx/2/fxml_get_started/custom_control.htm
+-->
+

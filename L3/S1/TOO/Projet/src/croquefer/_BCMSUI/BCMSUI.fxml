@@ -9,21 +9,40 @@
 
 <StackPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="croquefer._BCMSUI.BCMSUIController">
    <children>
-      <TitledPane fx:id="fSCHome" animated="false" collapsible="false" layoutX="10.0" layoutY="10.0" prefHeight="499.0" prefWidth="600.0" text="Pompier - Acceuil" textAlignment="CENTER" underline="true">
+      <TitledPane fx:id="fSCHomePane" animated="false" collapsible="false" layoutX="10.0" layoutY="10.0" prefHeight="499.0" prefWidth="600.0" text="Pompier - Acceuil" textAlignment="CENTER" underline="true">
          <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            <VBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: red;">
+               <children>
+                	<VehiclesManager>
+                		<!-- <service>
+                			<String fx:value="Pompier" />
+                		</service>-->
+                	</VehiclesManager>
+                  <Button mnemonicParsing="false" onAction="#unlogButtonController" text="Se déconnecter" />
+               </children>
+            </VBox>
          </content>
       </TitledPane>
-      <TitledPane fx:id="pSCHome" animated="false" collapsible="false" layoutX="10.0" layoutY="10.0" prefHeight="499.0" prefWidth="600.0" text="Policier - Acceuil" textAlignment="CENTER" underline="true">
+      <TitledPane fx:id="pSCHomePane" animated="false" collapsible="false" layoutX="10.0" layoutY="10.0" prefHeight="499.0" prefWidth="600.0" style="-fx-background-color: blue;" text="Policier - Acceuil" textAlignment="CENTER" underline="true">
          <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            <VBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: blue;">
+               <children>
+                  <VehiclesManager>
+                		<!--  <service>
+                			<String fx:value="Policier" />
+                		</service>-->
+                	</VehiclesManager>
+                	<Button mnemonicParsing="false" onAction="#unlogButtonController" text="Se déconnecter" />
+               </children>
+            </VBox>
          </content>
       </TitledPane>
-      <TitledPane animated="false" collapsible="false" prefHeight="499.0" prefWidth="600.0" text="Connexion" textAlignment="CENTER" underline="true">
+      <TitledPane fx:id="connexionPane" animated="false" collapsible="false" prefHeight="499.0" prefWidth="600.0" text="Connexion" textAlignment="CENTER" underline="true">
         <content>
-          <HBox>
+          <HBox alignment="CENTER" style="-fx-background-color: lightgreen;">
                <children>
                   <Button mnemonicParsing="false" onAction="#connectionButtonController" text="Pompier" />
+                  <Button layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onAction="#connectionButtonController" text="Policier" />
                </children>
           </HBox>
         </content>
