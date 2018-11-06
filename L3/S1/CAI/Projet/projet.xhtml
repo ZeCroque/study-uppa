@@ -1,13 +1,94 @@
 <!DOCTYPE XHTML>
-<html lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml" id = "test">
+
 <head>
   <meta charset="utf-8" />
   <title>TP1</title>
-  <script type="text/javascript" src="./scripts/statemachine.js"></script>
   <script type="text/javascript" src="https://cdn.rawgit.com/jbeard4/SCION-CORE/1.1.2/lib/scion.js"></script>
+  <script type="text/javascript" src="./scripts/statemachine.js"></script>
+  <link rel="stylesheet" type="text/css" href="./styles/projet.css"></link>
 </head>
+
 <body>
-  <input id="boutonTest" type="button" value="test"/>
-  <p id="texteCache" style="display:none">J'étais caché</p>
+  <div id="boxBody">
+    <div id="boxBusy">
+      <h4 id="busy" class='busy inactive'>Busy</h4>
+        <div id="boxS1-2-3">
+          <div id="boxS1-3">
+            <div id="boxS1">
+              <h4 id="S1" class='S1 inactive'>S1</h4>
+              <div id="boxS11-12" class='S1 inactive'>
+                <div id="S11" class='S11 inactive'>
+                  <h4>S11</h4>
+                </div>
+                <div id="S12" class='S12 inactive'>
+                  <h4>S12</h4>
+                </div>
+              </div>
+            </div>
+            <div id="boxS3" >
+              <h4 id="S3" class='S3 inactive'>S3</h4>
+              <div id="boxS32-31" class='S3 inactive'>
+                  <div id="pointi">
+                    <div id="S32" class='S32 inactive'>
+                      <h4>S32</h4>
+                    </div>
+                  </div>
+                  <div id="S31" class='S32 inactive'>
+                    <h4>S31</h4>
+                  </div>
+              </div>
+            </div>
+        </div>
+        <div id="boxS2" >
+          <h4 id="S2" class='S2 inactive'>S2</h4>
+          <div id="S21-22" class='S2 inactive'>
+              <div id="S21" class='S21 inactive'>
+                <h4>S21</h4>
+              </div>
+              <div id="S22" class='S22 inactive'>
+                <h4>S22</h4>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="boxIdle" class='idle inactive'>
+      <h4 id="idle">Idle</h4>
+    </div>
+    <img src="./Ressources/UI.png"></img>
+    <input class="arrow b request" type='image' src="./Ressources/requestB.png"></input>
+    <input class="arrow c request" type='image' id="C1" src="./Ressources/requestC.png"></input>
+    <input class="arrow c request" type='image' id="C2" src="./Ressources/requestC2.png"></input>
+    <input class="arrow d request" type='image' src="./Ressources/requestD.png"></input>
+    <input class="arrow e request" type='image' src="./Ressources/requestE.png"></input>
+    <input class="arrow f request" type='image' src="./Ressources/requestF.png"></input>
+    <input class="arrow g request" type='image' src="./Ressources/requestG.png"></input>
+    <input class="arrow go request" type='image' src="./Ressources/requestGO.png"></input>
+  </div>
 </body>
+
+<footer>
+  <textarea id="console" readonly="true">
+  </textarea>
+  <div id="panel">
+    <div id="controllers">
+      <input id="start" type="button" value="START"/>
+      <input class="request go button" type="button" value="GO"/>
+      <input id="stop" class="request stop" type="button" value="STOP"/>
+    </div>
+    <div id="requests">
+      <div id="requestGauche">
+        <input class="request b button" type="button" value="Request B"/>
+        <input class="request c button" type="button" value="Request C"/>
+        <input class="request d button" type="button" value="Request D"/>
+      </div>
+      <div id="requestDroite">
+        <input class="request e button" type="button" value="Request E"/>
+        <input class="request f button" type="button" value="Request F"/>
+        <input class="request g button" type="button" value="Request G"/>
+      </div>
+    </div>
+  </div>
+</footer>
 </html>
