@@ -1,5 +1,7 @@
 "use strict";
 
+var interpreter=null;
+
 //Fakeport
 var port =
 {
@@ -48,14 +50,20 @@ var statechartModel =
                       event : 'go',
                       target : 'busy',
                   }
-              ]
+
+              ],
+              onEntry : function()
+              {
+                port.setOpen(true);
+                port.isOpen();
+              }
           },
           {
               id : 'busy',
               $type:'parallel',
               onEntry : function()
               {
-                port.setOpen(true);
+                port.isClosed();
               },
               transitions :
               [
@@ -124,7 +132,8 @@ var statechartModel =
                       id : 'S22',
                       onEntry : function(event)
                       {
-                          //this.send({name: "h", data:event});
+                        //Pas supporté dans cette version
+                        //this.send({name: "h", data:event});
                       }
                     },
                     {
@@ -221,7 +230,7 @@ function getActiveStates(itr)
 if(scion!==undefined)
 {
   //Déclaration
-  var interpreter = new scion.Statechart(statechartModel);
+  interpreter = new scion.Statechart(statechartModel);
 
   //Gestion des listeners
   window.addEventListener("load", function()
@@ -241,7 +250,7 @@ if(scion!==undefined)
     boutonStart.addEventListener('click', function(event)
     {
         interpreter.start();
-        consoleTextArea.textContent+="\n      ACTIVE STATES : "+getActiveStates(interpreter);
+        consoleTextArea.textContent+="\n\tACTIVE STATES : "+getActiveStates(interpreter);
         document.body.style.backgroundImage="url('./Ressources/backgroundON.jpeg')" ;
     });
 
@@ -257,8 +266,9 @@ if(scion!==undefined)
 
       boutons[i].addEventListener("click",function(event)
       {
+        consoleTextArea.textContent+="\n\nmydevice."+event.target.classList[1];
         interpreter.gen({name : event.target.classList[1],data: event});
-        consoleTextArea.textContent+="\n      ACTIVE STATES : "+getActiveStates(interpreter);
+        consoleTextArea.textContent+="\n\tACTIVE STATES : "+getActiveStates(interpreter);
         consoleTextArea.scrollTop = consoleTextArea.scrollHeight ;
       });
     }
@@ -270,7 +280,7 @@ if(scion!==undefined)
     {
       if(source[0]!="$" && target[0]!='$' && target!='$final')
       {
-        consoleTextArea.textContent+="\n      ELIGIBLE TRANSITION :"+source+" -> "+target;
+        consoleTextArea.textContent+="\n\tELIGIBLE TRANSITION :"+source+" -> "+target;
       }
     }});
 
@@ -288,8 +298,35 @@ if(scion!==undefined)
       //Trace
       if(stateId[0]!="$")
       {
-        consoleTextArea.textContent+="\n      ACTIVATED STATE :"+stateId;
+        consoleTextArea.textContent+="\n\tACTIVATED STATE :"+stateId;
+        if(stateId=="busy")
+        {
+          consoleTextArea.textContent+="\n\tENTRY ACTION: Port.setOpen(Boolean)|result: null";
+          consoleTextArea.textContent+="\n\t\tinvariant: [Port.isOpen]|true";
+        }
+        else if(stateId=="idle")
+        {
+          consoleTextArea.textContent+="\n\t\tinvariant: [Port.isClosed]|false";
+        }
+        else if(stateId=="S32")
+        {
+          consoleTextArea.textContent+="\n\tDO ACTIVITY: Port.listenTo|result: null";
+        }
+        else if(stateId=="S11")
+        {
+          consoleTextArea.textContent+="\n\tENTRY ACTION: My_device.w|result: null";
+        }
+        else if(stateId=="S12")
+        {
+          consoleTextArea.textContent+="\n\tENTRY ACTION: My_device.y|result: null";
+        }
+        else if(stateId=="S22")
+        {
+          consoleTextArea.textContent+="\n\tENTRY ACTION: ^My_device.request_h|result: null";
+        }
+
       }
+
     }});
 
     //Exits
@@ -306,10 +343,19 @@ if(scion!==undefined)
       //Trace
       if(stateId[0]!="$")
       {
-        consoleTextArea.textContent+="\n      DESACTIVATED STATE :"+stateId;
+        consoleTextArea.textContent+="\n\tDESACTIVATED STATE :"+stateId;
+        {
+          if(stateId=="S11")
+          {
+            consoleTextArea.textContent+="\n\tEXIT ACTION: My_device.z|result: null";
+          }
+          else if(stateId=="S12")
+          {
+            consoleTextArea.textContent+="\n\tEXIT ACTION: My_device.x|result: null";
+          }
+        }
       }
     }});
-
   });
 }
 //If library is not loaded script logs an error and does nothing
