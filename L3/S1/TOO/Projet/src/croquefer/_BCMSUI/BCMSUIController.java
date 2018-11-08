@@ -9,21 +9,31 @@ import com.pauware.pauware_engine._Exception.Statechart_exception;
 
 import croquefer._BCMSUI.Components.*;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TitledPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.control.Alert.AlertType;
 
 
 public class BCMSUIController implements Initializable
 {
+	
+	 @FXML public Label vehiclesCount;
 	private static BCMS bCMS;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) 
 	{
+		if(vehiclesCount!=null)
+		{
+			vehiclesCount.setText("tyr");
+		}
+
 		try 
 		{
 			bCMS = new BCMS();
@@ -219,9 +229,10 @@ public class BCMSUIController implements Initializable
 		try 
 		{					
 			Button target = (Button) event.getTarget();
-			VehiclesManager manager = (VehiclesManager) target.getParent();
-			NumberTextField countField = (NumberTextField) manager.getChildren().get(0);
+			HBox countHBox = (HBox) target.getParent();
+			NumberTextField countField = (NumberTextField) countHBox.getChildren().get(0);
 			String content = countField.getText();
+			VehiclesManager manager = (VehiclesManager) countHBox.getParent();
 			if(content!=null && !content.isEmpty())
 			{
 				if(manager.getService().equals(Service.Pompier.toString()))

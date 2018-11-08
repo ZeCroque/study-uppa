@@ -4,10 +4,10 @@ import java.io.IOException;
 
 import javafx.beans.NamedArg;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 
-public class VehiclesManager extends HBox
+public class VehiclesManager extends VBox
 {
 	private String _service;
 
