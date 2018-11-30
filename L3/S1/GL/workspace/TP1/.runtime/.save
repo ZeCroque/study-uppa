@@ -1,0 +1,7 @@
+#Fri Nov 30 17:12:21 CET 2018
+org.modelio.module.propertytab.JavaDesigner\ v3.7.01\ GModule\ @file\:///home/34/gcroquefer/.modelio/3.7/modules/JavaDesigner_3.7.01/JavaDesigner_3.7.01.jmdac\ runtime\ module_.org.modelio.development.perspective.parentId=app.ui.ext_com.partstack.bottom
+org.modelio.module.propertytab.JavaDesigner\ v3.7.01\ GModule\ @file\:///home/34/gcroquefer/.modelio/3.7/modules/JavaDesigner_3.7.01/JavaDesigner_3.7.01.jmdac\ runtime\ module_.org.modelio.diagram.perspective.parentId=app.ui.ext_com.partstack.right
+org.modelio.module.propertytab.JavaDesigner\ v3.7.01\ GModule\ @file\:///home/34/gcroquefer/.modelio/3.7/modules/JavaDesigner_3.7.01/JavaDesigner_3.7.01.jmdac\ runtime\ module_.org.modelio.full.perspective.parentId=app.ui.ext_com.partstack.bottom
+org.modelio.diagram.editor.OpenedDiagrams1='Interaction Sequence diagram' {8914626e-9069-4582-8fe7-01a7be07062d} Standard.SequenceDiagram
+org.modelio.diagram.editor.OpenedDiagrams0='tp1 Class diagram' {3b80eb23-5871-46df-a86b-9657d1d14f3a} Standard.ClassDiagram
+org.modelio.module.propertytab.JavaDesigner\ v3.7.01\ GModule\ @file\:///home/34/gcroquefer/.modelio/3.7/modules/JavaDesigner_3.7.01/JavaDesigner_3.7.01.jmdac\ runtime\ module_.org.modelio.app.ui.model.perspective.parentId=org.modelio.app.bottom.parts

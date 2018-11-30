@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="tp1" version="4">
+  <OBJECT>
+    <ID name="tp1" mc="Standard.Package" uid="a48f2d10-6dcd-41b9-acb0-fafe5590b7ed"/>
+    <PID name="TP1" mc="Standard.Project" uid="7044737e-a33f-4c7f-bc1f-345f999890de"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[tp1]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedBehavior">
+        <COMPID name="Interaction" mc="Standard.Interaction" uid="f6496740-d316-47e2-a985-a955dee13269"/>
+      </COMP>
+      <COMP relation="OwnedElement">
+        <COMPID name="CompagnieAerienne" mc="Standard.Class" uid="ab025fac-c3e0-46b9-bd62-bd3ded3f5c05"/>
+        <COMPID name="Vol" mc="Standard.Class" uid="e82d07fc-4a8e-480f-8240-02c9cd398e98"/>
+        <COMPID name="Passager" mc="Standard.Class" uid="a34486ea-8ca9-4494-944c-dd1f93f324eb"/>
+        <COMPID name="Depart" mc="Standard.Class" uid="c83cb2da-0efb-4cb8-923e-c64af2775318"/>
+        <COMPID name="Arrivee" mc="Standard.Class" uid="fd4406e4-44cc-4128-a4cb-1c33de7a4e65"/>
+        <COMPID name="InfoVol" mc="Standard.Class" uid="f52609ca-6daf-4681-abfe-f3a7a8476983"/>
+        <COMPID name="Aeroport" mc="Standard.Class" uid="bd5adf39-d0fe-4b7e-8800-acb1a46e4d9d"/>
+        <COMPID name="Reservation" mc="Standard.Class" uid="867a87a7-6e81-45af-8fee-245b75518698"/>
+        <COMPID name="Client" mc="Standard.Class" uid="7cee0573-7bca-4fc9-a2f8-6e4dffcdac53"/>
+        <COMPID name="Escale" mc="Standard.Class" uid="13cbb4d0-3886-430e-af0b-e652b78a7d6f"/>
+        <COMPID name="java" mc="Standard.Package" uid="314e6302-2013-4bf3-8c60-73af03396899"/>
+      </COMP>
+      <COMP relation="Product">
+        <COMPID name="tp1 Class diagram" mc="Standard.ClassDiagram" uid="3b80eb23-5871-46df-a86b-9657d1d14f3a"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>
