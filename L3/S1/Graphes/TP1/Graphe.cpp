@@ -22,7 +22,7 @@ Graphe::Graphe(int nbSommet)
 
 void Graphe::ajouterLien(int s1, int s2)
 {
-  if (s1!=s2 && s1<this->_nbSommet && s2<this->_nbSommet && s1>0 && s2>0)
+  if (s1!=s2 && s1-1<this->_nbSommet && s2-1<this->_nbSommet && s1>0 && s2>0)
   {
     this->_matrixLiens[s1-1][s2-1]=true;
   }
@@ -60,13 +60,81 @@ void Graphe::afficherGraphe()
   }
 }
 
+void Graphe::parcoursHistorique()
+{
+  int i=0;
+  int j=0;
+  int k=0;
+  int sommet=0;
+  int datesDeb[this->_nbSommet]={0};
+  int datesFin[this->_nbSommet]={0};
+  vector<int> chemin;
+  bool arret=false;
+
+  do
+  {
+    if(datesDeb[sommet]==0)
+    {
+      i++;
+      datesDeb[sommet]=i;
+      chemin.push_back(sommet);
+    }
+    for(j=0; j<this->_nbSommet; j++)
+    {
+      if(this->_matrixLiens[sommet][j]==true && datesDeb[j]==0)
+      {
+        break;
+      }
+    }
+
+    if(j!=this->_nbSommet)
+    {
+      sommet=j;
+    }
+    else
+    {
+      i++;
+      datesFin[sommet]=i;
+      chemin.pop_back();
+      if (chemin.size()>0)
+      {
+
+        sommet=chemin[chemin.size()-1];
+      }
+      else
+      {
+        for(k=0; k<this->_nbSommet; k++)
+        {
+          if(datesDeb[k]==0)
+          {
+            break;
+          }
+        }
+        if(k!=this->_nbSommet)
+        {
+          sommet=k;
+        }
+        else
+        {
+          arret=true;
+        }
+      }
+    }
+
+  } while(!arret);
+  for(int l=0;l<this->_nbSommet; l++)
+  {
+    cout<<(char)('a'+l)<<" deb :"<<datesDeb[l]<<" fin:"<<datesFin[l]<<endl;
+  }
+}
+
 ostream& operator << (ostream& os, const Graphe& g)
 {
   for(int i=0; i<g._nbSommet; i++)
   {
     for(int j=0; j<g._nbSommet; j++)
     {
-      os<<g._matrixLiens[j][i]<<" ";
+      os<<g._matrixLiens[i][j]<<" ";
     }
     os<<endl;
   }
