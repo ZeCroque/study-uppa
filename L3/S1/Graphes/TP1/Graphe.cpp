@@ -60,16 +60,21 @@ void Graphe::afficherGraphe()
   }
 }
 
-void Graphe::parcoursHistorique()
+vector<int> Graphe::parcoursHistorique()
 {
   int i=0;
   int j=0;
   int k=0;
   int sommet=0;
-  int datesDeb[this->_nbSommet]={0};
-  int datesFin[this->_nbSommet]={0};
+  vector<int> datesDeb;
+  vector<int> datesFin;
   vector<int> chemin;
   bool arret=false;
+
+  datesDeb.reserve(this->_nbSommet);
+  datesDeb.resize(this->_nbSommet);
+  datesFin.reserve(this->_nbSommet);
+  datesFin.resize(this->_nbSommet);
 
   do
   {
@@ -122,10 +127,38 @@ void Graphe::parcoursHistorique()
     }
 
   } while(!arret);
-  for(int l=0;l<this->_nbSommet; l++)
+  return datesFin;
+}
+
+Graphe Graphe::grapheAdjacent()
+{
+  vector<vector<bool> > matrixAdjacente;
+  matrixAdjacente.reserve(this->_nbSommet);
+  matrixAdjacente.resize(this->_nbSommet);
+  for(int i=0; i<this->_nbSommet; i++)
   {
-    cout<<(char)('a'+l)<<" deb :"<<datesDeb[l]<<" fin:"<<datesFin[l]<<endl;
+    matrixAdjacente[i].reserve(this->_nbSommet);
+    matrixAdjacente[i].resize(this->_nbSommet);
   }
+
+  for(int i=0; i<this->_nbSommet; i++)
+  {
+    for(int j=0; j<this->_nbSommet; j++)
+    {
+      matrixAdjacente[i][j]=this->_matrixLiens[j][i];
+    }
+  }
+
+  Graphe result(this->_nbSommet);
+  result._matrixLiens=matrixAdjacente;
+  return result;
+}
+
+vector<Graphe> Graphe::parcoursProfondeur(Graphe adj)
+{
+  vector<Graphe> result;
+
+  return result;
 }
 
 ostream& operator << (ostream& os, const Graphe& g)
@@ -139,4 +172,21 @@ ostream& operator << (ostream& os, const Graphe& g)
     os<<endl;
   }
   return os;
+}
+
+void  triBulle(vector<int>& tab)
+{
+  int tmp, i, j;
+  for (i=0; i<(int)tab.size(); i++)
+  {
+     for(j=i; j<(int)tab.size(); j++)
+     {
+       if(tab[j]>tab[i])
+       {
+         tmp = tab[i];
+         tab[i] = tab[j];
+         tab[j] = tmp;
+       }
+     }
+   }
 }

@@ -20,8 +20,13 @@ int main()
   g.ajouterLien(8,7);
 
   //g.afficherGraphe();
-  cout<<g<<endl<<endl;
-  g.parcoursHistorique();
+  //cout<<g<<endl<<endl;
+  vector<int> datesFin=g.parcoursHistorique();
+  triBulle(datesFin);
+  Graphe gt=g.grapheAdjacent();
+  //cout<<gt<<endl<<endl;
+  //gt.afficherGraphe();
+
 
   return 0;
 }
