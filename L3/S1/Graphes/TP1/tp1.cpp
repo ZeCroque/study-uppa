@@ -24,6 +24,9 @@ int main()
   vector<int> datesFin=g.parcoursHistorique();
   triBulle(datesFin);
   Graphe gt=g.grapheAdjacent();
+  vector<vector <int> >tmp=g.parcoursProfondeur(gt; datesFin);
+
+  for(int)
   //cout<<gt<<endl<<endl;
   //gt.afficherGraphe();
 

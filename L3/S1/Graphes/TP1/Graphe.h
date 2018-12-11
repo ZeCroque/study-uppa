@@ -16,7 +16,7 @@ class Graphe
     void trouverComposanteFortementConnexe();
     std::vector<int> parcoursHistorique();
     Graphe grapheAdjacent();
-    std::vector<Graphe> parcoursProfondeur(Graphe adj);
+    std::vector<std::vector <int> > parcoursProfondeur(Graphe adj, std::vector<int> datesFin);
 
     friend std::ostream& operator << (std::ostream& os, const Graphe& g);
 };

@@ -154,9 +154,51 @@ Graphe Graphe::grapheAdjacent()
   return result;
 }
 
-vector<Graphe> Graphe::parcoursProfondeur(Graphe adj)
+vector<vector <int> > Graphe::parcoursProfondeur(Graphe adj, vector<int> datesFin)
 {
-  vector<Graphe> result;
+  vector<vector <int> > result;
+  vector <int> sommetParcourus;
+  int tmp=-1;
+
+  for(int i=0; i<this->_nbSommet; i++)
+  {
+    sommetParcourus.push_back(datesFin[i]);
+    for(int j=0; j<this->_nbSommet; j++)
+    {
+      if(adj._matrixLiens[datesFin[i]][j])
+      {
+        for(int k=0; k<sommetParcourus.size(); k++)
+        {
+          if(j==sommetParcourus[k])
+          {
+            break;
+          }
+        }
+        if(k==sommetParcourus.size())
+        {
+          tmp=i;
+          i=j-1;
+          break;
+        }
+      }
+    }
+    if(j==this->_nbSommet && sommetParcourus.size()==1)
+    {
+      if(tmp!=-1)
+      {
+        i=tmp;
+        tmp=-1;
+      }
+
+      result.push_back(sommetParcourus);
+      sommetParcourus.erase(0, sommetParcourus.size());
+    }
+    else if(j!=this->_nbSommet && sommetParcourus.size()!=1)
+    {
+      i=sommetParcourus[sommetParcourus.size()-3];
+    }
+
+  }
 
   return result;
 }
