@@ -2,7 +2,6 @@ package croquefer._BCMSUI;
 
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 import com.FranckBarbier.Java._BCMS.BCMS;
 import com.pauware.pauware_engine._Exception.Statechart_exception;
@@ -10,12 +9,15 @@ import com.pauware.pauware_engine._Exception.Statechart_exception;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class BCMSUI extends Application 
 {
 	public static BCMS bCMS;
+	public static Stage stage;
+	public static Scene homeScene;
+	public static Service currentService;
 	
 	@Override
 	 public void start(Stage primaryStage) 
@@ -25,8 +27,6 @@ public class BCMSUI extends Application
 		{
 			bCMS = new BCMS();
 			bCMS.start();
-			bCMS.state_fire_truck_number(3);
-			System.out.println("Nombre:"+bCMS.get_number_of_fire_truck_required());
 			
             /*bCMS.FSC_connection_request();
             bCMS.PSC_connection_request();
@@ -156,23 +156,18 @@ public class BCMSUI extends Application
 			
 			
 			//UI
-			StackPane root = (StackPane)FXMLLoader.load(getClass().getResource("BCMSUI.fxml"));
-			Scene scene = new Scene(root,400,400);
-			primaryStage.setScene(scene);
-			primaryStage.setTitle("Barbados Crisis Management System");
-			primaryStage.show();
+			BCMSUI.stage=primaryStage;
+			VBox root = (VBox)FXMLLoader.load(getClass().getResource("Logon.fxml"));
+			BCMSUI.homeScene = new Scene(root,400,400);
+			BCMSUI.stage.setScene(BCMSUI.homeScene);
+			BCMSUI.stage.setTitle("Barbados Crisis Management System");
+			BCMSUI.stage.show();
 		}
-		catch (Statechart_exception e) 
+		catch (Statechart_exception | IOException e) 
 		{
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}			
-		catch (IOException e) 
-		{
-			e.printStackTrace();
+			e.printStackTrace();	
 		}
+
 	
 	 }
 

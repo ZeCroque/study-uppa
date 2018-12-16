@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import croquefer._BCMSUI.Components.*?>
+
+<TitledPane fx:id="alertPane" animated="false" collapsible="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" textAlignment="CENTER" underline="true" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="croquefer._BCMSUI.Panes.AlertPaneController">
+	<content>
+		<VBox>
+			<children>              	
+				<HBox>
+					<children>
+						<Label>Nombre de véhicules requis pour traiter l'alerte :</Label>	
+					</children>
+				</HBox>
+				<HBox>
+					<children>
+						<NumberTextField fx:id="countField"/>
+						<Button text="Valider" onAction="#validateButtonController"/>
+					</children>
+				</HBox>
+				<fx:include source="../Components/UnlogButton.fxml"/>
+			</children>
+		</VBox>
+	</content>
+</TitledPane>

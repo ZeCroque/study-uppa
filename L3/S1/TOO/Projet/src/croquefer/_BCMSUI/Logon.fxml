@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" style="-fx-background-color: lightgrey;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="croquefer._BCMSUI.LogonController">
+	<children>
+		<ImageView fitHeight="300.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
+			<image>
+				<Image url="@../../../res/crisis-management.png" />
+			</image>
+		</ImageView>
+		 <HBox alignment="CENTER">
+			<children>
+ 				<Button onAction="#connectionButtonController" text="Pompier" /> 
+				<Button onAction="#connectionButtonController" text="Policier" />
+			</children>
+		</HBox>
+	</children>
+</VBox>

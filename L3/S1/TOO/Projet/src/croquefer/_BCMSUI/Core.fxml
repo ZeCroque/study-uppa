@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.String?>
+<?import croquefer._BCMSUI.Components.*?>
+<?import croquefer._BCMSUI.Panes.*?>
+
+<StackPane fx:id="root"  xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+   		<fx:include source="Panes/RoutePane.fxml"/> 
+		<fx:include source="Panes/VehiclesPane.fxml"/>
+		<fx:include source="Panes/AlertPane.fxml"/>      
+	</children>
+</StackPane>
+      
+      
+
