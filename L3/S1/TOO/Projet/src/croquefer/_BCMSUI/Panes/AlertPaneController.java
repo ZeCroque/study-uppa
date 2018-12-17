@@ -7,8 +7,8 @@ import java.util.ResourceBundle;
 import com.pauware.pauware_engine._Exception.Statechart_exception;
 
 import croquefer._BCMSUI.BCMSUI;
-import croquefer._BCMSUI.Service;
 import croquefer._BCMSUI.Components.NumberTextField;
+import croquefer._BCMSUI.Utilities.Service;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

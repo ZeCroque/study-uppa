@@ -7,7 +7,9 @@ import java.util.ResourceBundle;
 import com.pauware.pauware_engine._Exception.Statechart_exception;
 
 import croquefer._BCMSUI.BCMSUI;
-import croquefer._BCMSUI.Service;
+import croquefer._BCMSUI.Components.ResizableCanvas;
+import croquefer._BCMSUI.Utilities.Route;
+import croquefer._BCMSUI.Utilities.Service;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,11 +17,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TitledPane;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 
 public class RoutePaneController implements Initializable
 {
 	@FXML private TitledPane routePane;
 	@FXML private ListView<String> routeList;
+	@FXML private VBox routeLeftPane;
+	@FXML private AnchorPane routeRightPane;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) 
@@ -48,7 +54,10 @@ public class RoutePaneController implements Initializable
 		{
 			e.printStackTrace();
 		}
-
+		ResizableCanvas routeCanvas=new ResizableCanvas(new Route());
+		routeCanvas.widthProperty().bind(routeRightPane.widthProperty());
+	    routeCanvas.heightProperty().bind(routeRightPane.heightProperty());
+	    routeRightPane.getChildren().add(routeCanvas);
 	}
 	
 	public void validateButtonListener(ActionEvent event)

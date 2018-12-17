@@ -1,4 +1,4 @@
-package croquefer._BCMSUI;
+package croquefer._BCMSUI.Utilities;
 
 public enum Service 
 {
