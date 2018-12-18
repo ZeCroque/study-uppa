@@ -60,14 +60,14 @@ void Graphe::afficherGraphe()
   }
 }
 
-vector<int> Graphe::parcoursHistorique()
+vector<pair<int, int> > Graphe::parcoursHistorique()
 {
   int i=0;
   int j=0;
   int k=0;
   int sommet=0;
   vector<int> datesDeb;
-  vector<int> datesFin;
+  vector<pair<int, int> > datesFin;
   vector<int> chemin;
   bool arret=false;
 
@@ -99,7 +99,8 @@ vector<int> Graphe::parcoursHistorique()
     else
     {
       i++;
-      datesFin[sommet]=i;
+      datesFin[sommet].second=i;
+      datesFin[sommet].first=sommet;
       chemin.pop_back();
       if (chemin.size()>0)
       {
@@ -154,27 +155,37 @@ Graphe Graphe::grapheAdjacent()
   return result;
 }
 
-vector<vector <int> > Graphe::parcoursProfondeur(Graphe adj, vector<int> datesFin)
+vector<vector <int> > Graphe::parcoursProfondeur(Graphe adj, vector<pair<int,int>> datesFin)
 {
   vector<vector <int> > result;
   vector <int> sommetParcourus;
   int tmp=-1;
+  bool alreadyBrowsed=false;
+  int i, j;
 
-  for(int i=0; i<this->_nbSommet; i++)
+
+  for(i=0; i<this->_nbSommet; i++)
   {
-    sommetParcourus.push_back(datesFin[i]);
-    for(int j=0; j<this->_nbSommet; j++)
+    sommetParcourus.push_back(datesFin[i].first);
+    for(j=0; j<this->_nbSommet; j++)
     {
-      if(adj._matrixLiens[datesFin[i]][j])
+      adj._matrixLiens[j][datesFin[i].first]=false;
+    }
+    for(j=0; j<this->_nbSommet; j++)
+    {
+      if(adj._matrixLiens[datesFin[i].first][j])
       {
-        for(int k=0; k<sommetParcourus.size(); k++)
+        cout<<"i:"<<i<<endl;
+        alreadyBrowsed=false;
+        for(int k=0; k<(int)sommetParcourus.size(); k++)
         {
           if(j==sommetParcourus[k])
           {
+            alreadyBrowsed=true;
             break;
           }
         }
-        if(k==sommetParcourus.size())
+        if(!alreadyBrowsed)
         {
           tmp=i;
           i=j-1;
@@ -191,7 +202,7 @@ vector<vector <int> > Graphe::parcoursProfondeur(Graphe adj, vector<int> datesFi
       }
 
       result.push_back(sommetParcourus);
-      sommetParcourus.erase(0, sommetParcourus.size());
+      sommetParcourus.clear();
     }
     else if(j!=this->_nbSommet && sommetParcourus.size()!=1)
     {
@@ -216,16 +227,17 @@ ostream& operator << (ostream& os, const Graphe& g)
   return os;
 }
 
-void  triBulle(vector<int>& tab)
+void  triBulle(vector<pair<int, int> >& tab)
 {
-  int tmp, i, j;
+  int i, j;
+  pair<int, int> tmp;
   for (i=0; i<(int)tab.size(); i++)
   {
      for(j=i; j<(int)tab.size(); j++)
      {
-       if(tab[j]>tab[i])
+       if(tab[j].second>tab[i].second)
        {
-         tmp = tab[i];
+         tmp=tab[i];
          tab[i] = tab[j];
          tab[j] = tmp;
        }

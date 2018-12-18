@@ -14,11 +14,11 @@ class Graphe
     void ajouterLien(int s1, int s2);
     void afficherGraphe();
     void trouverComposanteFortementConnexe();
-    std::vector<int> parcoursHistorique();
+    std::vector<std::pair<int,int> > parcoursHistorique();
     Graphe grapheAdjacent();
-    std::vector<std::vector <int> > parcoursProfondeur(Graphe adj, std::vector<int> datesFin);
+    std::vector<std::vector <int> > parcoursProfondeur(Graphe adj, std::vector<std::pair<int, int> > datesFin);
 
     friend std::ostream& operator << (std::ostream& os, const Graphe& g);
 };
 
-void triBulle(std::vector<int>& tab);
+void triBulle(std::vector<std::pair<int, int> >& tab);
