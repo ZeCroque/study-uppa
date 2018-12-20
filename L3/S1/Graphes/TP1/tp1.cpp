@@ -1,10 +1,11 @@
-#include <iostream>
 #include "Graphe.h"
 
 using namespace std;
 
 int main()
 {
+
+  //Création du graphe
   Graphe g(8);
   g.ajouterLien(1,2);
   g.ajouterLien(2,3);
@@ -18,17 +19,38 @@ int main()
   g.ajouterLien(4,7);
   g.ajouterLien(4,8);
   g.ajouterLien(8,7);
+  cout<<"Graphe"<<endl;
+  cout<<g<<endl;
 
-  //g.afficherGraphe();
-  //cout<<g<<endl<<endl;
-  vector<int> datesFin=g.parcoursHistorique();
+  //Parcours Historique
+  vector<pair<int,int> > datesFin=g.parcoursHistorique();
   triBulle(datesFin);
-  Graphe gt=g.grapheAdjacent();
-  vector<vector <int> >tmp=g.parcoursProfondeur(gt; datesFin);
+  cout<<"Dates fin triées :"<<endl;
+  for(int i=0; i<(int)datesFin.size(); i++)
+  {
+    cout<<"rang :"<<datesFin[i].first<<" poids:"<<datesFin[i].second<<endl;
+  }
+  cout<<endl;
 
-  for(int)
+  //Graphe adjacent
+  Graphe gt=g.grapheAdjacent();
+  cout<<"Graphe adjacent"<<endl;
+  cout<<gt<<endl;
+
+  //Parcours en profondeur
+  vector<vector <int> >tmp=g.parcoursProfondeur(gt, datesFin);
+
+  for(int i=0; i<(int)tmp.size(); i++)
+  {
+    for(int j=0; j<(int)tmp[i].size(); j++)
+    {
+      cout<<tmp[i][j];
+    }
+    cout<<endl;
+  }
   //cout<<gt<<endl<<endl;
   //gt.afficherGraphe();
+
 
 
   return 0;
