@@ -8,9 +8,9 @@
 
 <StackPane fx:id="root"  xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-   		<fx:include source="Panes/RoutePane.fxml"/> 
-		<!--  <fx:include source="Panes/VehiclesPane.fxml"/>
-		<fx:include source="Panes/AlertPane.fxml"/>  -->    
+   		<fx:include source="Panes/InterventionPane.fxml"/> 
+		<fx:include source="Panes/VehiclesPane.fxml"/>
+		<fx:include source="Panes/AlertPane.fxml"/>   
 	</children>
 </StackPane>
       
