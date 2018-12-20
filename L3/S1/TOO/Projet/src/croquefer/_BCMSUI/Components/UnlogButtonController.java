@@ -13,7 +13,8 @@ public class UnlogButtonController
 		{
 			BCMSUI.stage.setScene(BCMSUI.homeScene);
             Thread.sleep(100);
-            BCMSUI.bCMS.reset();
+            BCMSUI.bCMS.stop();
+            BCMSUI.bCMS.start();
 		}
 		catch (InterruptedException | Statechart_exception e) 
 		{

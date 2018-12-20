@@ -99,7 +99,7 @@ public class VehiclesPaneController implements Initializable
 				}
 			}
 			Scene scene = ((Node) event.getTarget()).getScene();
-			TitledPane routePane = (TitledPane) scene.lookup("#routePane");
+			TitledPane routePane = (TitledPane) scene.lookup("#interventionPane");
 			routePane.toFront();
 		}
 		catch (SQLException e) 

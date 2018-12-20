@@ -772,10 +772,6 @@ public class BCMS extends Timer_monitor {
     public boolean PV_arrived_greater_or_equal_to_PV_dispatched() throws java.sql.SQLException {
         return get_police_vehicles(Status.Arrived).size() >= get_police_vehicles(Status.Dispatched).size();
     }
-    
-    public void reset() throws Statechart_exception {
-        _bCMS_state_machine.to_state(_Init.name());
-    }
 
     /**
      * Utilities
