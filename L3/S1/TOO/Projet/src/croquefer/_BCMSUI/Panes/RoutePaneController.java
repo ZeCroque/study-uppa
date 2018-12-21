@@ -55,6 +55,7 @@ public class RoutePaneController implements Initializable
 
 				public void changed(ObservableValue<? extends String> observable,String oldValue, String newValue) 
 				{
+					mapPane = (AnchorPane) routePane.getScene().lookup("#mapPane");
 					for(int i=0; i<routeList.getItems().size(); i++)
 					{
 						if(routeList.getItems().get(i)==newValue)
@@ -96,6 +97,7 @@ public class RoutePaneController implements Initializable
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void validateButtonListener(ActionEvent event)
 	{
 		if(currentRouteIndex!=-1)
@@ -118,12 +120,12 @@ public class RoutePaneController implements Initializable
 				interventionPane.setText(BCMSUI.currentService+" - Gestion de l'intervention");
 				
 				SplitPane interventionSplitPane = (SplitPane) routePane.getScene().lookup("#interventionSplitPane");
-				VBox vehiclesListPane = (VBox) FXMLLoader.load(getClass().getResource("VehiclesListPane.fxml"));
+				VBox vehiclesListPane = (VBox) FXMLLoader.load(getClass().getResource("InterventionManagerPane.fxml"));
 				interventionSplitPane.getItems().add(0, vehiclesListPane);
 				interventionSplitPane.getItems().remove(1);
-				VehiclesListPaneController.mapPane=this.mapPane;
-				VehiclesListPaneController.vehiclesListStatic=(ListView<String>) vehiclesListPane.getScene().lookup("#vehiclesList");
-				VehiclesListPaneController.initialize();
+				InterventionManagerPaneController.mapPane=this.mapPane;
+				InterventionManagerPaneController.vehiclesListStatic=(ListView<String>) vehiclesListPane.getScene().lookup("#vehiclesList");
+				InterventionManagerPaneController.initialize();
 			}
 			catch (Statechart_exception | IOException e) 
 			{
@@ -132,7 +134,7 @@ public class RoutePaneController implements Initializable
 		}
 		else
 		{
-			Alert alert = new Alert(AlertType.INFORMATION);
+			Alert alert = new Alert(AlertType.WARNING);
             alert.setTitle("Avertissement");
             alert.setHeaderText("Vous devez choisir une route avant de valider.");
             alert.showAndWait();

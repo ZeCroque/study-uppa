@@ -9,7 +9,7 @@
 	<children>
 		<ImageView fitHeight="300.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
 			<image>
-				<Image url="@../../../res/crisis-management.png" />
+				<Image url="@./Images/crisis-management.png" />
 			</image>
 		</ImageView>
 		 <HBox alignment="CENTER">

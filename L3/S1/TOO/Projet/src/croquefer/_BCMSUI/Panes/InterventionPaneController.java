@@ -17,7 +17,6 @@ public class InterventionPaneController implements Initializable
 	@Override
 	public void initialize(URL location, ResourceBundle resources) 
 	{
-		System.out.println(interventionPane);
 		if(BCMSUI.currentService.equals(Service.Pompier))
 		{
 			interventionPane.getContent().setStyle("-fx-background-color: red;");

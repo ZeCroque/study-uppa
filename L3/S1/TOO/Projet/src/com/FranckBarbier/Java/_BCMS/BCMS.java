@@ -717,12 +717,14 @@ public class BCMS extends Timer_monitor {
         return false;
     }
     
+    //AJOUT CROQUEFER
     public void recall_fire_truck(String fire_truck_name) throws java.sql.SQLException {
         try (java.sql.Connection connection = java.sql.DriverManager.getConnection("jdbc:derby:BCMS_database")) 
         {
                 connection.createStatement().execute("DELETE FROM Crisis_Fire_truck WHERE crisis_id = " + _crisis_id + " AND fire_truck_name = '" + fire_truck_name + "'");
         }
     }
+    //FIN AJOUT
 
     public boolean recall_police_vehicle() throws java.sql.SQLException {
         try (java.sql.Connection connection = java.sql.DriverManager.getConnection("jdbc:derby:BCMS_database")) {
@@ -813,6 +815,43 @@ public class BCMS extends Timer_monitor {
         }
         return fire_trucks;
     }
+    
+    //AJOUT CROQUEFER
+    
+    public java.util.List<String> get_fire_trucks_used() throws java.sql.SQLException 
+    {
+        java.util.List<String> fire_trucks = new java.util.ArrayList<>();
+        try (java.sql.Connection connection = java.sql.DriverManager.getConnection("jdbc:derby:BCMS_database")) 
+        {
+            java.sql.ResultSet rs = connection.createStatement(java.sql.ResultSet.TYPE_SCROLL_INSENSITIVE, java.sql.ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Crisis_Fire_truck, Fire_truck WHERE Crisis_Fire_truck.FIRE_TRUCK_NAME = Fire_truck.FIRE_TRUCK_NAME");
+            rs.beforeFirst();
+            while (rs.next()) 
+            {
+                fire_trucks.add(rs.getString("fire_truck_name"));
+            }
+        }
+        return fire_trucks;
+    }
+    
+    public java.util.List<String> get_fire_trucks_unused() throws java.sql.SQLException 
+    {
+        java.util.List<String> all=get_fire_trucks();
+        java.util.List<String> used=get_fire_trucks_used();
+        java.util.List<String> result=get_fire_trucks();
+        for (String s : all) 
+        {
+        	for(String s2 : used)
+        	{
+                if(s.equalsIgnoreCase(s2))
+                {
+                	result.remove(s2);
+                }
+        	}
+        }
+        return result;
+    }
+    
+    //FIN AJOUT
 
     public java.util.List<String> get_police_vehicles() throws java.sql.SQLException {
         java.util.List<String> police_vehicles = new java.util.ArrayList<>();
@@ -837,6 +876,43 @@ public class BCMS extends Timer_monitor {
         }
         return police_vehicles;
     }
+    
+    //AJOUT CROQUEFER
+    
+    public java.util.List<String> get_police_vehicles_used() throws java.sql.SQLException 
+    {
+        java.util.List<String> police_vehicles = new java.util.ArrayList<>();
+        try (java.sql.Connection connection = java.sql.DriverManager.getConnection("jdbc:derby:BCMS_database")) 
+        {
+            java.sql.ResultSet rs = connection.createStatement(java.sql.ResultSet.TYPE_SCROLL_INSENSITIVE, java.sql.ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Crisis_Police_Vehicle, Police_Vehicle WHERE Crisis_Police_Vehicle.POLICE_VEHICLE_NAME = Police_Vehicle.POLICE_VEHICLE_NAME");
+            rs.beforeFirst();
+            while (rs.next()) 
+            {
+            	police_vehicles.add(rs.getString("police_vehicle_name"));
+            }
+        }
+        return police_vehicles;
+    }
+    
+    public java.util.List<String> get_police_vehicles_unused() throws java.sql.SQLException 
+    {
+        java.util.List<String> all=get_police_vehicles();
+        java.util.List<String> used=get_police_vehicles_used();
+        java.util.List<String> result=get_police_vehicles();
+        for (String s : all) 
+        {
+        	for(String s2 : used)
+        	{
+                if(s.equalsIgnoreCase(s2))
+                {
+                	result.remove(s2);
+                }
+        	}
+        }
+        return result;
+    }
+    
+    //FIN AJOUT
 
     public java.util.List<String> get_routes() throws java.sql.SQLException {
         java.util.List<String> routes = new java.util.ArrayList<>();

@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox SplitPane.resizableWithParent="true" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="croquefer._BCMSUI.Panes.VehiclesListPaneController">
+<VBox SplitPane.resizableWithParent="true" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="croquefer._BCMSUI.Panes.InterventionManagerPaneController">
 	<children>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
@@ -14,6 +14,5 @@
          </children>
       </HBox>
 		<ListView fx:id="vehiclesList" prefHeight="200.0" prefWidth="200.0" />
-		<Button onAction="#validateButtonListener" text="Valider" />
 	</children>
 </VBox>

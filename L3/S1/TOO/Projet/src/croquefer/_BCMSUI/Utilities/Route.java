@@ -38,6 +38,12 @@ public class Route
 		} while(Route.startPoint.equals(Route.endPoint) || Route.getDistance(startPoint, endPoint)<Route.distanceMin);
 	}
 	
+	public static void resetCoords()
+	{
+		Route.startPoint=null;
+		Route.endPoint=null;
+	}
+	
 	//INSTANCE
 	private Path path;
 	

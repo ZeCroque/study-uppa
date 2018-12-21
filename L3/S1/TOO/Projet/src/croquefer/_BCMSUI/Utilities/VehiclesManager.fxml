@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="croquefer._BCMSUI.Utilities.VehiclesManagerController">
+	  <children>
+	  	<HBox prefHeight="100.0" prefWidth="200.0">
+        	<children>
+           		<Label text="Nombre de véhicules requis : " />
+           		<Label fx:id="countLabel" />
+        	</children>
+   		</HBox>
+		<HBox>
+	         <children>
+	            <ListView fx:id="idleList" prefHeight="200.0" prefWidth="200.0" />
+	            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+	               <children>
+	                  <Button mnemonicParsing="false" text="&#8594;" onAction="#dispatchButtonController"/>
+	                  <Button mnemonicParsing="false" text="&#8592;" onAction="#undispatchButtonController"/>
+	               </children>
+	            </VBox>
+	            <ListView fx:id="dispatchedList" prefHeight="200.0" prefWidth="200.0" />
+	         </children>
+		</HBox>
+	</children>
+</VBox>

@@ -9,7 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 
 
 public class LogonController
@@ -31,7 +31,7 @@ public class LogonController
 				BCMSUI.currentService=Service.Policier;
 				BCMSUI.bCMS.PSC_connection_request();
 			}
-			StackPane root = (StackPane)FXMLLoader.load(getClass().getResource("Core.fxml"));
+			VBox root = (VBox)FXMLLoader.load(getClass().getResource("Core.fxml"));
 			Scene scene = new Scene(root,400,400);
 			BCMSUI.stage.setScene(scene);
 
