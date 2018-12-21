@@ -4,10 +4,16 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox fx:id="vehiclesListPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" SplitPane.resizableWithParent="true" fx:controller="croquefer._BCMSUI.Panes.VehiclesListPaneController">
+<VBox SplitPane.resizableWithParent="true" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="croquefer._BCMSUI.Panes.VehiclesListPaneController">
 	<children>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#playButtonListener" text="&#9654;" />
+            <Button mnemonicParsing="false" onAction="#stopButtonListener" text="&#9632;" />
+            <Button mnemonicParsing="false" onAction="#breakdownButtonListener" text="&#10060;" />
+         </children>
+      </HBox>
 		<ListView fx:id="vehiclesList" prefHeight="200.0" prefWidth="200.0" />
 		<Button onAction="#validateButtonListener" text="Valider" />
 	</children>
 </VBox>
-

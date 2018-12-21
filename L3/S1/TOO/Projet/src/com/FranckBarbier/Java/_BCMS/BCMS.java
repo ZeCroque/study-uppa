@@ -716,6 +716,13 @@ public class BCMS extends Timer_monitor {
         }
         return false;
     }
+    
+    public void recall_fire_truck(String fire_truck_name) throws java.sql.SQLException {
+        try (java.sql.Connection connection = java.sql.DriverManager.getConnection("jdbc:derby:BCMS_database")) 
+        {
+                connection.createStatement().execute("DELETE FROM Crisis_Fire_truck WHERE crisis_id = " + _crisis_id + " AND fire_truck_name = '" + fire_truck_name + "'");
+        }
+    }
 
     public boolean recall_police_vehicle() throws java.sql.SQLException {
         try (java.sql.Connection connection = java.sql.DriverManager.getConnection("jdbc:derby:BCMS_database")) {
@@ -736,6 +743,13 @@ public class BCMS extends Timer_monitor {
             }
         }
         return false;
+    }
+    
+    public void recall_police_vehicle(String police_vehicle_name) throws java.sql.SQLException {
+        try (java.sql.Connection connection = java.sql.DriverManager.getConnection("jdbc:derby:BCMS_database")) 
+        {
+                connection.createStatement().execute("DELETE FROM Crisis_Police_vehicle WHERE crisis_id = " + _crisis_id + " AND police_vehicle_name = '" + police_vehicle_name + "'");
+        }
     }
 
     public void record_timeout_reason(Long delay, String reason) {

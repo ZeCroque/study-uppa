@@ -16,8 +16,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SplitPane;
+import javafx.scene.control.TitledPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.beans.value.ChangeListener;
@@ -29,7 +32,8 @@ public class RoutePaneController implements Initializable
 	@FXML private VBox routePane;
 	@FXML private ListView<String> routeList;
 	private AnchorPane mapPane;
-	private static Route[] routes;
+	public static Route[] routes;
+	public static int currentRouteIndex=-1;
 	
 	
 	@Override
@@ -64,11 +68,14 @@ public class RoutePaneController implements Initializable
 								mapPane.getChildren().remove(0);
 							}
 							mapPane.getChildren().add(routes[i].getPath());
+							currentRouteIndex=i;
 							
 						}
 					}
 				}
 			});
+			
+
 		} 
 		catch (SQLException e) 
 		{
@@ -91,26 +98,44 @@ public class RoutePaneController implements Initializable
 	
 	public void validateButtonListener(ActionEvent event)
 	{
-        try 
+		if(currentRouteIndex!=-1)
 		{
-			if(BCMSUI.currentService.equals(Service.Pompier))
+	        try 
 			{
-				BCMSUI.bCMS.route_for_fire_trucks();
-		        BCMSUI.bCMS.FSC_agrees_about_fire_truck_route();
+				if(BCMSUI.currentService.equals(Service.Pompier))
+				{
+					BCMSUI.bCMS.route_for_fire_trucks();
+			        BCMSUI.bCMS.FSC_agrees_about_fire_truck_route();
+			        
+				}
+				else
+				{
+			        BCMSUI.bCMS.route_for_police_vehicles();
+			        BCMSUI.bCMS.FSC_agrees_about_police_vehicle_route();
+				}
+				
+				TitledPane interventionPane = (TitledPane) routePane.getScene().lookup("#interventionPane");
+				interventionPane.setText(BCMSUI.currentService+" - Gestion de l'intervention");
+				
+				SplitPane interventionSplitPane = (SplitPane) routePane.getScene().lookup("#interventionSplitPane");
+				VBox vehiclesListPane = (VBox) FXMLLoader.load(getClass().getResource("VehiclesListPane.fxml"));
+				interventionSplitPane.getItems().add(0, vehiclesListPane);
+				interventionSplitPane.getItems().remove(1);
+				VehiclesListPaneController.mapPane=this.mapPane;
+				VehiclesListPaneController.vehiclesListStatic=(ListView<String>) vehiclesListPane.getScene().lookup("#vehiclesList");
+				VehiclesListPaneController.initialize();
 			}
-			else
+			catch (Statechart_exception | IOException e) 
 			{
-		        BCMSUI.bCMS.route_for_police_vehicles();
-		        BCMSUI.bCMS.FSC_agrees_about_police_vehicle_route();
+				e.printStackTrace();
 			}
-			SplitPane interventionSplitPane = (SplitPane) routePane.getScene().lookup("#interventionSplitPane");
-			VBox vehiclesListPane = (VBox) FXMLLoader.load(getClass().getResource("VehiclesListPane.fxml"));
-			interventionSplitPane.getItems().add(0, vehiclesListPane);
-			interventionSplitPane.getItems().remove(1);
 		}
-		catch (Statechart_exception | IOException e) 
+		else
 		{
-			e.printStackTrace();
+			Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Avertissement");
+            alert.setHeaderText("Vous devez choisir une route avant de valider.");
+            alert.showAndWait();
 		}
 	}
 

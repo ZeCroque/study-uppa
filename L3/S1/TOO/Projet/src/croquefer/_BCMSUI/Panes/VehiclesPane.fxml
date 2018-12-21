@@ -7,6 +7,12 @@
    <content>
 		  <VBox>
 			  <children>
+			  	<HBox prefHeight="100.0" prefWidth="200.0">
+	         		<children>
+	            		<Label text="Nombre de véhicules requis : " />
+	            		<Label fx:id="countLabel" />
+	         		</children>
+      			</HBox>
 				<HBox>
 			         <children>
 			            <ListView fx:id="idleList" prefHeight="200.0" prefWidth="200.0" />

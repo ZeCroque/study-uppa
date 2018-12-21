@@ -13,8 +13,10 @@ public class Route
 	//STATIC
 	private static Pair<Integer,Integer> startPoint;
 	private static Pair<Integer,Integer> endPoint;
-	private static final int roadSizeMax=50;
-	private static final double distanceMin=40.0;
+	private static final int roadSizeMax=200;
+	private static final double distanceMin=170;
+	private static final int padding=10;
+
 	
 	private static double getDistance(Pair<Integer,Integer> startPoint, Pair<Integer,Integer> endPoint)
 	{
@@ -24,7 +26,7 @@ public class Route
 	private static Pair<Integer, Integer> genCoord()
 	{
 		Random rand = new Random();
-		return new Pair<>(rand.nextInt(Route.roadSizeMax),rand.nextInt(Route.roadSizeMax));
+		return new Pair<>(rand.nextInt(Route.roadSizeMax-Route.padding+1)+Route.padding,rand.nextInt(Route.roadSizeMax-Route.padding+1)+Route.padding);
 	}
 	
 	private static void genCoords()
@@ -103,6 +105,16 @@ public class Route
 	public Path getPath()
 	{
 		return this.path;
+	}
+	
+	public static Pair<Integer,Integer> getStartPoint()
+	{
+		return startPoint;
+	}
+	
+	public static Pair<Integer,Integer> getEndPoint()
+	{
+		return endPoint;
 	}
 }
 

@@ -3,14 +3,18 @@ package croquefer._BCMSUI.Panes;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TitledPane;
+import javafx.scene.control.Alert.AlertType;
 
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import com.pauware.pauware_engine._Exception.Statechart_exception;
 
 import croquefer._BCMSUI.BCMSUI;
 import croquefer._BCMSUI.Utilities.Service;
@@ -26,6 +30,7 @@ public class VehiclesPaneController implements Initializable
 	@FXML private ListView<String> idleList;
 	@FXML private ListView<String> dispatchedList;
 	@FXML private TitledPane vehiclesPane;
+	@FXML private Label countLabel;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) 
@@ -81,30 +86,41 @@ public class VehiclesPaneController implements Initializable
 
 	public void validateButtonController(ActionEvent event)
 	{
-
-		try 
+		if(dispatchedList.getItems().size()==Integer.parseInt(countLabel.getText()))
 		{
-			if(BCMSUI.currentService.equals(Service.Pompier))
+			try 
 			{
-				for(int i=0; i<dispatchedList.getItems().size(); i++)
+				if(BCMSUI.currentService.equals(Service.Pompier))
 				{
-					BCMSUI.bCMS.dispatch_fire_truck(dispatchedList.getItems().get(i)); 
+					for(int i=0; i<dispatchedList.getItems().size(); i++)
+					{
+						BCMSUI.bCMS.dispatch_fire_truck(dispatchedList.getItems().get(i)); 
+					}
+					BCMSUI.bCMS.enough_fire_trucks_dispatched();
 				}
+				else
+				{
+					for(int i=0; i<dispatchedList.getItems().size(); i++)
+					{
+						BCMSUI.bCMS.dispatch_police_vehicle(dispatchedList.getItems().get(i));
+					}
+					BCMSUI.bCMS.enough_police_vehicles_dispatched();
+				}
+				Scene scene = ((Node) event.getTarget()).getScene();
+				TitledPane interventionPane = (TitledPane) scene.lookup("#interventionPane");
+				interventionPane.toFront();
 			}
-			else
+			catch (SQLException | Statechart_exception e) 
 			{
-				for(int i=0; i<dispatchedList.getItems().size(); i++)
-				{
-					BCMSUI.bCMS.dispatch_police_vehicle(dispatchedList.getItems().get(i));
-				}
+				e.printStackTrace();
 			}
-			Scene scene = ((Node) event.getTarget()).getScene();
-			TitledPane routePane = (TitledPane) scene.lookup("#interventionPane");
-			routePane.toFront();
 		}
-		catch (SQLException e) 
+		else
 		{
-			e.printStackTrace();
+			Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Avertissement");
+            alert.setHeaderText("Vous n'avez pas envoyé le bon nombre d'unités.");
+            alert.showAndWait();
 		}
 	}
 	

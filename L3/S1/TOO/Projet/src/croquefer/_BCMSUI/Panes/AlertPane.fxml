@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import croquefer._BCMSUI.Components.*?>
@@ -7,7 +8,17 @@
 <TitledPane fx:id="alertPane" animated="false" collapsible="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" textAlignment="CENTER" underline="true" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="croquefer._BCMSUI.Panes.AlertPaneController">
 	<content>
 		<VBox>
-			<children>              	
+			<children>
+            <Label text="Type d'alerte :" />
+            <ChoiceBox prefWidth="150.0" />
+            <Label text="Description de l'alerte :" />
+            <TextArea prefHeight="200.0" prefWidth="200.0" />
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="Nombre de véhicules disponibles : " />
+                  <Label fx:id="availableVehiclesCount" />
+               </children>
+            </HBox>              	
 				<HBox>
 					<children>
 						<Label>Nombre de véhicules requis pour traiter l'alerte :</Label>	
@@ -15,11 +26,11 @@
 				</HBox>
 				<HBox>
 					<children>
-						<NumberTextField fx:id="countField"/>
-						<Button text="Valider" onAction="#validateButtonController"/>
+						<NumberTextField fx:id="countField" />
+						<Button onAction="#validateButtonController" text="Valider" />
 					</children>
 				</HBox>
-				<fx:include source="../Components/UnlogButton.fxml"/>
+				<fx:include source="../Components/UnlogButton.fxml" />
 			</children>
 		</VBox>
 	</content>

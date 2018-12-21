@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox fx:id="routePane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" SplitPane.resizableWithParent="true" fx:controller="croquefer._BCMSUI.Panes.RoutePaneController">
+<VBox fx:id="routePane" SplitPane.resizableWithParent="true" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="croquefer._BCMSUI.Panes.RoutePaneController">
 	<children>
 		<ListView fx:id="routeList" prefHeight="200.0" prefWidth="200.0" />
 		<Button onAction="#validateButtonListener" text="Valider" />
