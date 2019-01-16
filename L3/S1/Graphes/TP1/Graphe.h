@@ -22,3 +22,5 @@ class Graphe
 };
 
 void triBulle(std::vector<std::pair<int, int> >& tab);
+bool contains(std::vector<int> tab, int e);
+int getElementIndex(std::vector<std::pair<int, int> > tab, int e);

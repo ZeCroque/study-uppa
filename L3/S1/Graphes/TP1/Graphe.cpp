@@ -52,7 +52,7 @@ void Graphe::afficherGraphe()
     fichier<<"}";
     fichier.close();
     system("dot -Tpng ./orig.dot -Gsize=1,1 -Gdpi=300 -o orig.png");
-    system("xdg-open ./orig.png");
+    system("xdg-open ./orig.png &");
   }
   else
   {
@@ -62,10 +62,7 @@ void Graphe::afficherGraphe()
 
 vector<pair<int, int> > Graphe::parcoursHistorique()
 {
-  int i=0;
-  int j=0;
-  int k=0;
-  int sommet=0;
+  int i=0, j=0, k=0, sommet=0;
   vector<int> datesDeb;
   vector<pair<int, int> > datesFin;
   vector<int> chemin;
@@ -155,62 +152,74 @@ Graphe Graphe::grapheAdjacent()
   return result;
 }
 
-vector<vector <int> > Graphe::parcoursProfondeur(Graphe adj, vector<pair<int,int>> datesFin)
+vector<vector <int> > Graphe::parcoursProfondeur(Graphe adj, vector<pair<int,int> > datesFin)
 {
   vector<vector <int> > result;
   vector <int> sommetParcourus;
-  int tmp=-1;
-  bool alreadyBrowsed=false;
-  int i, j;
+  vector <int> sommetResultats;
+  bool alreadyBrowsed;
+  int i=0,sommetParcourusCount=0;
 
 
-  for(i=0; i<this->_nbSommet; i++)
+  //Tant que l'on a pas parcourus tous les sommets
+  while(sommetParcourusCount!=(int)datesFin.size())
   {
-    sommetParcourus.push_back(datesFin[i].first);
-    for(j=0; j<this->_nbSommet; j++)
+
+    //Ajout du sommet au tableau temporaire et au tableau résultat, s'il n'y est pas déjà
+    //Incrémentation du compteur de sommet parcourus le cas échéant
+    if(!contains(sommetResultats,datesFin[i].first))
+    {
+      sommetParcourusCount++;
+      sommetResultats.push_back(datesFin[i].first);
+      sommetParcourus.push_back(datesFin[i].first);
+    }
+
+    //Elimination des liens qui vont au sommet
+    for(int j=0; j<this->_nbSommet; j++)
     {
       adj._matrixLiens[j][datesFin[i].first]=false;
     }
-    for(j=0; j<this->_nbSommet; j++)
+
+    //Parcours de tous les sommets du graphes
+    alreadyBrowsed=true;
+    for(int j=0; j<this->_nbSommet; j++)
     {
+      //Si un lien part de ce sommet
       if(adj._matrixLiens[datesFin[i].first][j])
       {
-        cout<<"i:"<<i<<endl;
-        alreadyBrowsed=false;
-        for(int k=0; k<(int)sommetParcourus.size(); k++)
-        {
-          if(j==sommetParcourus[k])
-          {
-            alreadyBrowsed=true;
-            break;
-          }
-        }
+        //On vérifie si la cible du lien a déjà été visitée
+        alreadyBrowsed=contains(sommetResultats, j);
         if(!alreadyBrowsed)
         {
-          tmp=i;
-          i=j-1;
+          //On assigne i à l'index de la cible dans le tableau datesFin et on quitte la boucle
+          i=getElementIndex(datesFin,j);
           break;
         }
       }
     }
-    if(j==this->_nbSommet && sommetParcourus.size()==1)
+
+    //Si l'on ne trouve pas de cible valide
+    if(alreadyBrowsed)
     {
-      if(tmp!=-1)
+      //Si c'est un graphe unaire on ajoute nos sommets au résultat, on clear nos tableaux et on recommence pour la datesFin suivante
+      if(sommetParcourus.size()==1)
       {
-        i=tmp;
-        tmp=-1;
+        result.push_back(sommetResultats);
+        sommetParcourus.clear();
+        sommetResultats.clear();
+        i++;
       }
-
-      result.push_back(sommetParcourus);
-      sommetParcourus.clear();
+      //Sinon on revient en arrière d'un cran pour chercher d'autres liens sur le sommet d'avant
+      else
+      {
+        sommetParcourus.pop_back();
+        i=getElementIndex(datesFin,sommetParcourus[sommetParcourus.size()-1]);
+      }
     }
-    else if(j!=this->_nbSommet && sommetParcourus.size()!=1)
-    {
-      i=sommetParcourus[sommetParcourus.size()-3];
-    }
-
   }
 
+  //On ajoute notre dernier résultat et on return
+  result.push_back(sommetResultats);
   return result;
 }
 
@@ -243,4 +252,31 @@ void  triBulle(vector<pair<int, int> >& tab)
        }
      }
    }
+}
+
+//Retourne si oui ou non, l'élément e se trouve dans le tableau tab
+bool contains(vector<int> tab, int e)
+{
+  for(int i=0; i<(int)tab.size(); i++)
+  {
+    if(tab[i]==e)
+    {
+      return true;
+    }
+  }
+  return false;
+}
+
+//Retourne l'index de l'élément e dans le tableau tab, en ne cherchant que dans la clé de la paire
+//-1 si l'élément n'est pas dans le tableau
+int getElementIndex(vector<pair<int, int> > tab, int e)
+{
+  for(int i=0; i<(int)tab.size(); i++)
+  {
+    if(tab[i].first==e)
+    {
+      return i;
+    }
+  }
+  return -1;
 }
