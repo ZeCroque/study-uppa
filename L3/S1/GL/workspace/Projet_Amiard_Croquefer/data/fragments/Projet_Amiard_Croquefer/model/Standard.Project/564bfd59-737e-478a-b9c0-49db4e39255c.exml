@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Projet_Amiard_Croquefer" version="4">
+  <OBJECT>
+    <ID name="Projet_Amiard_Croquefer" mc="Standard.Project" uid="564bfd59-737e-478a-b9c0-49db4e39255c"/>
+    <ATTRIBUTES>
+      <ATT name="ProjectContext"></ATT>
+      <ATT name="ProjectDescr"></ATT>
+      <ATT name="Name"><![CDATA[Projet_Amiard_Croquefer]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="Model">
+        <COMPID name="projet_amiard_croquefer" mc="Standard.Package" uid="da069c2d-1917-4958-bbf2-8755ae6c4b9c"/>
+      </COMP>
+      <COMP relation="DiagramRoot">
+        <COMPID name="Projet_Amiard_Croquefer" mc="Infrastructure.DiagramSet" uid="acac677d-f389-4a11-99b7-bc680d9f1c56"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>
