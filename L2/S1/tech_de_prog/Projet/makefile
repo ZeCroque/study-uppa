@@ -1,7 +1,7 @@
-all: programme
+all: programme.out
 
-programme: main.o alerte.o unite.o menu.o outils.o
-	gcc -o programme main.o alerte.o unite.o menu.o outils.o
+programme.out: main.o alerte.o unite.o menu.o outils.o
+	gcc -o programme.out main.o alerte.o unite.o menu.o outils.o
 
 main.o:
 	gcc -o main.o -c main.c
@@ -22,4 +22,4 @@ clean:
 	rm -rf *.o
 
 mrproper:
-	rm -f programme
+	rm -f programme.out

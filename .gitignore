@@ -1,3 +1,9 @@
 log
 .recommenders
+bin
+.metadata
+.runtime
+.sonarlint
 *.lck
+*.out
+*.o

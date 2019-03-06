@@ -1,5 +1,5 @@
 all: main.cpp
-	g++ -Wall -o main main.cpp 
+	g++ -Wall -o Q1.out main.cpp 
 
 clean:
 	rm -rf *.o
