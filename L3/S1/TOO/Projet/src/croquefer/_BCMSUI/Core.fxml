@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.String?>
 <?import croquefer._BCMSUI.Components.*?>
 <?import croquefer._BCMSUI.Panes.*?>
 
-<StackPane fx:id="root"  xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-   		<fx:include source="Panes/RoutePane.fxml"/> 
-		<!--  <fx:include source="Panes/VehiclesPane.fxml"/>
-		<fx:include source="Panes/AlertPane.fxml"/>  -->    
-	</children>
-</StackPane>
-      
-      
-
+<VBox prefHeight="200.0" prefWidth="100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="croquefer._BCMSUI.CoreController">
+         <children>
+            <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0">
+              <items>
+                <Button mnemonicParsing="false" onAction="#unlogButtonController" text="&#9167;">
+                	<tooltip><Tooltip text="Se déconnecter" /></tooltip>
+                </Button>
+              </items>
+            </ToolBar>
+            <StackPane>
+   				<children>
+   					<fx:include source="Panes/InterventionPane.fxml" /> 
+					<fx:include source="Panes/VehiclesPane.fxml" />
+					<fx:include source="Panes/AlertPane.fxml" />    
+				</children>
+			</StackPane>
+         </children>
+      </VBox>

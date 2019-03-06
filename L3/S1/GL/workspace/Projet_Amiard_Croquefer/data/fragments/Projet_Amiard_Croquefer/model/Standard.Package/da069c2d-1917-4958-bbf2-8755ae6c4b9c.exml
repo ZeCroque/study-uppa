@@ -1,0 +1,151 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="projet_amiard_croquefer" version="4">
+  <OBJECT>
+    <ID name="projet_amiard_croquefer" mc="Standard.Package" uid="da069c2d-1917-4958-bbf2-8755ae6c4b9c"/>
+    <PID name="Projet_Amiard_Croquefer" mc="Standard.Project" uid="564bfd59-737e-478a-b9c0-49db4e39255c"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[projet_amiard_croquefer]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedBehavior">
+        <COMPID name="Interaction" mc="Standard.Interaction" uid="71b90e29-c24a-46a4-bd60-06764ca8c7eb"/>
+      </COMP>
+      <COMP relation="OwnedElement">
+        <COMPID name="OfficeTourisme" mc="Standard.Class" uid="dfdf35b8-dd9f-4924-9515-d98088dc21c5"/>
+        <COMPID name="Activite" mc="Standard.Class" uid="546ef872-ddbf-4a28-a13e-8ba3912312c7"/>
+        <COMPID name="Client" mc="Standard.Class" uid="b82d8629-9fbe-40ae-acb0-4d58584d2d86"/>
+        <COMPID name="Lieu" mc="Standard.Class" uid="667c362b-19fd-4126-b3b9-5025412b1398"/>
+        <COMPID name="LieuBalise" mc="Standard.Class" uid="a469a494-5897-441a-a8f1-e3c4e8ed7e41"/>
+        <COMPID name="LieuNonBalise" mc="Standard.Class" uid="39292da4-08e0-427c-8403-a106dfed5da6"/>
+        <COMPID name="Coordonnees" mc="Standard.Class" uid="eb5e69d1-1e60-44e7-8122-2e010cb8606b"/>
+        <COMPID name="Piste" mc="Standard.Class" uid="336681f9-f27a-4910-9746-8c83c7417ff1"/>
+        <OBJECT>
+          <ID name="Niveau" mc="Standard.Enumeration" uid="01b6a918-00a3-42d8-bb8b-18b1f5f709c3"/>
+          <ATTRIBUTES>
+            <ATT name="IsElementary">true</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="IsLeaf">false</ATT>
+            <ATT name="IsRoot">false</ATT>
+            <ATT name="Visibility">Public</ATT>
+            <ATT name="Name"><![CDATA[Niveau]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="Value">
+              <OBJECT>
+                <ID name="aucun" mc="Standard.EnumerationLiteral" uid="d918b040-0bef-45a0-bbb0-d91e93f77063"/>
+                <ATTRIBUTES>
+                  <ATT name="Name"><![CDATA[aucun]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES></DEPENDENCIES>
+              </OBJECT>
+              <OBJECT>
+                <ID name="vert" mc="Standard.EnumerationLiteral" uid="77645efa-0389-493d-acd1-bc31dabe0754"/>
+                <ATTRIBUTES>
+                  <ATT name="Name"><![CDATA[vert]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES></DEPENDENCIES>
+              </OBJECT>
+              <OBJECT>
+                <ID name="bleu" mc="Standard.EnumerationLiteral" uid="d6962e45-1ce6-4d5f-bb32-af163f723b42"/>
+                <ATTRIBUTES>
+                  <ATT name="Name"><![CDATA[bleu]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES></DEPENDENCIES>
+              </OBJECT>
+              <OBJECT>
+                <ID name="rouge" mc="Standard.EnumerationLiteral" uid="f3f84138-94cc-4fea-9908-94a06bbc590a"/>
+                <ATTRIBUTES>
+                  <ATT name="Name"><![CDATA[rouge]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES></DEPENDENCIES>
+              </OBJECT>
+              <OBJECT>
+                <ID name="noir" mc="Standard.EnumerationLiteral" uid="a2da10e7-a4e2-4c3d-8dec-e2d383ba2a66"/>
+                <ATTRIBUTES>
+                  <ATT name="Name"><![CDATA[noir]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES></DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+        <COMPID name="Personne" mc="Standard.Class" uid="d741103b-6472-4de7-a82f-b8ddb15465d4"/>
+        <COMPID name="Professionnel" mc="Standard.Class" uid="72c93bfd-87fa-4d6c-a776-08a6176a609c"/>
+        <COMPID name="Formation" mc="Standard.Class" uid="d78105f1-23ba-4a69-b156-a1754215da61"/>
+        <COMPID name="Diplome" mc="Standard.Class" uid="740c647a-ce35-43c9-9428-31b684471565"/>
+        <OBJECT>
+          <ID name="Domaine" mc="Standard.Enumeration" uid="769e0288-c496-4d93-8738-ec7353202eaa"/>
+          <ATTRIBUTES>
+            <ATT name="IsElementary">true</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="IsLeaf">false</ATT>
+            <ATT name="IsRoot">false</ATT>
+            <ATT name="Visibility">Public</ATT>
+            <ATT name="Name"><![CDATA[Domaine]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="Value">
+              <OBJECT>
+                <ID name="autre" mc="Standard.EnumerationLiteral" uid="a6633744-df87-4104-8f70-a4920c713ba6"/>
+                <ATTRIBUTES>
+                  <ATT name="Name"><![CDATA[autre]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES></DEPENDENCIES>
+              </OBJECT>
+              <OBJECT>
+                <ID name="ski" mc="Standard.EnumerationLiteral" uid="9625dac3-f433-4fc8-8818-4ed34c756024"/>
+                <ATTRIBUTES>
+                  <ATT name="Name"><![CDATA[ski]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES></DEPENDENCIES>
+              </OBJECT>
+              <OBJECT>
+                <ID name="VTT" mc="Standard.EnumerationLiteral" uid="017f0fa3-3a73-411d-aa31-8faedc294e99"/>
+                <ATTRIBUTES>
+                  <ATT name="Name"><![CDATA[VTT]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES></DEPENDENCIES>
+              </OBJECT>
+              <OBJECT>
+                <ID name="escalade" mc="Standard.EnumerationLiteral" uid="5257d6d1-5a10-4b6f-b5a9-11e8b76b1911"/>
+                <ATTRIBUTES>
+                  <ATT name="Name"><![CDATA[escalade]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES></DEPENDENCIES>
+              </OBJECT>
+              <OBJECT>
+                <ID name="randonnee" mc="Standard.EnumerationLiteral" uid="dde4633d-e58f-476c-b1b5-4cd840637345"/>
+                <ATTRIBUTES>
+                  <ATT name="Name"><![CDATA[randonnee]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES></DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+        <COMPID name="Competence" mc="Standard.Class" uid="5fd2c74c-b0bb-4dff-9424-b5f8a424fb61"/>
+      </COMP>
+      <COMP relation="Product">
+        <COMPID name="projet_amiard_croquefer Class diagram" mc="Standard.ClassDiagram" uid="a65d979f-543b-4a8c-95e1-54e9e6cb80d0"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

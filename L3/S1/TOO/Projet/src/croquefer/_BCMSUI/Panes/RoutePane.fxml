@@ -3,25 +3,10 @@
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import croquefer._BCMSUI.Components.*?>
 
-<TitledPane fx:id="routePane" animated="false" collapsible="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" textAlignment="CENTER" underline="true" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="croquefer._BCMSUI.Panes.RoutePaneController">
-   <content>
-      <VBox prefHeight="200.0" prefWidth="100.0">
-         <children>
-            <SplitPane dividerPositions="0.5" prefHeight="160.0" prefWidth="200.0">
-              <items>
-            		<VBox fx:id="routeLeftPane" SplitPane.resizableWithParent="true">
-            			<children>
-            				<ListView fx:id="routeList" prefHeight="200.0" prefWidth="200.0" />
-            				<Button onAction="#validateButtonListener" text="Valider" />
-            			</children>
-            		</VBox>
-                  <AnchorPane fx:id="routeRightPane" prefHeight="200.0" prefWidth="200.0" SplitPane.resizableWithParent="true" />
-              </items>
-            </SplitPane>
-				<fx:include source="../Components/UnlogButton.fxml" />
-         </children>
-      </VBox>
-   </content>
-</TitledPane>
+<VBox fx:id="routePane" SplitPane.resizableWithParent="true" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="croquefer._BCMSUI.Panes.RoutePaneController">
+	<children>
+		<ListView fx:id="routeList" prefHeight="200.0" prefWidth="200.0" />
+		<Button onAction="#validateButtonListener" text="Valider" />
+	</children>
+</VBox>

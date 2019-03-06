@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox SplitPane.resizableWithParent="true" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="croquefer._BCMSUI.Panes.InterventionManagerPaneController">
+	<children>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#playButtonListener" text="&#9654;" />
+            <Button mnemonicParsing="false" onAction="#stopButtonListener" text="&#9632;" />
+            <Button mnemonicParsing="false" onAction="#breakdownButtonListener" text="&#10060;" />
+         </children>
+      </HBox>
+		<ListView fx:id="vehiclesList" prefHeight="200.0" prefWidth="200.0" />
+	</children>
+</VBox>

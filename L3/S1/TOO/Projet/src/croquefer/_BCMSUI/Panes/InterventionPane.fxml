@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<TitledPane fx:id="interventionPane" animated="false" collapsible="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" textAlignment="CENTER" underline="true" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="croquefer._BCMSUI.Panes.InterventionPaneController">
+   <content>
+      <VBox prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <SplitPane fx:id="interventionSplitPane" dividerPositions="0.5" prefHeight="160.0" prefWidth="200.0">
+              <items>
+            		<fx:include source="./RoutePane.fxml" />
+                  <AnchorPane fx:id="mapPane" prefHeight="200.0" prefWidth="200.0" SplitPane.resizableWithParent="true" />
+              </items>
+            </SplitPane>
+         </children>
+      </VBox>
+   </content>
+</TitledPane>
+

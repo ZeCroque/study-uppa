@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Interaction Sequence diagram" version="4">
+  <OBJECT>
+    <ID name="Interaction Sequence diagram" mc="Standard.SequenceDiagram" uid="01b03bab-a849-417b-8423-eecabf375a2c"/>
+    <PID name="Interaction" mc="Standard.Interaction" uid="71b90e29-c24a-46a4-bd60-06764ca8c7eb"/>
+    <ATTRIBUTES>
+      <ATT name="UiDataVersion">6</ATT>
+      <ATT name="UiData"><![CDATA[eJztU11P4zAQ/CtW3ut+pCc4KRRBg6qKQFF7h8QT2sRLz5xj92wXmn+PTRKgRY2ChODlnmytd3Zn1rPR8SYX5AG14UoeBX3aC8jxKJql95hZwpkLBcQWKzwKlF7SXDEUXFHGYakhp8i4VZoa/LdGmSFFgTlKa14ideIkX1SRuIwEJId7pW9fWveCUXSl1Qq1LYiE3HUUUKi1jcGCe7sGscaKilwLEXRHUbcGvIMubCEw2BIyaBJifL6hmdJIS2wLfmMwGTBkdbOzjZ3jXcsul65EhSS4sXE6dRyfr/5yUSJJSDc7QrulpCbxGgVYZI7LztwufIg8+IgfEUgGmtGdnyG9ftoLU0g7cDj82Rn2D9LO4XAQdhAzSO/Cgx8wyJqnL8DYc6keZQIpih0SC6u5XAajqbSoIbNuuqSmQKpJRd1nRKNIJXAqxypfKcN9kT1tWpQa/+GCafQVEm78aKtjLyLh8q9pn366jDU8OjoJFKi3bRk27le9T6zEGyp8BbdOWwW/Zpc+hvp2E3K2xxHxhCYnN2fz29OT8flkPvt9GX+OSVqs5ttvezXQGzsM/9vhu+zwa3b12T7Y+/QEUxub7w==]]></ATT>
+      <ATT name="Name"><![CDATA[Interaction Sequence diagram]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="Descriptor">
+        <OBJECT>
+          <ID name="" mc="Infrastructure.Note" uid="0317a263-82f4-4f3e-854a-7fc5732f3035"/>
+          <ATTRIBUTES>
+            <ATT name="Content"></ATT>
+            <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Model">
+              <FOREIGNID name="description" mc="Infrastructure.NoteType" uid="00000000-0000-3e81-0000-000000000000"/>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

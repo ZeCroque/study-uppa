@@ -3,24 +3,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<TitledPane fx:id="vehiclesPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"  animated="false" collapsible="false" textAlignment="CENTER" underline="true" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="croquefer._BCMSUI.Panes.VehiclesPaneController">
+<TitledPane  fx:id="vehiclesPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"  animated="false" collapsible="false" textAlignment="CENTER" underline="true" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="croquefer._BCMSUI.Panes.VehiclesPaneController">
    <content>
-		  <VBox>
-			  <children>
-				<HBox>
-			         <children>
-			            <ListView fx:id="idleList" prefHeight="200.0" prefWidth="200.0" />
-			            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-			               <children>
-			                  <Button mnemonicParsing="false" text="&#8594;" onAction="#dispatchButtonController"/>
-			                  <Button mnemonicParsing="false" text="&#8592;" onAction="#undispatchButtonController"/>
-			               </children>
-			            </VBox>
-			            <ListView fx:id="dispatchedList" prefHeight="200.0" prefWidth="200.0" />
-			         </children>
-				</HBox>
-				  <Button onAction="#validateButtonController" text="Valider"/>
-				  <fx:include source="../Components/UnlogButton.fxml"/> 
+		<VBox>
+			<children>
+				<Button onAction="#validateButtonController" text="Valider"/>
 			</children>
 		</VBox>
 	</content>

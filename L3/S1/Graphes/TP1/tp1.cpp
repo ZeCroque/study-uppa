@@ -28,7 +28,7 @@ int main()
   cout<<"Dates fin triées :"<<endl;
   for(int i=0; i<(int)datesFin.size(); i++)
   {
-    cout<<"rang :"<<datesFin[i].first<<" poids:"<<datesFin[i].second<<endl;
+    cout<<"sommet :"<<datesFin[i].first+1<<" poids:"<<datesFin[i].second<<endl;
   }
   cout<<endl;
 
@@ -40,17 +40,18 @@ int main()
   //Parcours en profondeur
   vector<vector <int> >tmp=g.parcoursProfondeur(gt, datesFin);
 
+  cout<<"Graphe quotient"<<endl;
   for(int i=0; i<(int)tmp.size(); i++)
   {
     for(int j=0; j<(int)tmp[i].size(); j++)
     {
-      cout<<tmp[i][j];
+      cout<<tmp[i][j]+1<<" ";
     }
     cout<<endl;
   }
-  //cout<<gt<<endl<<endl;
-  //gt.afficherGraphe();
 
+  //Si vous êtes sur linux et que vous avez le programme dot d'installé, décommentez cette fonction, elle affichera le graphe sous forme d'image
+  //g.afficherGraphe();
 
 
   return 0;

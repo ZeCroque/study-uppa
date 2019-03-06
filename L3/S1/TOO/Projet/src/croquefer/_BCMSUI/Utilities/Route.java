@@ -1,21 +1,32 @@
 package croquefer._BCMSUI.Utilities;
 
-import java.util.Arrays;
 import java.util.Random;
 
+import javafx.scene.shape.LineTo;
+import javafx.scene.shape.MoveTo;
+import javafx.scene.shape.Path;
 import javafx.util.Pair;
 
-public class Route 
+public class Route
 {
 	
 	//STATIC
 	private static Pair<Integer,Integer> startPoint;
 	private static Pair<Integer,Integer> endPoint;
+	private static final int roadSizeMax=200;
+	private static final double distanceMin=170;
+	private static final int padding=10;
+
+	
+	private static double getDistance(Pair<Integer,Integer> startPoint, Pair<Integer,Integer> endPoint)
+	{
+		return Math.sqrt(Math.pow(Route.endPoint.getKey()-Route.startPoint.getKey(),2)+Math.pow(Route.endPoint.getValue()-Route.startPoint.getValue(),2));
+	}
 	
 	private static Pair<Integer, Integer> genCoord()
 	{
 		Random rand = new Random();
-		return new Pair<>(rand.nextInt(10),rand.nextInt(10));
+		return new Pair<>(rand.nextInt(Route.roadSizeMax-Route.padding+1)+Route.padding,rand.nextInt(Route.roadSizeMax-Route.padding+1)+Route.padding);
 	}
 	
 	private static void genCoords()
@@ -24,11 +35,17 @@ public class Route
 		{
 			Route.startPoint=Route.genCoord();
 			Route.endPoint=Route.genCoord();
-		} while(Route.startPoint.equals(Route.endPoint));
+		} while(Route.startPoint.equals(Route.endPoint) || Route.getDistance(startPoint, endPoint)<Route.distanceMin);
+	}
+	
+	public static void resetCoords()
+	{
+		Route.startPoint=null;
+		Route.endPoint=null;
 	}
 	
 	//INSTANCE
-	private boolean[][] roadMatrix;
+	private Path path;
 	
 	public Route()
 	{
@@ -36,84 +53,36 @@ public class Route
 		{
 			Route.genCoords();
 		}
-		this.genMatrix();
+		this.path=new Path();
 	}
-	
-	public Pair<Integer,Integer> getStartPoint()
-	{
-		return Route.startPoint;
-	}
-	
-	public Pair<Integer,Integer> getEndPoint()
-	{
-		return Route.endPoint;
-	}
-	
-	public boolean[][] getMatrix()
-	{
-		return Arrays.copyOf(this.roadMatrix, this.roadMatrix.length);
-	}
-	
-
-	public int size()
-	{
-		return 10;
-	}
-	
-	@Override
-	public String toString()
-	{
-		String result=new String();
-		for(int i=0; i<10; i++)
-		{
-			for(int j=0; j<10; j++)
-			{
-				if(this.roadMatrix[j][i])
-				{
-					result+="1 ";
-				}
-				else
-				{
-					result+="0 ";
-				}
-
-			}
-			result+="\n";
-		}
-		return result;
-	}
-
 		
-	private void genMatrix()
+	public void genPath(double width, double height)
 	{
-		this.roadMatrix=new boolean[10][10];
 		Random rand = new Random();
 		int i=Route.startPoint.getKey();
 		int j=Route.startPoint.getValue();
-		this.roadMatrix[i][j]=true;
-		this.roadMatrix[Route.endPoint.getKey()][Route.endPoint.getValue()]=true;
+
+		this.path.setOpacity(1);
 		do
 		{
 			int coinFlip=rand.nextInt(2);
 			int iTarget=i;
 			int jTarget=j;
+			double x=(width-height)/2+i*(height/Route.roadSizeMax);
+			double y=j*(height/Route.roadSizeMax);
+			
+			this.path.getElements().add(new MoveTo(x,y));
 			if((coinFlip==0 && i!=Route.endPoint.getKey()) || (coinFlip==1 && j==Route.endPoint.getValue()))
 			{
 				if(i<Route.endPoint.getKey())
 				{
 					iTarget+=rand.nextInt(Route.endPoint.getKey()-i)+1;
-					for(int k=i; k<=iTarget; k++)
-					{
-						this.roadMatrix[k][j]=true;
-					}
+					this.path.getElements().add(new LineTo(x+(height/Route.roadSizeMax)*(iTarget-i),y));
 				}
 				else
 				{
 					iTarget-=rand.nextInt(i-Route.endPoint.getKey())+1;
-					for(int k=i; k>=iTarget; k--)
-					{
-						this.roadMatrix[k][j]=true;
-					}
+					this.path.getElements().add(new LineTo(x-(height/Route.roadSizeMax)*(i-iTarget),y));
 				}
 
 			}
@@ -122,18 +91,13 @@ public class Route
 				if(j<Route.endPoint.getValue())
 				{
 					jTarget+=rand.nextInt(Route.endPoint.getValue()-j)+1;
-					for(int k=j; k<=jTarget; k++)
-					{
-						this.roadMatrix[i][k]=true;
-					}
+					this.path.getElements().add(new LineTo(x,y+(height/Route.roadSizeMax)*(jTarget-j)));
+
 				}
 				else
 				{
 					jTarget-=rand.nextInt(j-Route.endPoint.getValue())+1;
-					for(int k=j; k>=jTarget; k--)
-					{
-						this.roadMatrix[i][k]=true;
-					}
+					this.path.getElements().add(new LineTo(x,y-(height/Route.roadSizeMax)*(j-jTarget)));
 				}
 				
 			}
@@ -142,6 +106,21 @@ public class Route
 			
 
 		} while(i!=Route.endPoint.getKey() || j!=Route.endPoint.getValue());
+	}
+	
+	public Path getPath()
+	{
+		return this.path;
+	}
+	
+	public static Pair<Integer,Integer> getStartPoint()
+	{
+		return startPoint;
+	}
+	
+	public static Pair<Integer,Integer> getEndPoint()
+	{
+		return endPoint;
 	}
 }
 
